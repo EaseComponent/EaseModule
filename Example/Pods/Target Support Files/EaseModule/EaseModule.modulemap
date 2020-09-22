@@ -1,0 +1,6 @@
+framework module EaseModule {
+  umbrella header "EaseModule-umbrella.h"
+
+  export *
+  module * { export * }
+}

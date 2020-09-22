@@ -21,14 +21,17 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Yrocky/EaseModule'
+  s.homepage         = 'https://github.com/EaseComponent/EaseModule'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Yrocky' => 'yangheng@ibobei.cn' }
-  s.source           = { :git => 'https://github.com/Yrocky/EaseModule.git', :tag => s.version.to_s }
+  s.author           = { 'Yrocky' => '983272765@qq.com' }
+  s.source           = {
+    :git => 'https://github.com/EaseComponent/EaseModule.git',
+    :tag => s.version.to_s
+  }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'EaseModule/Classes/**/*'
   
@@ -36,7 +39,7 @@ TODO: Add long description of the pod here.
   #   'EaseModule' => ['EaseModule/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'Pod/Classes/EaseModuler.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
