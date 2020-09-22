@@ -1,0 +1,6 @@
+framework module EaseRefreshProxy {
+  umbrella header "EaseRefreshProxy-umbrella.h"
+
+  export *
+  module * { export * }
+}

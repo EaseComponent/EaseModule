@@ -1,10 +1,20 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/EaseComponent/EaseSpecs.git'
+
 use_frameworks!
 
 platform :ios, '8.0'
 
 target 'EaseModule_Example' do
   pod 'EaseModule', :path => '../'
-
+  pod 'EaseRefreshProxy'
+  
+  pod 'Masonry', '~> 1.1.0'
+  pod 'AFNetworking', '~> 3.1.0'
+  pod 'SDWebImage', '~> 4.4.7'
+  pod 'JXPagingView/Pager','1.1.8'
+  pod 'JXCategoryView','1.5.5'
+  
   target 'EaseModule_Tests' do
     inherit! :search_paths
 

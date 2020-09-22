@@ -22,7 +22,7 @@ pod 'EaseModule'
 
 ## Author
 
-Yrocky, yangheng@ibobei.cn
+Yrocky, 983272765@qq.com
 
 ## License
 

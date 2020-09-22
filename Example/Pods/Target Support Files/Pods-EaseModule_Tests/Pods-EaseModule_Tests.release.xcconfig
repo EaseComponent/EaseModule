@@ -1,7 +1,7 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/EaseModule"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking" "${PODS_CONFIGURATION_BUILD_DIR}/EaseModule" "${PODS_CONFIGURATION_BUILD_DIR}/EaseRefreshProxy" "${PODS_CONFIGURATION_BUILD_DIR}/JXCategoryView" "${PODS_CONFIGURATION_BUILD_DIR}/JXPagingView" "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh" "${PODS_CONFIGURATION_BUILD_DIR}/Masonry" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/EaseModule/EaseModule.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "EaseModule"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/EaseModule/EaseModule.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/EaseRefreshProxy/EaseRefreshProxy.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/JXCategoryView/JXCategoryView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/JXPagingView/JXPagingView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "CoreGraphics" -framework "EaseModule" -framework "EaseRefreshProxy" -framework "Foundation" -framework "ImageIO" -framework "JXCategoryView" -framework "JXPagingView" -framework "MJRefresh" -framework "Masonry" -framework "MobileCoreServices" -framework "SDWebImage" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
