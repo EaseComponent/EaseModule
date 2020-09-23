@@ -6,8 +6,30 @@
 //  Copyright (c) 2020 Yrocky. All rights reserved.
 //
 
-@import UIKit;
 
-@interface XXViewController : UIViewController
+#import "DemoCompositeListViewController.h"
+
+@interface XXViewController : DemoCompositeListViewController
 
 @end
+
+@interface DemoModule : EaseModule
+- (void) setupComponents:(NSDictionary *)data;
+@end
+
+@interface DemoFlexLayoutModule : DemoModule
+
+@end
+
+@interface DemoListLayoutModule : DemoModule
+
+@end
+
+@interface DemoWaterfallLayoutModule : DemoModule
+
+@end
+
+@interface DemoBackgroundDecorateModule : DemoModule
+
+@end
+

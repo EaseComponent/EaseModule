@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rocky. All rights reserved.
 //
 
-#import "EaseModule.h"
+#import "EaseModuler.h"
 //#import <YTKNetwork/YTKNetwork.h>
 #import "EaseModuleEnvironment.h"
 #import "EaseModuleDataSource_Private.h"

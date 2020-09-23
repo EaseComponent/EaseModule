@@ -16,14 +16,14 @@ FOUNDATION_EXPORT const unsigned char EaseModulerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <EaseModuler/PublicHeader.h>
 
-#import <EaseModuler/EaseModule.h>
-#import <EaseModuler/EaseModuleDataSource.h>
-#import <EaseModuler/EaseModuleDataSourceAble.h>
-#import <EaseModuler/EaseComponent.h>
-#import <EaseModuler/EaseComponentDecorateContents.h>
-#import <EaseModuler/EaseBaseLayout.h>
-#import <EaseModuler/EaseListLayout.h>
-#import <EaseModuler/EaseWaterfallLayout.h>
-#import <EaseModuler/EaseGridLayout.h>
-#import <EaseModuler/EaseFlexLayout.h>
+#import <EaseModule/EaseModule.h>
+#import <EaseModule/EaseModuleDataSource.h>
+#import <EaseModule/EaseModuleDataSourceAble.h>
+#import <EaseModule/EaseComponent.h>
+#import <EaseModule/EaseComponentDecorateContents.h>
+#import <EaseModule/EaseBaseLayout.h>
+#import <EaseModule/EaseListLayout.h>
+#import <EaseModule/EaseWaterfallLayout.h>
+#import <EaseModule/EaseGridLayout.h>
+#import <EaseModule/EaseFlexLayout.h>
 
