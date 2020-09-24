@@ -24,16 +24,33 @@
         self.oneLabel.font = [UIFont boldSystemFontOfSize:13];
         [self.contentView addSubview:self.oneLabel];
         
-        [self.oneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.contentView);
-            make.left.equalTo(self.contentView).mas_offset(5);
-            make.right.equalTo(self.contentView).mas_offset(-5);
-        }];
     }
     return self;
 }
+
+- (BOOL)needsUpdateConstraints{
+    return NO;;
+}
+- (void)updateConstraints{
+    
+    [self.oneLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).mas_offset(5);
+        make.right.equalTo(self.contentView).mas_offset(-5);
+//        make.height.mas_greaterThanOrEqualTo(20);
+//        make.width.mas_greaterThanOrEqualTo(20);
+    }];
+    [super updateConstraints];
+}
+
 - (void) setupWithData:(id)data{
-    self.oneLabel.text = QLSafeString(data);
+    if ([data isKindOfClass:NSString.class]) {
+        self.oneLabel.attributedText = [[NSAttributedString alloc] initWithString:QLSafeString(data)];
+    } else if ([data isKindOfClass:NSAttributedString.class]) {
+        self.oneLabel.attributedText = (NSAttributedString *)data;
+    } else {
+        self.oneLabel.attributedText = nil;
+    }
     self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F3F3F3"];
 }
 @end

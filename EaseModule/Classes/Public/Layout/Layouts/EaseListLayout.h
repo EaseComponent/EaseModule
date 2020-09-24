@@ -21,8 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EaseListLayout : EaseBaseLayout
 /*
  用来决定cell的宽度
- 可以设置根据 `insetContainerWidth 的比例`、
- `insetContainerWidth 等分`以及`固定数值`三种
+ 可以设置根据 `insetContainerWidth` 的`比例`、`等分`或者`固定数值`三种
  */
 @property (nonatomic ,strong) EaseLayoutDimension * distribution;
 /*

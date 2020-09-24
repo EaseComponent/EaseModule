@@ -69,6 +69,8 @@
     [lines addObject:line];
     NSInteger lineNumber = 1;
 
+    BOOL needDrop = NO;
+    
     for (NSInteger index = 0; index < datas.count; index ++) {
         CGFloat itemWidth = 0.0f;
         if ([self.delegate respondsToSelector:@selector(layoutCustomItemSize:atIndex:)]) {
@@ -81,6 +83,13 @@
 
         maxWidth += (itemSize.width + self.itemSpacing);
 
+        needDrop = lineNumber > self.maxDisplayLines;
+        
+        if (needDrop) {
+            break;
+        }
+        
+        // 需要换行了
         if ((maxWidth - self.itemSpacing) > self.insetContainerWidth) {
             CGFloat currentLineMaxWidth = maxWidth - self.itemSpacing * 2 - itemSize.width;
             [self _calculatorFlexLayoutLineMaxWidth:currentLineMaxWidth
@@ -95,12 +104,16 @@
         }
         [line addObject:[NSValue valueWithCGSize:itemSize]];
     }
-    if (line.count) {
+    needDrop = lineNumber > self.maxDisplayLines;
+    
+    if (line.count && !needDrop) {
         // 最后一行
         [self _calculatorFlexLayoutLineMaxWidth:maxWidth - self.itemSpacing
                                            line:line
                                      lineNumber:lineNumber
                                          result:result];
+    } else if(needDrop){
+        lineNumber -= 1;
     }
     _contentHeight = lineNumber * self.itemHeight +
     (lineNumber - 1) * self.lineSpacing + self.inset.bottom;

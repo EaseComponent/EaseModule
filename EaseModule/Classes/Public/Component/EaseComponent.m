@@ -98,7 +98,6 @@
 
 - (void)clear{
     // 清除布局缓存
-//    [self.layout clear];
     [self.layout clear];
     @synchronized (_innerDatas) {
         [_innerDatas removeAllObjects];
@@ -107,7 +106,10 @@
 
 - (void) reloadData{
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.layout clear];
+        [self calculatorLayout];
         UICollectionView * collectionView = self.environment.collectionView;
+        
         if ([collectionView numberOfSections] > self.index) {
             [collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.index]];
         }

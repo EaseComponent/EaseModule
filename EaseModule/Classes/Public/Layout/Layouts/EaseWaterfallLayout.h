@@ -54,4 +54,5 @@ typedef NS_ENUM (NSUInteger, EaseWaterfallItemRenderDirection) {
  */
 - (CGSize) layoutCustomItemSize:(EaseWaterfallLayout *)layout atIndex:(NSInteger)index;
 @end
+
 NS_ASSUME_NONNULL_END

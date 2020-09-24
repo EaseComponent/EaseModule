@@ -7,7 +7,7 @@
 //
 
 #import "EaseModuler.h"
-//#import <YTKNetwork/YTKNetwork.h>
+#import <YTKNetwork/YTKNetwork.h>
 #import "EaseModuleEnvironment.h"
 #import "EaseModuleDataSource_Private.h"
 
@@ -59,6 +59,7 @@
         _defaultComponents = [self defaultComponents];
         self.haveDefaultComponents = _defaultComponents.count != 0;
         if (self.haveDefaultComponents) {
+            [self.collectionView layoutIfNeeded];
             [self.dataSource addComponents:_defaultComponents];
             [self.collectionView reloadData];
         }
@@ -99,25 +100,24 @@
 
 - (void)fetchModuleDataFromService{
     
-//    YTKRequest * request = [self fetchModuleRequest];
-////    request.successOnMainQueue = NO;
-//    [request startWithCompletionBlockWithSuccess:^(YTKRequest * _Nonnull request) {
-//        if (self->_isRefresh) {
-//            // clear
-//            if (self.haveDefaultComponents) {
-//                [self.dataSource clearExceptComponents:self->_defaultComponents];
-//            } else {
-//                [self.dataSource clear];
-//            }
-//        }
-//        [self parseModuleDataWithRequest:request];
-//        [self increaseIndex];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self wrapperSuccessUpdateForDelegate];
-//        });
-//    } failure:^(YTKRequest * _Nonnull request) {
-//        [self wrapperFailUpdateForDelegate:request.error];
-//    }];
+    [[self fetchModuleRequest]
+     startWithCompletionBlockWithSuccess:^(YTKRequest * _Nonnull request) {
+        if (self->_isRefresh) {
+            // clear
+            if (self.haveDefaultComponents) {
+                [self.dataSource clearExceptComponents:self->_defaultComponents];
+            } else {
+                [self.dataSource clear];
+            }
+        }
+        [self parseModuleDataWithRequest:request];
+        [self increaseIndex];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self wrapperSuccessUpdateForDelegate];
+        });
+    } failure:^(YTKRequest * _Nonnull request) {
+        [self wrapperFailUpdateForDelegate:request.error];
+    }];
 }
 
 - (void) resetIndex{
@@ -220,7 +220,6 @@
             }
             [self.dataSource addComponent:component];
         }
-        // todo 去重
         [component addDatas:datas];
         return component;
     }

@@ -7,11 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DemoContentCCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 @interface SearchCCell : UICollectionViewCell
+
+@end
+
+@interface SearchHistoryHeaderView : DemoHeaderView
+@property (nonatomic ,copy) void(^bChangeAction)(void);
+
+- (void) setupFoldState:(BOOL)fold;
+@end
+
+@interface SearchRankShowMoreFooterView : UICollectionReusableView
+
+@property (nonatomic ,copy) void(^bChangeAction)(void);
 
 @end
 

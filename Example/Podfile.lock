@@ -14,7 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - EaseModule (0.1.0)
+  - EaseAttributedBuilder (0.1.0)
+  - EaseModule (0.1.0):
+    - YTKNetwork
   - EaseRefreshProxy (0.1.0):
     - MJRefresh (~> 3.1.15.3)
   - JXCategoryView (1.5.5)
@@ -24,9 +26,12 @@ PODS:
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
+  - YTKNetwork (2.1.4):
+    - AFNetworking/NSURLSession (~> 3.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - EaseAttributedBuilder
   - EaseModule (from `../`)
   - EaseRefreshProxy
   - JXCategoryView (= 1.5.5)
@@ -42,7 +47,9 @@ SPEC REPOS:
     - Masonry
     - MJRefresh
     - SDWebImage
+    - YTKNetwork
   https://github.com/EaseComponent/EaseSpecs.git:
+    - EaseAttributedBuilder
     - EaseRefreshProxy
 
 EXTERNAL SOURCES:
@@ -51,14 +58,16 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  EaseModule: 5a02dea5429b88ac9b40ba2550bbdf6be1cbab7c
+  EaseAttributedBuilder: a1a4836e2d8084b399d029cfe1d96da246dce23f
+  EaseModule: 08483d2ff9271ded74c89ed31c9eb6b7d53a843c
   EaseRefreshProxy: fcc1fd22ddb979333f490434544962409cf3b4bb
   JXCategoryView: 0293fcb356f10a5c2e679dac0a1a5f1899ee0c87
   JXPagingView: 03504b0d5cec6be5aae4a5e73f34ee9668bbc2d7
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  YTKNetwork: 19be749c30f0512ada07180f4637b4b67bc8ddc2
 
-PODFILE CHECKSUM: 3ef3a9f45e497f438276c5c6bcc09277f1665cd4
+PODFILE CHECKSUM: 4d88df2545502bf17d2463cef68445a137313758
 
 COCOAPODS: 1.9.3

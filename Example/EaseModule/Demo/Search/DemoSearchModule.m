@@ -18,48 +18,23 @@ static NSDictionary * searchData;
     if (self) {
         searchData = @{
             @"history":@[
-                    @"google",@"facebook",@"youtube",@"amazon",@"apple",@"Microsoft",@"Alphabet",@"IBM",
-                    @"Vue组件",
-                    @"swift语法",
+                    @"google",@"facebook",@"youtube",@"amazon",
+                    @"apple",@"Microsoft",@"Alphabet",@"IBM",
+                    @"Vue组件",@"Vue.js 3.0",@"Vant",@"Ant.js",
+                    @"swift语法",@"swiftUI",@"组件化",@"iOS开发",
+                    @"Flutter & swift",
                     @"爬虫",
             ],
-            @"category":@[
-                    @"精选",
-                    @"电视剧",
-                    @"电影",
-                    @"综艺",
-                    @"动漫",
-                    @"少儿",
-                    @"纪录片",
-                    @"音乐"
-            ],
-            @"hot":@[@"https://puui.qpic.cn/vcover_vt_pic/0/0pj8vuntnocu7971572426589/350",
-                     @"https://puui.qpic.cn/vcover_vt_pic/0/mzc00200msasbht1594277675206/350",
-                     @"https://puui.qpic.cn/vcover_vt_pic/0/mzc00200sdazhw61595925306553/350",
-                     @"https://puui.qpic.cn/vcover_vt_pic/0/c6jz9bdhtz6a8k41539140824/350",
-                     @"https://puui.qpic.cn/vcover_vt_pic/0/mzc00200iq4oevy1587546092886/350",
-                     @"https://puui.qpic.cn/vcover_vt_pic/0/mzc00200vef064r1597137067757/350"],
-            @"film":@[
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/c2seabnsfozypl81523522065/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/e0bk8kf7wllv7r81595899463119/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/v2098lbuihuqs111587100715029/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/f7pqur8uhmzltps1559809738/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/r5trbf8xs5uwok11590989398026/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/803p673mlosoeog1559758979/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/xg95sxi4q7zc4uot1460107848.jpg/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/380idj4s3fxn1mz1543994759/220",
-                    @"https://puui.qpic.cn/vcover_vt_pic/0/is7os79rewv1iuk1560166900/220"
-            ],
             @"rank":@[
-                    @"盗梦空间",
-                    @"楚门的世界",
-                    @"星际穿越",
-                    @"黑客帝国",
-                    @"蝴蝶效应",
-                    @"2001太空漫游",
-                    @"回到未来",
-                    @"超能陆战队",
-                    @"守望者",
+                    @"关于适配XCode 12 跑模拟器编译报错的错误",
+                    @"消息传递和消息转发",
+                    @"iOS底层探索--方法慢速查找分析",
+                    @"iOS Runtime02 - 方法查找流程分析",
+                    @"iOS-objc_msgSend快速查找流程",
+                    @"objc_msgSend 快速查找",
+                    @"Flutter Route (路由) - 原生路由",
+                    @"Flutter Dio 网络工具类封装",
+                    @"Runtime面试题与栈区参数的一点小错误与另一种解题思路",
             ],
             @"video":@[
                     @(170),@(180),@(190),@(160),
@@ -85,10 +60,23 @@ static NSDictionary * searchData;
 
 - (NSArray<__kindof EaseComponent *> *)defaultComponents{
     
-    SearchHistoryComponent * historyComp = [[SearchHistoryComponent alloc] initWithTitle:@"搜索历史"];
+    SearchHistoryComponent * historyComp =
+    [[SearchHistoryComponent alloc] initWithTitle:@"搜索历史"];
     [historyComp addDatas:searchData[@"history"]];
     
-    return @[historyComp];
+    SearchHotRankComponent * rankComp =
+    [[SearchHotRankComponent alloc] initWithTitle:@"热门搜索"];
+    [rankComp addDatas:searchData[@"rank"]];
+    
+    SearchRecommendComponent * recommendComp =
+    [[SearchRecommendComponent alloc] initWithTitle:@"推荐"];
+    [recommendComp addDatas:searchData[@""]];
+    
+    return @[
+        historyComp,
+        rankComp,
+        recommendComp
+    ];
 }
 
 @end

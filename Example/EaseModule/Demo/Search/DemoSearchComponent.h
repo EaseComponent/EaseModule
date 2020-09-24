@@ -12,10 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SearchComponent : EaseComponent
 
+@property (nonatomic ,copy ,readonly) NSString * title;
+
 - (instancetype) initWithTitle:(NSString *)title;
 @end
 
-@interface SearchHistoryComponent : SearchComponent<EaseFlexLayoutDelegate>
+@interface SearchHistoryComponent : SearchComponent<
+EaseFlexLayoutDelegate>
 
 @end
 

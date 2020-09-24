@@ -11,10 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define EaseLayoutMaxedDisplayLines (100000)
+
 typedef NS_ENUM(NSInteger, EaseLayoutArrange) {
-    /// 垂直
+    /// 垂直 方向上的布局
     EaseLayoutArrangeVertical,
-    /// 水平
+    /// 水平 方向上的布局
     EaseLayoutArrangeHorizontal,
 };
 
@@ -71,6 +73,12 @@ typedef NS_ENUM(NSInteger, EaseLayoutHorizontalScrollingBehavior) {
  内嵌ScrollView的滚动效果
  */
 @property (nonatomic ,assign) EaseLayoutHorizontalScrollingBehavior horizontalScrollingBehavior;
+/*
+ 最多可以展示多少行，[1,+∞]
+ 当为 `EaseLayoutMaxedDisplayLines`的时候表示根据具体数据展示多少行
+ 仅在 arrange 为 ...Vertical 的时候有效，为 ...Horizontal的时候默认为 1
+ */
+@property (nonatomic ,assign) NSInteger maxDisplayLines;
 
 /*
  缓存每一个索引下的frame，子类调用

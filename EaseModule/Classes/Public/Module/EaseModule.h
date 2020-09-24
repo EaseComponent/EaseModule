@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, EasePureListModuleType) {
 
 @interface EasePureListModule : EaseModule
 
-/// 指明类型，替换和追加
+/// 指明类型，`替换`或者`追加`
 - (EasePureListModuleType) pureListModuleType;
 
 /// 指明comp的类型

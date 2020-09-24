@@ -126,6 +126,9 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
     __block CGFloat maxY = 0;
     __block CGFloat maxX = self.inset.left;
     
+    NSInteger lineNumber = 1;
+    BOOL needDrop = NO;
+    
     for (NSInteger index = 0; index < datas.count; index ++) {
         CGFloat x = maxX;
         CGFloat y = maxY;
@@ -133,15 +136,22 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
             x,y,
             _itemWidth,_itemHeight
         };
+        needDrop = lineNumber > self.maxDisplayLines;
+        if (needDrop) {
+            break;
+        }
         // cache
         [self cacheItemFrame:frame at:index];
         maxX += (_itemWidth + self.itemSpacing);
         if (maxX > self.insetContainerWidth) {
+            // 换行
             maxX = self.inset.left;
             maxY += (_itemHeight + self.lineSpacing);
+            lineNumber ++;
         }
         _contentHeight = CGRectGetMaxY(frame);
     }
+    
     _contentHeight += self.inset.bottom;
 }
 

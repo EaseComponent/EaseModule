@@ -1,0 +1,6 @@
+framework module EaseAttributedBuilder {
+  umbrella header "EaseAttributedBuilder-umbrella.h"
+
+  export *
+  module * { export * }
+}
