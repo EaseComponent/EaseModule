@@ -15,6 +15,14 @@
 
 @implementation EaseWaterfallLayout
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.column = self.row = 1;
+    }
+    return self;
+}
+
 - (CGFloat)itemWidth{
     return (self.insetContainerWidth - (self.column - 1) * self.itemSpacing) / self.column;
 }
@@ -53,6 +61,9 @@
     CGFloat width = 0.0f;
     
     for (NSInteger index = 0; index < datas.count; index ++) {
+        if (index > self.maxDisplayCount - 1) {
+            break;
+        }
         if ([self.delegate respondsToSelector:@selector(layoutCustomItemSize:atIndex:)]) {
             width = [self.delegate layoutCustomItemSize:self atIndex:index].width;
         }
@@ -84,8 +95,12 @@
 
     CGFloat width = (self.insetContainerWidth - (self.column - 1) * self.itemSpacing) / self.column;
     CGFloat height = 0.0f;
-
+    
     for (NSInteger index = 0; index < datas.count; index ++) {
+            
+        if (index > self.maxDisplayCount - 1) {
+            break;
+        }
         if ([self.delegate respondsToSelector:@selector(layoutCustomItemSize:atIndex:)]) {
             height = [self.delegate layoutCustomItemSize:self atIndex:index].height;
         }
@@ -188,6 +203,7 @@
     }
     return _columnHeights;;
 }
+
 - (NSMutableArray *)rowWidths{
     
     if (!_rowWidths) {

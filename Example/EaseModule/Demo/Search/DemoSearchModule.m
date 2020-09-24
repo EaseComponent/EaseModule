@@ -36,6 +36,43 @@ static NSDictionary * searchData;
                     @"Flutter Dio 网络工具类封装",
                     @"Runtime面试题与栈区参数的一点小错误与另一种解题思路",
             ],
+            @"recommend": @[
+                    @{
+                        @"title": @"字节研发设施下的 Git 工作流",
+                        @"pic": @"https://imgkr2.cn-bj.ufileos.com/3d0117f1-1d05-41ab-b395-1a0065393268.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=TJCclyrrSTaEcyRMdgSNnnOoYBI%253D&Expires=1600953513",
+                        @"height": @(200)
+                    },
+                    @{
+                        @"title": @"xnu内核调试",
+                        @"pic": @"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2b5b965c0e3743a9930cd46c759a89b0~tplv-k3u1fbpfcp-zoom-1.image",
+                        @"height": @(180)
+                    },
+                    @{
+                        @"title": @"京喜小程序首页无障碍优化实践",
+                        @"pic": @"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/287dce6bdee540a0af9e50c454e2d7d2~tplv-k3u1fbpfcp-zoom-1.image",
+                        @"height": @(100)
+                    },
+                    @{
+                        @"title": @"iOS Crash防护",
+                        @"pic": @"https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d9a39d1751bc4a12a3f07704e372be7c~tplv-k3u1fbpfcp-zoom-1.image",
+                        @"height": @(190)
+                    },
+                    @{
+                        @"title": @"autolayout中的线性规划算法 —— simplex",
+                        @"pic": @"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd1d4a7f16ee43929a1be96aa9f3d2bf~tplv-k3u1fbpfcp-zoom-1.image",
+                        @"height": @(150)
+                    },
+                    @{
+                        @"title": @"一文读懂崩溃原理",
+                        @"pic": @"https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe4aab5d28324271b289c825eff50d31~tplv-k3u1fbpfcp-zoom-1.image",
+                        @"height": @(150)
+                    },
+                    @{
+                        @"title": @"HLS及M3U8介绍",
+                        @"pic": @"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7a78f7db7f4142f2a8de19bf19feb9fb~tplv-k3u1fbpfcp-zoom-1.image",
+                        @"height": @(110)
+                    },
+            ],
             @"video":@[
                     @(170),@(180),@(190),@(160),
                     @(210),@(220),@(230),
@@ -65,12 +102,12 @@ static NSDictionary * searchData;
     [historyComp addDatas:searchData[@"history"]];
     
     SearchHotRankComponent * rankComp =
-    [[SearchHotRankComponent alloc] initWithTitle:@"热门搜索"];
+    [[SearchHotRankComponent alloc] initWithTitle:@"热搜文章"];
     [rankComp addDatas:searchData[@"rank"]];
     
     SearchRecommendComponent * recommendComp =
-    [[SearchRecommendComponent alloc] initWithTitle:@"推荐"];
-    [recommendComp addDatas:searchData[@""]];
+    [[SearchRecommendComponent alloc] initWithTitle:@"优质推荐"];
+    [recommendComp addDatas:searchData[@"recommend"]];
     
     return @[
         historyComp,

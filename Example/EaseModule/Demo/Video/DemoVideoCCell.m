@@ -31,7 +31,7 @@
 }
 
 - (void) setupImageURLString:(NSString *)imageUrlString{
-    [_imageView sd_setImageWithURL:QLSafeURL(imageUrlString)];
+    [_imageView sd_setImageWithURL:EaseSafeURL(imageUrlString)];
 }
 @end
 
@@ -61,7 +61,7 @@
 }
 
 - (void) setupCategory:(NSString *)category{
-    _categoryLabel.text = QLSafeString(category);
+    _categoryLabel.text = EaseSafeString(category);
 }
 
 @end

@@ -21,7 +21,6 @@
         _itemSpacing = 5.0f;
         _lineSpacing = 5.0f;
         _horizontalArrangeContentHeight = 0.0f;
-        _maxDisplayLines = EaseLayoutMaxedDisplayLines;
     }
     return self;
 }
@@ -35,13 +34,6 @@
         return self.horizontalArrangeContentHeight;
     }
     return _contentHeight;
-}
-
-- (NSInteger)maxDisplayLines{
-    if (self.arrange == EaseLayoutArrangeHorizontal) {
-        return 1;
-    }
-    return MAX(1, _maxDisplayLines);
 }
 
 - (void) clear{

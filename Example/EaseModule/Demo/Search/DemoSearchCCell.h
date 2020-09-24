@@ -24,7 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SearchRankShowMoreFooterView : UICollectionReusableView
 
 @property (nonatomic ,copy) void(^bChangeAction)(void);
-
+- (void) setupTitle:(BOOL)showAll;
 @end
 
+@interface SearchRecommendCCell : UICollectionViewCell
+
+- (void) setupWithData:(id)data;
+@end
 NS_ASSUME_NONNULL_END

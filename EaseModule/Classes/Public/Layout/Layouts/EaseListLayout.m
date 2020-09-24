@@ -38,8 +38,16 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
     self = [super init];
     if (self) {
         self.row = NSNotFound;
+        _maxDisplayLines = EaseLayoutMaxedDisplayValue;
     }
     return self;
+}
+
+- (NSInteger)maxDisplayLines{
+    if (self.arrange == EaseLayoutArrangeHorizontal) {
+        return 1;
+    }
+    return MAX(1, _maxDisplayLines);
 }
 
 - (void) _calculatorItemSize{

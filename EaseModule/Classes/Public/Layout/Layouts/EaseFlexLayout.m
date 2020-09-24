@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         self.justifyContent = EaseFlexLayoutFlexStart;
+        _maxDisplayLines = EaseLayoutMaxedDisplayValue;
     }
     return self;
 }
@@ -28,6 +29,13 @@
         return EaseFlexLayoutFlexStart;
     }
     return _justifyContent;
+}
+
+- (NSInteger)maxDisplayLines{
+    if (self.arrange == EaseLayoutArrangeHorizontal) {
+        return 1;
+    }
+    return MAX(1, _maxDisplayLines);
 }
 
 #pragma mark - calculator Horizontal

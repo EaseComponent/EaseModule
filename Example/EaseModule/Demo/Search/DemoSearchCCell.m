@@ -86,4 +86,55 @@
         self.bChangeAction();
     }
 }
+
+- (void) setupTitle:(BOOL)showAll{
+    [_showMoreButton setTitle:(showAll ? @"hide more" : @"show more")
+                     forState:UIControlStateNormal];
+}
+@end
+
+@implementation SearchRecommendCCell{
+    UILabel * _titleLabel;
+    UIImageView * _picImageView;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.contentView.layer.masksToBounds = YES;
+        self.contentView.layer.cornerRadius = 4.0f;
+        
+        _picImageView = [UIImageView new];
+        _picImageView.clipsToBounds = YES;
+        _picImageView.backgroundColor = [UIColor randomColor];
+        _picImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self.contentView addSubview:_picImageView];
+        
+        _titleLabel = [UILabel new];
+        _titleLabel.font = [UIFont systemFontOfSize:15];
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.textColor = [UIColor redColor];
+        [self.contentView addSubview:_titleLabel];
+        
+        [_picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.equalTo(self.contentView);
+            make.bottom.equalTo(self->_titleLabel.mas_top).mas_offset(-4);
+        }];
+        
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).mas_offset(4);
+            make.right.equalTo(self.contentView).mas_offset(-4);
+            make.bottom.equalTo(self.contentView).mas_offset(-4);
+            make.height.mas_greaterThanOrEqualTo(20);
+        }];
+    }
+    return self;
+}
+- (void) setupWithData:(id)data{
+    _titleLabel.text = EaseSafeString(data[@"title"]);
+    [_picImageView sd_setImageWithURL:EaseSafeURL(data[@"pic"])];
+}
+
 @end

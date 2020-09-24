@@ -34,6 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
  如果设置了row，设置的horizontalArrangeContentHeight 将无效
  */
 @property (nonatomic ,assign) NSInteger row;
+/*
+ 最多可以展示多少行，[1,+∞]
+ 当为 `EaseLayoutMaxedDisplayValue`的时候表示根据具体数据展示多少行
+ 仅在 arrange 为 ...Vertical 的时候有效，
+ 为 ...Horizontal的时候根据设置的row来决定行数
+ */
+@property (nonatomic ,assign) NSInteger maxDisplayLines;
 
 @end
 

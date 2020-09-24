@@ -95,7 +95,7 @@
 - (void) toggle{
     _fold = !_fold;
     EaseFlexLayout * layout = (EaseFlexLayout *)self.layout;
-    layout.maxDisplayLines = _fold ? 2 : EaseLayoutMaxedDisplayLines;
+    layout.maxDisplayLines = _fold ? 2 : EaseLayoutMaxedDisplayValue;
     [self reloadData];
 }
 
@@ -110,7 +110,7 @@
     self = [super initWithTitle:title];
     if (self) {
         EaseListLayout * layout = [EaseListLayout new];
-        layout.inset = UIEdgeInsetsMake(5, 10, 0, 10);
+        layout.inset = UIEdgeInsetsMake(5, 10, 10, 10);
         layout.lineSpacing = 1.0f;
         layout.distribution = [EaseLayoutDimension distributionDimension:1];
         layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
@@ -175,11 +175,85 @@
 - (void) onShowAllRank{
     _showAllRank = YES;
     EaseListLayout * layout = (EaseListLayout *)self.layout;
-    layout.maxDisplayLines = EaseLayoutMaxedDisplayLines;
+    layout.maxDisplayLines = EaseLayoutMaxedDisplayValue;
     [self reloadData];
 }
 @end
 
-@implementation SearchRecommendComponent
+@implementation SearchRecommendComponent{
+    BOOL _showAll;
+}
+
+- (instancetype)initWithTitle:(NSString *)title
+{
+    self = [super initWithTitle:title];
+    if (self) {
+        EaseWaterfallLayout * layout = [EaseWaterfallLayout new];
+        layout.inset = UIEdgeInsetsMake(5, 10, 10, 10);
+        layout.maxDisplayCount = 3;
+        layout.column = 3;
+        layout.delegate = self;
+        _layout = layout;
+    }
+    return self;
+}
+
+- (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
+    SearchRecommendCCell * ccell = [self.dataSource dequeueReusableCellOfClass:SearchRecommendCCell.class forComponent:self atIndex:index];
+    [ccell setupWithData:[self dataAtIndex:index]];
+    return ccell;
+}
+
+- (NSArray<NSString *> *)supportedElementKinds{
+    return @[
+        UICollectionElementKindSectionHeader,
+        UICollectionElementKindSectionFooter
+    ];
+}
+
+- (__kindof UICollectionReusableView *)viewForSupplementaryElementOfKind:(NSString *)elementKind{
+    if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+        return [super viewForSupplementaryElementOfKind:elementKind];
+    }
+    @weakify(self);
+    SearchRankShowMoreFooterView * footerView =
+    [self.dataSource dequeueReusableSupplementaryViewOfKind:elementKind forComponent:self clazz:SearchRankShowMoreFooterView.class];
+    [footerView setupTitle:_showAll];
+    [footerView setBChangeAction:^{
+        @strongify(self);
+        [self onShowAll];
+    }];
+    return footerView;
+}
+
+- (CGSize)sizeForSupplementaryViewOfKind:(NSString *)elementKind{
+    if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+        return [super sizeForSupplementaryViewOfKind:elementKind];
+    }
+    return CGSizeMake(300, 40);
+}
+
+#pragma mark - EaseWaterfallLayoutDelegate
+
+- (CGSize)layoutCustomItemSize:(EaseWaterfallLayout *)layout atIndex:(NSInteger)index{
+    
+    CGFloat picHeight = [[self dataAtIndex:index][@"height"] floatValue];
+    NSString * title = [self dataAtIndex:index][@"title"];
+    CGSize size = [title YYY_sizeWithFont:[UIFont systemFontOfSize:15]
+                                  maxSize:CGSizeMake(layout.itemWidth - 8, CGFLOAT_MAX)];
+    size.height = size.height + 8 + picHeight;///8 是title的上下间距
+    size.width = layout.itemWidth;
+    
+    return size;;
+}
+
+#pragma mark - private
+
+- (void) onShowAll{
+    _showAll = !_showAll;
+    EaseWaterfallLayout * layout = (EaseWaterfallLayout *)self.layout;
+    layout.maxDisplayCount = _showAll ? EaseLayoutMaxedDisplayValue : 3;
+    [self reloadData];
+}
 
 @end

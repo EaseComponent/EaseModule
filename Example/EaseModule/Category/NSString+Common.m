@@ -12,9 +12,16 @@
 - (CGSize)YYY_sizeWithFont:(UIFont*)font maxSize:(CGSize)maxSize{
     if(self && [self isKindOfClass:[NSString class]] && self.length){
         CGSize size = [self boundingRectWithSize: maxSize
-                                         options: NSStringDrawingUsesLineFragmentOrigin
-                                      attributes: @{ NSFontAttributeName: font }
-                                         context: nil].size;
+                                         options: NSStringDrawingTruncatesLastVisibleLine
+                                      attributes:
+                       @{
+                           NSFontAttributeName: font,
+                           NSParagraphStyleAttributeName: ({
+            NSMutableParagraphStyle * style = NSMutableParagraphStyle.new;
+            style.lineBreakMode = NSLineBreakByTruncatingTail;
+            style;
+        })
+                       } context: nil].size;
         return size;
     }
     return CGSizeMake(0, 0);

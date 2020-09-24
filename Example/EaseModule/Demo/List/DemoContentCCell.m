@@ -45,7 +45,7 @@
 
 - (void) setupWithData:(id)data{
     if ([data isKindOfClass:NSString.class]) {
-        self.oneLabel.attributedText = [[NSAttributedString alloc] initWithString:QLSafeString(data)];
+        self.oneLabel.attributedText = [[NSAttributedString alloc] initWithString:EaseSafeString(data)];
     } else if ([data isKindOfClass:NSAttributedString.class]) {
         self.oneLabel.attributedText = (NSAttributedString *)data;
     } else {
@@ -130,7 +130,7 @@
     return self;
 }
 - (void) setupHeaderTitle:(NSString *)title{
-    self.titleLabel.text = QLSafeString(title);
+    self.titleLabel.text = EaseSafeString(title);
 }
 - (void)setHidden:(BOOL)hidden{
     [super setHidden:hidden];

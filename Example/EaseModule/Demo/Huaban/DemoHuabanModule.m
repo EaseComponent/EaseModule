@@ -115,7 +115,7 @@ EaseWaterfallLayoutDelegate>
 }
 
 - (void) setupImageURLString:(NSString *)imageURLString{
-    [_imageView sd_setImageWithURL:QLSafeURL(imageURLString)];
+    [_imageView sd_setImageWithURL:EaseSafeURL(imageURLString)];
 }
 
 @end

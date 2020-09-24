@@ -50,7 +50,10 @@ UICollectionViewDelegate>
     [self.view addSubview:self.collectionView];
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+//        make.edges.equalTo(self.view);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
     }];
     
     // module

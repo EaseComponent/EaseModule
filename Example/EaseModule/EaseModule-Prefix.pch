@@ -52,7 +52,7 @@
 #endif
 
 
-NS_INLINE NSString * QLSafeString(NSString *string){
+NS_INLINE NSString * EaseSafeString(NSString *string){
     if (![string isKindOfClass:[NSString class]]) {
         string = [NSString stringWithFormat:@"%@",string];
     }
@@ -67,8 +67,8 @@ NS_INLINE NSString * QLSafeString(NSString *string){
     return string;
 }
 
-NS_INLINE NSURL * QLSafeURL(NSString *string){
-    NSURL * URL = [NSURL URLWithString:QLSafeString(string)];
+NS_INLINE NSURL * EaseSafeURL(NSString *string){
+    NSURL * URL = [NSURL URLWithString:EaseSafeString(string)];
     URL = (URL == nil) ? [NSURL URLWithString:@""] : URL;
     return URL;
 }

@@ -26,7 +26,8 @@ EaseFlexLayoutDelegate>
 
 @end
 
-@interface SearchRecommendComponent : SearchComponent
+@interface SearchRecommendComponent : SearchComponent<
+EaseWaterfallLayoutDelegate>
 
 @end
 NS_ASSUME_NONNULL_END
