@@ -34,7 +34,9 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 #### list
 
-常规布局效果，像是UITableView、UICollectionView的展示样式，水平效果的时候
+常规布局效果，像是UITableView、UICollectionView的展示样式，水平效果的时候，支持设定`row`来决定行数。
+
+* 
 
 #### flex
 
@@ -42,13 +44,71 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 * flex-start
 
+``` Objective-C
+
+// in SomeComponent.m
+
+EaseFlexLayout * flexLayout = [EaseFlexLayout new];
+flexLayout.justifyContent = EaseFlexLayoutFlexStart;
+flexLayout.inset = UIEdgeInsetsMake(0, 0, 0, 0);
+flexLayout.itemHeight = 30;
+flexLayout.delegate = self;
+_layout = flexLayout;
+
+```
+[flex-start](../Resource/flex-start.png)
+
 * center
+
+``` Objective-C
+
+// in SomeComponent.m
+
+...
+flexLayout.justifyContent = EaseFlexLayoutCenter;
+...
+```
+
+[center](/Resource/center.png)
 
 * flex-end
 
+``` Objective-C
+
+// in SomeComponent.m
+
+...
+flexLayout.justifyContent = EaseFlexLayoutFlexEnd;
+...
+```
+
+[flex-end](Resource/flex-end.png)
+
 * space-around
 
+``` Objective-C
+
+// in SomeComponent.m
+
+...
+flexLayout.justifyContent = EaseFlexLayoutSpaceAround;
+...
+```
+
+[space-around](../Resource/space-around.png)
+
 * space-between
+
+``` Objective-C
+
+// in SomeComponent.m
+
+...
+flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
+...
+```
+
+[space-between](../Resource/space-between.png)
 
 #### waterfall
 

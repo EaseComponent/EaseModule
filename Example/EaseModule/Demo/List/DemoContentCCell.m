@@ -102,8 +102,8 @@
         
         [oneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self.contentView);
-            make.left.equalTo(self.contentView).mas_offset(5);
-            make.right.equalTo(self.contentView).mas_offset(-5);
+//            make.left.equalTo(self.contentView).mas_offset(5);
+//            make.right.equalTo(self.contentView).mas_offset(-5);
         }];
     }
     return self;

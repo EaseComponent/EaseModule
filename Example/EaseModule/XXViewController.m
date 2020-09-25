@@ -151,6 +151,14 @@ EaseWaterfallLayoutDelegate>
         comp;
     })];
     [self.dataSource addComponent:({
+        DemoPlaceholdComponent * comp = [[DemoPlaceholdComponent alloc] initWithTitle:@"EaseFlexLayout：placehold" layoutType:0];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        DemoPlaceholdComponent * comp = [[DemoPlaceholdComponent alloc] initWithTitle:@"EaseFlexLayout：orthogonal scroll & placehold" layoutType:10];
+        comp;
+    })];
+    [self.dataSource addComponent:({
         DemoFlexComponent * comp = [[DemoFlexComponent alloc] initWithTitle:@"EaseFlexLayout：flex-start"];
         comp.headerPin = YES;
         [comp setupFlexLayout:({
@@ -231,6 +239,14 @@ EaseWaterfallLayoutDelegate>
         comp;
     })];
     [self.dataSource addComponent:({
+        DemoPlaceholdComponent * comp = [[DemoPlaceholdComponent alloc] initWithTitle:@"EaseListLayout：placehold" layoutType:1];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        DemoPlaceholdComponent * comp = [[DemoPlaceholdComponent alloc] initWithTitle:@"EaseListLayout：orthogonal scroll & placehold" layoutType:11];
+        comp;
+    })];
+    [self.dataSource addComponent:({
         DemoListComponent * comp = [[DemoListComponent alloc] initWithTitle:@"EaseListLayout：table-view like"];
         [comp setupListLayout:({
             EaseListLayout * listLayout = [EaseListLayout new];
@@ -275,6 +291,14 @@ EaseWaterfallLayoutDelegate>
             waterfallLayout;
         })];
         [comp addDatas:data[@"waterFlow"]];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        DemoPlaceholdComponent * comp = [[DemoPlaceholdComponent alloc] initWithTitle:@"EaseWaterfallLayout：placehold" layoutType:2];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        DemoPlaceholdComponent * comp = [[DemoPlaceholdComponent alloc] initWithTitle:@"EaseWaterfallLayout：orthogonal scroll & placehold" layoutType:12];
         comp;
     })];
     [self.dataSource addComponent:({
@@ -542,13 +566,12 @@ EaseWaterfallLayoutDelegate>
     self = [super initWithTitle:title];
     if (self) {
         self.needPlacehold = YES;
-        self.placeholdHeight = 100;
-        // 这里
+        self.placeholdHeight = 50;
+        // 这里设置layout仅仅是为了测试不同layout下的placehold效果
         if (layoutType == 0) {
             EaseListLayout * layout = [EaseListLayout new];
             layout.distribution = [EaseLayoutDimension distributionDimension:1];
             layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
-            layout.arrange = EaseLayoutArrangeHorizontal;
             _layout = layout;
         } else if (layoutType == 1) {
             EaseFlexLayout * layout = [EaseFlexLayout new];
@@ -557,7 +580,32 @@ EaseWaterfallLayoutDelegate>
             layout.delegate = self;
             _layout = layout;
         } else if (layoutType == 2) {
-            
+            EaseWaterfallLayout * layout = [EaseWaterfallLayout new];
+            layout.column = 3;
+            layout.delegate = self;
+            _layout = layout;
+        }
+        if (layoutType == 10) {
+            EaseListLayout * layout = [EaseListLayout new];
+            layout.distribution = [EaseLayoutDimension distributionDimension:1];
+            layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
+            layout.arrange = EaseLayoutArrangeHorizontal;
+            layout.horizontalArrangeContentHeight = 100;
+            _layout = layout;
+        } else if (layoutType == 11) {
+            EaseFlexLayout * layout = [EaseFlexLayout new];
+            layout.itemHeight = 30.0f;
+            layout.justifyContent = EaseFlexLayoutFlexStart;
+            layout.delegate = self;
+            layout.arrange = EaseLayoutArrangeHorizontal;
+            _layout = layout;
+        } else if (layoutType == 12) {
+            EaseWaterfallLayout * layout = [EaseWaterfallLayout new];
+            layout.column = 3;
+            layout.delegate = self;
+            layout.arrange = EaseLayoutArrangeHorizontal;
+            layout.horizontalArrangeContentHeight = 100;
+            _layout = layout;
         }
     }
     return self;;
@@ -575,6 +623,10 @@ EaseWaterfallLayoutDelegate>
     ccell.oneLabel.font = [UIFont systemFontOfSize:15];
     [ccell setupWithData:[self dataAtIndex:index]];
     return ccell;
+}
+
+- (NSArray<NSString *> *)supportedElementKinds{
+    return @[UICollectionElementKindSectionHeader];
 }
 
 #pragma mark - EaseFlexLayoutDelegate

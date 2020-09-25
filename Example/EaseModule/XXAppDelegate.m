@@ -24,6 +24,14 @@
     XXViewController * vc = [[XXViewController alloc] initWithModule:({
         EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"];
         [module addModule:({
+            EaseCompositeModule * demoModule = [[EaseCompositeModule alloc] initWithName:@"DEMO"];
+            [demoModule addModule:[[DemoFlexLayoutModule alloc] initWithName:@"Flex"]];
+            [demoModule addModule:[[DemoBackgroundDecorateModule alloc] initWithName:@"Decorate"]];
+            [demoModule addModule:[[DemoListLayoutModule alloc] initWithName:@"List"]];
+            [demoModule addModule:[[DemoWaterfallLayoutModule alloc] initWithName:@"Waterfall"]];
+            demoModule;
+        })];
+        [module addModule:({
             [[DemoLivingModule alloc] initWithName:@"直播app"];
         })];
         [module addModule:({
@@ -31,14 +39,6 @@
         })];
         [module addModule:({
             [[DemoMusicModule alloc] initWithName:@"音乐app"];
-        })];
-        [module addModule:({
-            EaseCompositeModule * demoModule = [[EaseCompositeModule alloc] initWithName:@"DEMO"];
-            [demoModule addModule:[[DemoFlexLayoutModule alloc] initWithName:@"Flex"]];
-            [demoModule addModule:[[DemoBackgroundDecorateModule alloc] initWithName:@"Decorate"]];
-            [demoModule addModule:[[DemoListLayoutModule alloc] initWithName:@"List"]];
-            [demoModule addModule:[[DemoWaterfallLayoutModule alloc] initWithName:@"Waterfall"]];
-            demoModule;
         })];
         [module addModule:({
             [[DemoVideoModule alloc] initWithName:@"视频app"];
