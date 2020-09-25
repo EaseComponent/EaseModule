@@ -88,15 +88,22 @@
     if (self.independentDatas) {
         return NO;
     }
-    if (self.needPlacehold) {
-        return YES;
-    }
-    
-    BOOL isEmpty = NO;
+    BOOL isEmptyDatas = NO;
     @synchronized (_innerDatas) {
-        isEmpty = _innerDatas.count == 0;
+        isEmptyDatas = _innerDatas.count == 0;
     }
-    return isEmpty;
+    if (isEmptyDatas) {
+        return !self.needPlacehold;
+    }
+    return NO;
+}
+
+- (NSInteger)dataCount{
+    NSInteger count = 0;
+    @synchronized (_innerDatas) {
+        count = _innerDatas.count;
+    }
+    return count;
 }
 
 - (void)clear{

@@ -124,7 +124,7 @@
         lineNumber -= 1;
     }
     _contentHeight = lineNumber * self.itemHeight +
-    (lineNumber - 1) * self.lineSpacing + self.inset.bottom;
+    (lineNumber - 1) * self.lineSpacing;
 }
 
 - (void) _calculatorFlexLayoutLineMaxWidth:(CGFloat)lineMaxWidth line:(NSMutableArray<NSValue *> *)line lineNumber:(NSInteger)lineNumber result:(NSMutableArray<NSValue *> *)result{

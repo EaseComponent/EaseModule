@@ -366,7 +366,7 @@
 - (BOOL)empty{
     BOOL isEmpty = NO;
     @synchronized (_innerComponents) {
-//        isEmpty = [_innerComponents mm_any:^BOOL(__kindof EaseComponent * comp) {
+//        isEmpty = [_innerComponents ease_any:^BOOL(__kindof EaseComponent * comp) {
 //            return !comp.empty;
 //        }];
     }
@@ -392,8 +392,7 @@
     __kindof EaseComponent * component = [self usageHidenWhenMeptyComponentAtIndex:section];
     if (component.independentDatas ||
         (0 == component.datas.count && component.needPlacehold) ||
-        (component.isOrthogonallyScrolls &&
-         ![self targetWasOrthogonalScrollView:collectionView])) {
+        (component.isOrthogonallyScrolls && ![self targetWasOrthogonalScrollView:collectionView])) {
         return 1;
     }
     return component.datas.count;
@@ -404,7 +403,7 @@
     UICollectionViewCell * cell;
     __kindof EaseComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:indexPath.section];
     
-    if (comp.needPlacehold) {
+    if (comp.needPlacehold && comp.dataCount == 0) {
         cell = [comp placeholdCellForItemAtIndex:indexPath.item];
     } else {
         if (comp.isOrthogonallyScrolls) {

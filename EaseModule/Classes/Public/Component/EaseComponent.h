@@ -62,6 +62,10 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
  */
 @property (nonatomic ,assign) BOOL needPlacehold;
 /*
+ 当需要展示占位视图的时候的展示高度，仅在 needPlacehold 为YES的时候有用
+ */
+@property (nonatomic ,assign) CGFloat placeholdHeight;
+/*
  当没有数据的时候，不在UI中展示，default NO
  */
 @property (nonatomic ,assign) BOOL hiddenWhenEmpty;

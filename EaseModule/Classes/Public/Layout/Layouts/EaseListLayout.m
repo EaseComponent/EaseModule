@@ -159,8 +159,6 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
         }
         _contentHeight = CGRectGetMaxY(frame);
     }
-    
-    _contentHeight += self.inset.bottom;
 }
 
 @end

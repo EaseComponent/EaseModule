@@ -114,7 +114,7 @@
         // cache
         [self cacheItemFrame:frame at:index];
     }
-    _contentHeight = [self _longestColumnHeight] - self.lineSpacing + self.inset.bottom;
+    _contentHeight = [self _longestColumnHeight] - self.lineSpacing;
 }
 
 #pragma mark - private

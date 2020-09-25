@@ -28,6 +28,7 @@
 
 - (__kindof UICollectionReusableView *)viewForSupplementaryElementOfKind:(NSString *)elementKind{
     DemoHeaderView * headerView = [self.dataSource dequeueReusableSupplementaryViewOfKind:elementKind forComponent:self clazz:DemoHeaderView.class];
+//    headerView.backgroundColor = [UIColor orangeColor];
     [headerView setupHeaderTitle:_title];
     return headerView;;
 }
@@ -87,6 +88,11 @@
     return ccell;
 }
 
+- (__kindof UICollectionViewCell *)placeholdCellForItemAtIndex:(NSInteger)index{
+    LivingPlaceholdCCell * ccell = [self.dataSource dequeueReusablePlaceholdCellOfClass:LivingPlaceholdCCell.class forComponent:self];
+    return ccell;
+}
+
 @end
 
 @implementation LivingRocketComponent
@@ -111,6 +117,7 @@
     LivingCCell * ccell = [self.dataSource dequeueReusableCellOfClass:LivingCCell.class forComponent:self atIndex:index];
     return ccell;
 }
+
 @end
 
 @implementation LivingRecommendComponent

@@ -34,6 +34,8 @@ EaseComponentDecorateAble>
 
 @property (nonatomic ,strong) EaseComponentDecorateBuilder * decorateBuilder;
 
+@property (nonatomic ,assign ,readonly) NSInteger dataCount;
+
 - (void) calculatorLayout;
 @end
 

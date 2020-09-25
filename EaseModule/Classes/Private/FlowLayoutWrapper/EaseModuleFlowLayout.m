@@ -138,12 +138,14 @@ static const NSInteger unionSize = 50;
                 top = CGRectGetMaxY(attributes.frame) + headerInset.bottom;
             }
         }
-        top += sectionInset.top;
+        if (!component.empty) {
+            top += sectionInset.top;
+        }
         
         // items
         NSInteger itemCount = [collectionView numberOfItemsInSection:section];
         NSMutableArray * itemAttributes = [NSMutableArray new];
-        if (layout.arrange == EaseLayoutArrangeHorizontal &&
+        if (component.isOrthogonallyScrolls &&
             self.scrollDirection == UICollectionViewScrollDirectionVertical) {
             CGRect frame = CGRectZero;
             frame.origin.y = top;
@@ -156,7 +158,7 @@ static const NSInteger unionSize = 50;
             attributes.frame = frame;
             [itemAttributes addObject:attributes];
             [self.allItemAttributes addObject:attributes];
-            top += layout.inset.bottom;
+            
         } else {
             for (NSInteger item = 0; item < itemCount; item++) {
                 CGRect frame = [layout itemFrameAtIndex:item];
@@ -171,10 +173,28 @@ static const NSInteger unionSize = 50;
                 [itemAttributes addObject:attributes];
                 [self.allItemAttributes addObject:attributes];
             }
+            if (component.dataCount == 0 &&
+                component.needPlacehold &&
+                (component.placeholdHeight > 0)) {
+                
+                attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:({
+                    [NSIndexPath indexPathForItem:0 inSection:section];
+                })];
+                attributes.frame = (CGRect){
+                    layout.inset.left, top,
+                    layout.insetContainerWidth,component.placeholdHeight
+                };
+                [itemAttributes addObject:attributes];
+                [self.allItemAttributes addObject:attributes];
+                top += component.placeholdHeight;
+            }
         }
         [self.sectionItemAttributes addObject:itemAttributes];
         //
-        top += layout.contentHeight;
+        if (!component.empty) {
+            top += layout.contentHeight;
+            top += layout.inset.bottom;
+        }
         
         // footer
         CGFloat footerHeight = 0.0f;

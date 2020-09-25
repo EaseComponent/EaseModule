@@ -74,6 +74,9 @@ static NSDictionary * livingData;
     })];
     [self.dataSource addComponent:({
         LivingHotComponent * comp = [[LivingHotComponent alloc] initWithTitle:@"热门主播"];
+        comp.needPlacehold = YES;
+        comp.placeholdHeight = 100;
+        // 注释掉下面的代码，查看无数据占位显示的效果
         [comp addDatas:data[@"hot"]];
         comp;
     })];
