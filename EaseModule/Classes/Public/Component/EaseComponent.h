@@ -13,13 +13,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, EaseComponentArrange) {
-    /// 垂直
-    EaseComponentArrangeVertical,
-    /// 水平
-    EaseComponentArrangeHorizontal,
-}NS_SWIFT_NAME(EaseComponent.Arrange);
-
 typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
     /// 没有背景装饰效果
     EaseComponentDecorateNone,

@@ -113,7 +113,10 @@ static NSDictionary * demoData;
 - (instancetype) initWithTitle:(NSString *)title;
 @end
 
-@interface DemoPlaceholdComponent : DemoBaseComponent<EaseFlexLayoutDelegate>
+@interface DemoPlaceholdComponent : DemoBaseComponent<
+EaseFlexLayoutDelegate,
+EaseWaterfallLayoutDelegate>
+- (instancetype) initWithTitle:(NSString *)title layoutType:(NSInteger)layoutType;
 @end
 
 @interface DemoFlexComponent : DemoBaseComponent<EaseFlexLayoutDelegate>
@@ -535,14 +538,27 @@ static NSDictionary * demoData;
 
 @implementation DemoPlaceholdComponent
 
-- (instancetype)initWithTitle:(NSString *)title{
+- (instancetype) initWithTitle:(NSString *)title layoutType:(NSInteger)layoutType{
     self = [super initWithTitle:title];
     if (self) {
-        EaseFlexLayout * flexLayout = [EaseFlexLayout new];
-        flexLayout.itemHeight = 30.0f;
-        flexLayout.justifyContent = EaseFlexLayoutFlexStart;
-        flexLayout.delegate = self;
-        _layout = flexLayout;
+        self.needPlacehold = YES;
+        self.placeholdHeight = 100;
+        // 这里
+        if (layoutType == 0) {
+            EaseListLayout * layout = [EaseListLayout new];
+            layout.distribution = [EaseLayoutDimension distributionDimension:1];
+            layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
+            layout.arrange = EaseLayoutArrangeHorizontal;
+            _layout = layout;
+        } else if (layoutType == 1) {
+            EaseFlexLayout * layout = [EaseFlexLayout new];
+            layout.itemHeight = 30.0f;
+            layout.justifyContent = EaseFlexLayoutFlexStart;
+            layout.delegate = self;
+            _layout = layout;
+        } else if (layoutType == 2) {
+            
+        }
     }
     return self;;
 }
@@ -551,7 +567,7 @@ static NSDictionary * demoData;
     DemoPlaceholdCCell * ccell = [self.dataSource dequeueReusablePlaceholdCellOfClass:DemoPlaceholdCCell.class forComponent:self];
     return ccell;
 }
-
+// 由于该component展示的是placehod效果，并不会有数据，所以该override方法基本不会调用
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     
     DemoContentCCell * ccell = [self.dataSource dequeueReusableCellOfClass:DemoContentCCell.class forComponent:self atIndex:index];
@@ -560,8 +576,9 @@ static NSDictionary * demoData;
     [ccell setupWithData:[self dataAtIndex:index]];
     return ccell;
 }
-#pragma mark - EaseFlexLayoutDelegate
 
+#pragma mark - EaseFlexLayoutDelegate
+// 由于该component展示的是placehod效果，并不会有数据，所以该代理方法基本不会调用
 - (CGSize)layoutCustomItemSize:(EaseFlexLayout *)layout atIndex:(NSInteger)index{
     NSString * category = [self dataAtIndex:index];
     CGSize size = [category YYY_sizeWithFont:[UIFont systemFontOfSize:15]

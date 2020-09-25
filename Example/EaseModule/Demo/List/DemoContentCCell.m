@@ -95,7 +95,7 @@
 
         UILabel * oneLabel = [UILabel new];
         oneLabel.textAlignment = NSTextAlignmentCenter;
-        oneLabel.text = @"今日门票已经售罄";
+        oneLabel.text = @"This is Placehold cell.";
         oneLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         oneLabel.font = [UIFont boldSystemFontOfSize:20];
         [self.contentView addSubview:oneLabel];

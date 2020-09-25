@@ -471,7 +471,7 @@
 		07C5198965300BA7BA174CF9215A5A21 /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
 		084EC9445A2A87F036C7440DBE454A58 /* YTKChainRequestAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKChainRequestAgent.h; path = YTKNetwork/YTKChainRequestAgent.h; sourceTree = "<group>"; };
 		09203D8317388A9DB907DCBB22387155 /* Pods-EaseModule_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EaseModule_Example-Info.plist"; sourceTree = "<group>"; };
-		09345523F7DE7B8D51942F4F4E0630AF /* EaseAttributedBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EaseAttributedBuilder.framework; path = EaseAttributedBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		09345523F7DE7B8D51942F4F4E0630AF /* EaseAttributedBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EaseAttributedBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		098504A3DC7B37E5C5148CC14D9F1609 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		09D00AE3B8418F8383C0967BD660B112 /* MJRefreshFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshFooter.m; path = MJRefresh/Base/MJRefreshFooter.m; sourceTree = "<group>"; };
 		0A516EE9C7A79C70BEC271E290A9BB0A /* JXCategoryImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryImageView.m; path = Sources/Image/JXCategoryImageView.m; sourceTree = "<group>"; };
@@ -503,14 +503,14 @@
 		1ED50BE2F264293564AA1D9A2E378817 /* EaseAttributedBuilder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EaseAttributedBuilder-dummy.m"; sourceTree = "<group>"; };
 		1FD4509908D8ACA11DFBB27CE590427B /* EaseModuleEnvironment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EaseModuleEnvironment.h; sourceTree = "<group>"; };
 		1FFA4DFE75693ECB5BA0A78EF0C9EA37 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/SDAnimatedImageRep.h; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		222FACB7010445F33DADD3447600D636 /* JXCategoryIndicatorImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryIndicatorImageView.m; path = Sources/Indicator/IndicatorViews/JXCategoryIndicatorImageView.m; sourceTree = "<group>"; };
 		230C57AEA86B3CA93A72A6281B72F49A /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/SDWebImageOperation.h; sourceTree = "<group>"; };
 		23AFADE02E84DD66CD2F2B6E66403875 /* JXCategoryTitleImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryTitleImageCell.h; path = Sources/TitleImage/JXCategoryTitleImageCell.h; sourceTree = "<group>"; };
 		247B8BDBE958F265F417F433BAA818F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		25A13D18A47E3C4A5BBBFCBD70D53A54 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
 		25BF5A77F43ADCB6D2448FB35E73159D /* YTKRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKRequest.h; path = YTKNetwork/YTKRequest.h; sourceTree = "<group>"; };
-		25C646EC0946A2683108111DD38CDB6F /* EaseModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EaseModule.framework; path = EaseModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25C646EC0946A2683108111DD38CDB6F /* EaseModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EaseModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		264C2814839E2D604F9850F719FF9444 /* SDWebImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-prefix.pch"; sourceTree = "<group>"; };
 		27776AE056D26950EA4F361487AA056F /* JXCategoryListContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryListContainerView.m; path = Sources/Common/JXCategoryListContainerView.m; sourceTree = "<group>"; };
 		27F87D3E0F243EE9A0D3149080DE806C /* JXCategoryTitleCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryTitleCell.m; path = Sources/Title/JXCategoryTitleCell.m; sourceTree = "<group>"; };
@@ -522,8 +522,8 @@
 		2BFC61BC26F43E18F5C4CB64A064DC0C /* MJRefreshGifHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshGifHeader.m; path = MJRefresh/Custom/Header/MJRefreshGifHeader.m; sourceTree = "<group>"; };
 		2DDD92EF3E9AE71745B8BFC4D751F032 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		2DFB9DAAFA4A4A64C2044F6EA29CB033 /* JXCategoryImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryImageView.h; path = Sources/Image/JXCategoryImageView.h; sourceTree = "<group>"; };
-		2F4A1CCB21DB7EA5A2ACEB11E374FBCA /* JXPagingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXPagingView.framework; path = JXPagingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30C731C9FD8DF0337ED48BF828FE254E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		2F4A1CCB21DB7EA5A2ACEB11E374FBCA /* JXPagingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXPagingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30C731C9FD8DF0337ED48BF828FE254E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33DBA6F24AB76ACC51CB226AD54536E0 /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshGifHeader.h; path = MJRefresh/Custom/Header/MJRefreshGifHeader.h; sourceTree = "<group>"; };
 		3415F3A5D487D17E8EEDBCD733C4CA94 /* JXCategoryView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JXCategoryView.modulemap; sourceTree = "<group>"; };
 		34DC3979A7AED404226E63A485E6EF9F /* Pods-EaseModule_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EaseModule_Tests.modulemap"; sourceTree = "<group>"; };
@@ -599,7 +599,7 @@
 		5E168C7F9D2F4CB5F79DF13594BFA095 /* JXCategoryImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryImageCell.m; path = Sources/Image/JXCategoryImageCell.m; sourceTree = "<group>"; };
 		5E8F2678E492398A3F4AAE588741C934 /* YTKNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YTKNetwork-prefix.pch"; sourceTree = "<group>"; };
 		5F1CB593E8E93BFD22642DE67DE1B83C /* Pods-EaseModule_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EaseModule_Tests-Info.plist"; sourceTree = "<group>"; };
-		601EEA66C9A6080A11C1ADE5E2A91AE1 /* YTKNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YTKNetwork.framework; path = YTKNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		601EEA66C9A6080A11C1ADE5E2A91AE1 /* YTKNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YTKNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60786A63CB77CAE7DC722A404638481A /* YTKBatchRequestAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTKBatchRequestAgent.h; path = YTKNetwork/YTKBatchRequestAgent.h; sourceTree = "<group>"; };
 		6243343EE9DE017D821D1789A65E7626 /* EaseBaseLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EaseBaseLayout.m; sourceTree = "<group>"; };
 		6256624BC38A74BFEF4DC11FAD8242BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
@@ -611,9 +611,9 @@
 		63B441D18714C15A8BA1025544FB31A6 /* EaseRXBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EaseRXBuilder.h; path = EaseAttributedBuilder/Classes/EaseRXBuilder.h; sourceTree = "<group>"; };
 		641B95F9392873F1B57369FE7DAFDE6D /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		6503DA7A0F252B5D60868C2991C94C94 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
-		6539521632374625B2AD5FED9B55DE90 /* Pods_EaseModule_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EaseModule_Example.framework; path = "Pods-EaseModule_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6539521632374625B2AD5FED9B55DE90 /* Pods_EaseModule_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EaseModule_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BE4D794DEBA1C4AA11F5919162CEE /* Pods-EaseModule_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EaseModule_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6578AF93C02694420A271C52415C0F62 /* EaseModule.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = EaseModule.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6578AF93C02694420A271C52415C0F62 /* EaseModule.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = EaseModule.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		66DE22DF7727CD6C31C13AC6E0A04C16 /* JXCategoryIndicatorBackgroundView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryIndicatorBackgroundView.m; path = Sources/Indicator/IndicatorViews/JXCategoryIndicatorBackgroundView.m; sourceTree = "<group>"; };
 		66EB726968A80F05A307D0497536BC02 /* EaseComponentDecorateContents.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EaseComponentDecorateContents.m; sourceTree = "<group>"; };
 		66F9ADD89633ABBD36B4D68AC2CA9A7C /* JXCategoryDotCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryDotCell.h; path = Sources/Dot/JXCategoryDotCell.h; sourceTree = "<group>"; };
@@ -712,7 +712,7 @@
 		9BF4A7087BDE4B7B950DC92E0BC625DD /* JXCategoryFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryFactory.m; path = Sources/Common/JXCategoryFactory.m; sourceTree = "<group>"; };
 		9C55BCFC504C3974A9E4DF414C45AA29 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		9D08F58710B9FE9A2DB2B9AA93E7895A /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EC2DEEC7A017DF3DB7C4C81582A224E /* EaseRefreshProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EaseRefreshProxy.debug.xcconfig; sourceTree = "<group>"; };
 		9F677D1714EC9A2098D9CA8A96323F52 /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
 		9FCB3FBF0491046D496191DCEC07FB0D /* EaseAttributedBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EaseAttributedBuilder.h; path = EaseAttributedBuilder/Classes/EaseAttributedBuilder.h; sourceTree = "<group>"; };
@@ -728,7 +728,7 @@
 		A3E2BC0C6BE02C61206F41301441C721 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoStateFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
 		A49E4ADEB0DEA16B038DD01CC6E3BEA9 /* JXCategoryDotView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryDotView.h; path = Sources/Dot/JXCategoryDotView.h; sourceTree = "<group>"; };
 		A4EFB4A9691C684A2BA600A9E7A72A98 /* EaseRefreshProxy-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EaseRefreshProxy-Info.plist"; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53A8551A7F3CD32CDB22BB7862271E4 /* JXCategoryIndicatorComponentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryIndicatorComponentView.m; path = Sources/Indicator/IndicatorViews/JXCategoryIndicatorComponentView.m; sourceTree = "<group>"; };
 		A5A4E03170B55007E0670EF97372101B /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SDWebImage.modulemap; sourceTree = "<group>"; };
 		A6343AE983BFAD5EBF2D154C0402663D /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryViewAnimator.h; path = Sources/Common/JXCategoryViewAnimator.h; sourceTree = "<group>"; };
@@ -749,7 +749,7 @@
 		AE811703D51F356B466CC3011CBFE8D9 /* MJRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.debug.xcconfig; sourceTree = "<group>"; };
 		AF0E0408B6E49C559CED202649C0512D /* JXCategoryIndicatorDotLineView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryIndicatorDotLineView.h; path = Sources/Indicator/IndicatorViews/JXCategoryIndicatorDotLineView.h; sourceTree = "<group>"; };
 		AFCD50DFC3E63FE77881BF2102D48922 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
-		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B11633C620257735284F718A3110CA38 /* MJRefresh.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MJRefresh.bundle; path = MJRefresh/MJRefresh.bundle; sourceTree = "<group>"; };
 		B187D349A847D0753800CAAD634F068A /* SDAnimatedImageRep.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageRep.m; path = SDWebImage/SDAnimatedImageRep.m; sourceTree = "<group>"; };
 		B198CB772299B1B46362D38BC9B28153 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
@@ -764,7 +764,7 @@
 		B6BB005076D4799EF2DC8BE1583045D7 /* JXPagingView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXPagingView.release.xcconfig; sourceTree = "<group>"; };
 		B6C012F6564F9E0945C7F7B06FAAEF33 /* UIImage+MemoryCacheCost.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemoryCacheCost.h"; path = "SDWebImage/UIImage+MemoryCacheCost.h"; sourceTree = "<group>"; };
 		B7481E0850A6EC43517A902C037A7D6D /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		B7C57A58F70096D0B9E3F411D46BE64F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B7C57A58F70096D0B9E3F411D46BE64F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B8863D2FD0575CEA4D431C2E192BAD7D /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		B88B7D0C9C7230CA1BE90E5C3C9F6A02 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
 		B9205781BF6326554F61F30302FADE38 /* EaseAttributedBuilder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EaseAttributedBuilder.modulemap; sourceTree = "<group>"; };
@@ -787,7 +787,7 @@
 		C2B73370E4A92A356DD4FB9F1BA9B5AC /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
 		C34F93EF19DA842BAFF86D119A13C9CE /* Pods-EaseModule_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EaseModule_Example-frameworks.sh"; sourceTree = "<group>"; };
 		C38555B751C3DAA0EB5EA192A6D3970B /* UIImage+ForceDecode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ForceDecode.m"; path = "SDWebImage/UIImage+ForceDecode.m"; sourceTree = "<group>"; };
-		C3A46B03C308EEEB11F2A62BA5D2E8BE /* JXCategoryView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXCategoryView.framework; path = JXCategoryView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A46B03C308EEEB11F2A62BA5D2E8BE /* JXCategoryView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXCategoryView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BE04A05090A7F0384147791D07207F /* EaseBaseLayout_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EaseBaseLayout_Private.h; sourceTree = "<group>"; };
 		C437DC831DFDA9BBDB2B8D9C57F7752C /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		C4F5D4A0832A0567635FC904CF440055 /* EaseModuleDataSource_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EaseModuleDataSource_Private.h; sourceTree = "<group>"; };
@@ -832,13 +832,13 @@
 		E1558109CA784B2DA7D47BF0571AF1F4 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		E2199DC997DD63E210DD072EBA8E38EA /* EaseRefreshProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EaseRefreshProxy.h; path = EaseRefreshProxy/Classes/EaseRefreshProxy.h; sourceTree = "<group>"; };
 		E230D8F692CE2C111A1F8A818EA2FA5E /* JXCategoryTitleCellModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryTitleCellModel.h; path = Sources/Title/JXCategoryTitleCellModel.h; sourceTree = "<group>"; };
-		E3243D77B7CFC6B18B4CCBD87599C934 /* Pods_EaseModule_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EaseModule_Tests.framework; path = "Pods-EaseModule_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3243D77B7CFC6B18B4CCBD87599C934 /* Pods_EaseModule_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EaseModule_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34204F4BCED95D4463DE3C60B670FBC /* JXCategoryBaseView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXCategoryBaseView.m; path = Sources/Base/JXCategoryBaseView.m; sourceTree = "<group>"; };
 		E351386FD96917D2A38929217324FC64 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54875315764673AA4C85CB6A3CC6205 /* JXCategoryView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXCategoryView-prefix.pch"; sourceTree = "<group>"; };
 		E597938856C7876A59406B8AE2F8BB8F /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
-		E624784E2B268931D8CE86152B02BAE7 /* EaseRefreshProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EaseRefreshProxy.framework; path = EaseRefreshProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E624784E2B268931D8CE86152B02BAE7 /* EaseRefreshProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EaseRefreshProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63531101A2CB815F293A578175C3332 /* SDWebImageImageIOCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageImageIOCoder.m; path = SDWebImage/SDWebImageImageIOCoder.m; sourceTree = "<group>"; };
 		E63E0E0C73A1E6EBC97251EE94B6A6EB /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		E7638FAF2E8B5EE89F94FF9446BD1AA8 /* JXCategoryIndicatorTriangleView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXCategoryIndicatorTriangleView.h; path = Sources/Indicator/IndicatorViews/JXCategoryIndicatorTriangleView.h; sourceTree = "<group>"; };
@@ -988,7 +988,6 @@
 				B5B050FAB2128678897DDD05B7DC3F4F /* EaseModuleEnvironment.m */,
 				515AF9981E25D958B4775F9642EC6B68 /* EaseModuleEnvironment_Protocol.h */,
 			);
-			name = Environment;
 			path = Environment;
 			sourceTree = "<group>";
 		};
@@ -998,7 +997,6 @@
 				3FEA2A264A0D40C71DF7FC39FFC88F2F /* EaseModule.h */,
 				7E906FDE31AF06FED6B60ECAE23909D4 /* EaseModule.m */,
 			);
-			name = Module;
 			path = Module;
 			sourceTree = "<group>";
 		};
@@ -1050,10 +1048,10 @@
 		1554CFA41858CF0F87DBA7C2A91389B1 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				08B1033ABDD09EF3FD1268A4B591148E /* Module */,
 				D92EECD6CBF8106DA0745004CB2F6B42 /* Component */,
 				3A635B3ED1564BD419414E9E256F8595 /* Datasource */,
 				514D6C3B37B1C146FFE2560286E0F90B /* Layout */,
-				08B1033ABDD09EF3FD1268A4B591148E /* Module */,
 			);
 			name = Public;
 			path = EaseModule/Classes/Public;
@@ -1116,7 +1114,6 @@
 				4EA37020E45BAF349A04222526D2FFE3 /* Support Files */,
 				68202B00B854D90FDE0792EF510A7CB9 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1127,7 +1124,6 @@
 				D50CDFA69F60FA37C85DC15D659868BB /* EaseModuleDataSource.m */,
 				1355F497629777E56A1604EB1BCE1B03 /* EaseModuleDataSourceAble.h */,
 			);
-			name = Datasource;
 			path = Datasource;
 			sourceTree = "<group>";
 		};
@@ -1213,7 +1209,6 @@
 				6243343EE9DE017D821D1789A65E7626 /* EaseBaseLayout.m */,
 				DE62A6D9BA687AA8610F4866A5F1054B /* Layouts */,
 			);
-			name = Layout;
 			path = Layout;
 			sourceTree = "<group>";
 		};
@@ -1224,7 +1219,6 @@
 				BF3290CAF257D7290716B5021EA20162 /* EaseRefreshProxy.m */,
 				C68AC2EAE586147B17A06F6FD062A2C2 /* Support Files */,
 			);
-			name = EaseRefreshProxy;
 			path = EaseRefreshProxy;
 			sourceTree = "<group>";
 		};
@@ -1234,7 +1228,6 @@
 				FF778A7281919B5C3BEC199F91865A96 /* EaseOrthogonalScrollerEmbeddedScrollView.h */,
 				A9842882E5B9378FB0B6FD984A93E51B /* EaseOrthogonalScrollerEmbeddedScrollView.m */,
 			);
-			name = OrthogonalScroll;
 			path = OrthogonalScroll;
 			sourceTree = "<group>";
 		};
@@ -1262,7 +1255,6 @@
 				4A68DFFF1377DC1FFAEBB110A870CA35 /* YTKRequest.m */,
 				476726071B6B3F2FC43D68EB77983639 /* Support Files */,
 			);
-			name = YTKNetwork;
 			path = YTKNetwork;
 			sourceTree = "<group>";
 		};
@@ -1336,7 +1328,6 @@
 				E63E0E0C73A1E6EBC97251EE94B6A6EB /* ViewController+MASAdditions.m */,
 				0904F81CA54D7F1990DC19B7BCE8961E /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -1356,7 +1347,6 @@
 				1217A2F7AFC25D25C9627660CA29C085 /* EaseComponent_Private.h */,
 				C4F5D4A0832A0567635FC904CF440055 /* EaseModuleDataSource_Private.h */,
 			);
-			name = Private;
 			path = Private;
 			sourceTree = "<group>";
 		};
@@ -1430,7 +1420,6 @@
 				85E4FB5BC5B7B153A4BD109984BB115A /* EaseModuleFlowLayout.h */,
 				850E47AB1570F7219CB6AD256A1DE79E /* EaseModuleFlowLayout.m */,
 			);
-			name = FlowLayoutWrapper;
 			path = FlowLayoutWrapper;
 			sourceTree = "<group>";
 		};
@@ -1456,7 +1445,6 @@
 				F033444E25B576ACBD6791E5B434EFEA /* Core */,
 				A02D14AE797A029DBECA54D1F15039EC /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -1531,7 +1519,6 @@
 				E9B0D08F1EDFD75EEE9F4CC1973FAB6A /* EaseRXBuilder.m */,
 				0B6B43466524302AFDC9A6D1570FE127 /* Support Files */,
 			);
-			name = EaseAttributedBuilder;
 			path = EaseAttributedBuilder;
 			sourceTree = "<group>";
 		};
@@ -1563,7 +1550,6 @@
 				90101F92C286B302AC9F41EBB21FBD83 /* EaseModuleAdapterProxy.h */,
 				818838891E4BF0BD497AED78025FE90A /* EaseModuleAdapterProxy.m */,
 			);
-			name = AdapterProxy;
 			path = AdapterProxy;
 			sourceTree = "<group>";
 		};
@@ -1575,7 +1561,6 @@
 				DDDE2ADB2E1BECA653D79D8FF8642BA7 /* EaseComponentDecorateContents.h */,
 				66EB726968A80F05A307D0497536BC02 /* EaseComponentDecorateContents.m */,
 			);
-			name = Component;
 			path = Component;
 			sourceTree = "<group>";
 		};
@@ -1602,7 +1587,6 @@
 				78AAEEDA5E050DD5E4213C5B3BC3A93D /* EaseWaterfallLayout.h */,
 				CD57862DEEDBDAA604B1DB938A4D8840 /* EaseWaterfallLayout.m */,
 			);
-			name = Layouts;
 			path = Layouts;
 			sourceTree = "<group>";
 		};
@@ -1612,7 +1596,6 @@
 				1C19BDB1F6357672CAA954B797E2C6D4 /* Pager */,
 				C5154A8A3ED800BA0AC9F19C07F0BAD6 /* Support Files */,
 			);
-			name = JXPagingView;
 			path = JXPagingView;
 			sourceTree = "<group>";
 		};
@@ -1734,7 +1717,6 @@
 				3CFE5CE952E47572E9D4168DDE5D2235 /* Resources */,
 				24106C36088D3BA125CB821D279DDE42 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -1822,7 +1804,6 @@
 				7655191D17F66390E0940D23D3F2427E /* UIColor+JXAdd.m */,
 				4E288A28AD9C2B77D3BDDECA61967610 /* Support Files */,
 			);
-			name = JXCategoryView;
 			path = JXCategoryView;
 			sourceTree = "<group>";
 		};
@@ -3046,8 +3027,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
