@@ -41,6 +41,8 @@
 		329EA613251A2A440042BDC8 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA609251A2A440042BDC8 /* TAAbstractDotView.m */; };
 		329EA616251ADFD40042BDC8 /* huaban.json in Resources */ = {isa = PBXBuildFile; fileRef = 329EA614251ADFD40042BDC8 /* huaban.json */; };
 		329EA617251ADFD40042BDC8 /* music.json in Resources */ = {isa = PBXBuildFile; fileRef = 329EA615251ADFD40042BDC8 /* music.json */; };
+		32FCCC53251D92FD0091B898 /* DemoLivingComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCCC52251D92FC0091B898 /* DemoLivingComponent.m */; };
+		32FCCC56251D93240091B898 /* DemoLivingCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCCC55251D93240091B898 /* DemoLivingCCell.m */; };
 		3A3D9F8BF891C084C25E6BAD /* Pods_EaseModule_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276E9531AAFB6FF0543A22E /* Pods_EaseModule_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -138,6 +140,10 @@
 		329EA60C251A2A440042BDC8 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
 		329EA614251ADFD40042BDC8 /* huaban.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = huaban.json; sourceTree = "<group>"; };
 		329EA615251ADFD40042BDC8 /* music.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = music.json; sourceTree = "<group>"; };
+		32FCCC51251D92FC0091B898 /* DemoLivingComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoLivingComponent.h; sourceTree = "<group>"; };
+		32FCCC52251D92FC0091B898 /* DemoLivingComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoLivingComponent.m; sourceTree = "<group>"; };
+		32FCCC54251D93240091B898 /* DemoLivingCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoLivingCCell.h; sourceTree = "<group>"; };
+		32FCCC55251D93240091B898 /* DemoLivingCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoLivingCCell.m; sourceTree = "<group>"; };
 		391508D82715F7DC2C48BE2D /* EaseModule.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EaseModule.podspec; path = ../EaseModule.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6003F58A195388D20070C39A /* EaseModule_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EaseModule_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -258,6 +264,10 @@
 			children = (
 				329EA5C3251A28E50042BDC8 /* DemoLivingModule.h */,
 				329EA5C4251A28E50042BDC8 /* DemoLivingModule.m */,
+				32FCCC51251D92FC0091B898 /* DemoLivingComponent.h */,
+				32FCCC52251D92FC0091B898 /* DemoLivingComponent.m */,
+				32FCCC54251D93240091B898 /* DemoLivingCCell.h */,
+				32FCCC55251D93240091B898 /* DemoLivingCCell.m */,
 			);
 			path = Living;
 			sourceTree = "<group>";
@@ -304,16 +314,16 @@
 		329EA5DA251A28E60042BDC8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				329EA5DB251A28E60042BDC8 /* NSString+Common.h */,
-				329EA5DC251A28E60042BDC8 /* UIColor+Common.m */,
-				329EA5DD251A28E60042BDC8 /* NSObject+EaseRuntime.m */,
 				329EA5DE251A28E60042BDC8 /* NSArray+Sugar.h */,
-				329EA5DF251A28E60042BDC8 /* UIImage+Common.h */,
+				329EA5E4251A28E60042BDC8 /* NSArray+Sugar.m */,
+				329EA5E2251A28E60042BDC8 /* NSObject+EaseRuntime.h */,
+				329EA5DD251A28E60042BDC8 /* NSObject+EaseRuntime.m */,
+				329EA5DB251A28E60042BDC8 /* NSString+Common.h */,
 				329EA5E0251A28E60042BDC8 /* NSString+Common.m */,
 				329EA5E1251A28E60042BDC8 /* UIColor+Common.h */,
-				329EA5E2251A28E60042BDC8 /* NSObject+EaseRuntime.h */,
+				329EA5DC251A28E60042BDC8 /* UIColor+Common.m */,
+				329EA5DF251A28E60042BDC8 /* UIImage+Common.h */,
 				329EA5E3251A28E60042BDC8 /* UIImage+Common.m */,
-				329EA5E4251A28E60042BDC8 /* NSArray+Sugar.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -504,6 +514,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Yrocky;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = PF3BSY7RH3;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -660,6 +673,7 @@
 				329EA60D251A2A440042BDC8 /* SDCycleScrollView.m in Sources */,
 				329EA5ED251A28E60042BDC8 /* DemoHuabanModule.m in Sources */,
 				329EA5F2251A28E60042BDC8 /* DemoContentCCell.m in Sources */,
+				32FCCC53251D92FD0091B898 /* DemoLivingComponent.m in Sources */,
 				329EA5F3251A28E60042BDC8 /* DemoListViewController.m in Sources */,
 				329EA5F1251A28E60042BDC8 /* DemoSearchCCell.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
@@ -673,6 +687,7 @@
 				329EA5EC251A28E60042BDC8 /* DemoShoppingComponent.m in Sources */,
 				329EA611251A2A440042BDC8 /* TAPageControl.m in Sources */,
 				329EA5FC251A28E60042BDC8 /* NSArray+Sugar.m in Sources */,
+				32FCCC56251D93240091B898 /* DemoLivingCCell.m in Sources */,
 				329EA5E6251A28E60042BDC8 /* DemoMusicComponent.m in Sources */,
 				329EA612251A2A440042BDC8 /* TAAnimatedDotView.m in Sources */,
 			);
@@ -802,6 +817,7 @@
 			baseConfigurationReference = 2F4F95982490873E2EB81142 /* Pods-EaseModule_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PF3BSY7RH3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EaseModule/EaseModule-Prefix.pch";
 				INFOPLIST_FILE = "EaseModule/EaseModule-Info.plist";
@@ -818,6 +834,7 @@
 			baseConfigurationReference = D075930C725F4121370019C6 /* Pods-EaseModule_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PF3BSY7RH3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EaseModule/EaseModule-Prefix.pch";
 				INFOPLIST_FILE = "EaseModule/EaseModule-Info.plist";

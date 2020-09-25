@@ -18,6 +18,7 @@
 #import "UIColor+Common.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSArray+Sugar.h"
+#import "UIImage+Common.h"
 
 #ifndef weakify
     #if DEBUG

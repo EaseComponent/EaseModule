@@ -57,7 +57,10 @@
     }
     return self;
 }
-
+- (void)clear{
+    [super clear];
+    _fold = YES;
+}
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     DemoContentCCell * ccell = [self.dataSource dequeueReusableCellOfClass:DemoContentCCell.class forComponent:self atIndex:index];
     ccell.contentView.layer.cornerRadius = 15.0f;
@@ -118,6 +121,10 @@
         _layout = layout;
     }
     return self;
+}
+- (void)clear{
+    [super clear];
+    _showAllRank = NO;
 }
 
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
@@ -196,6 +203,11 @@
         _layout = layout;
     }
     return self;
+}
+
+- (void)clear{
+    [super clear];
+    _showAll = NO;
 }
 
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{

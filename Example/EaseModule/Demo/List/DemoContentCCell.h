@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DemoBannerCCell : UICollectionViewCell
 - (void) setupBannerDatas:(NSArray<NSString *> *)datas;
+- (void) setupBannerImages:(NSArray<UIImage *> *)images;
 @end
 
 @interface DemoPlaceholdCCell : UICollectionViewCell

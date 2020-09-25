@@ -83,7 +83,10 @@ static NSDictionary * videoData;
     return NO;
 }
 
-// 这里使用refresh来模拟网络加载
+/**
+ 这里使用refresh来模拟网络加载，
+ 在开发中，一般是使用下面2步进行数据的获取、处理以及展示
+ */
 - (void)refresh{
     [super refresh];
     [self.dataSource clear];
@@ -93,7 +96,7 @@ static NSDictionary * videoData;
     [self.collectionView reloadData];
 }
 
-// 真正业务中是实现如下方法
+// 真正业务中是如下2步
 - (__kindof YTKRequest *)fetchModuleRequest{
     // 1.返回当前module的网络请求
     return nil;

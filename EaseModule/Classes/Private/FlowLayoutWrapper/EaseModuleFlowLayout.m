@@ -156,6 +156,7 @@ static const NSInteger unionSize = 50;
             attributes.frame = frame;
             [itemAttributes addObject:attributes];
             [self.allItemAttributes addObject:attributes];
+            top += layout.inset.bottom;
         } else {
             for (NSInteger item = 0; item < itemCount; item++) {
                 CGRect frame = [layout itemFrameAtIndex:item];

@@ -37,6 +37,9 @@
 }
 
 - (void) addData:(id)data{
+    if (!data) {
+        return;
+    }
     @synchronized (_innerDatas) {
         if (![_innerDatas containsObject:data]) {
             [_innerDatas addObject:data];

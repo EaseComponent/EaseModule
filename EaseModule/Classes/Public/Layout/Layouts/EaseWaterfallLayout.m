@@ -19,6 +19,7 @@
     self = [super init];
     if (self) {
         self.column = self.row = 1;
+        self.maxDisplayCount = EaseLayoutMaxedDisplayValue;
     }
     return self;
 }

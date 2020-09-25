@@ -80,7 +80,9 @@
 - (void) setupBannerDatas:(NSArray<NSString *> *)datas{
     _cycleScrollView.imageURLStringsGroup = datas;
 }
-
+- (void) setupBannerImages:(NSArray<UIImage *> *)images{
+    _cycleScrollView.localizationImageNamesGroup = images;
+}
 @end
 @implementation DemoPlaceholdCCell
 

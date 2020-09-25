@@ -24,6 +24,9 @@
     XXViewController * vc = [[XXViewController alloc] initWithModule:({
         EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"];
         [module addModule:({
+            [[DemoLivingModule alloc] initWithName:@"直播app"];
+        })];
+        [module addModule:({
             [[DemoSearchModule alloc] initWithName:@"搜索界面"];
         })];
         [module addModule:({
@@ -42,9 +45,6 @@
         })];
         [module addModule:({
             [[DemoHuabanModule alloc] initWithName:@"花瓣app"];
-        })];
-        [module addModule:({
-            [[DemoLivingModule alloc] initWithName:@"直播app"];
         })];
         [module addModule:({
             [[DemoShoppingModule alloc] initWithName:@"购物app"];
