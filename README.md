@@ -44,71 +44,78 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 * flex-start
 
-``` Objective-C
-
-// in SomeComponent.m
-
-EaseFlexLayout * flexLayout = [EaseFlexLayout new];
-flexLayout.justifyContent = EaseFlexLayoutFlexStart;
-flexLayout.inset = UIEdgeInsetsMake(0, 0, 0, 0);
-flexLayout.itemHeight = 30;
-flexLayout.delegate = self;
-_layout = flexLayout;
-
-```
-![flex-start](../Resource/flex-start.png)
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    EaseFlexLayout * flexLayout = [EaseFlexLayout new];
+    flexLayout.justifyContent = EaseFlexLayoutFlexStart;
+    flexLayout.inset = UIEdgeInsetsMake(0, 0, 0, 0);
+    flexLayout.itemHeight = 30;
+    flexLayout.delegate = self;
+    _layout = flexLayout;
+    
+    ```
+    ![flex-start](./Resource/flex/flex-start.png)
 
 * center
 
-``` Objective-C
-
-// in SomeComponent.m
-
-...
-flexLayout.justifyContent = EaseFlexLayoutCenter;
-...
-```
-
-![center](/Resource/center.png)
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    ...
+    flexLayout.justifyContent = EaseFlexLayoutCenter;
+    ...
+    ```
+    
+    ![center](./Resource/flex/center.png)
 
 * flex-end
 
-``` Objective-C
-
-// in SomeComponent.m
-
-...
-flexLayout.justifyContent = EaseFlexLayoutFlexEnd;
-...
-```
-
-![flex-end](Resource/flex-end.png)
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    ...
+    flexLayout.justifyContent = EaseFlexLayoutFlexEnd;
+    ...
+    ```
+    
+    ![flex-end](./Resource/flex/flex-end.png)
 
 * space-around
 
-``` Objective-C
+	``` Objective-C
+	// in SomeComponent.m
 
-// in SomeComponent.m
+	...
+	flexLayout.justifyContent = EaseFlexLayoutSpaceAround;
+	...
+	```
 
-...
-flexLayout.justifyContent = EaseFlexLayoutSpaceAround;
-...
-```
-
-![space-around](../Resource/space-around.png)
+	![space-around](./Resource/flex/space-around.png)
 
 * space-between
 
-``` Objective-C
+	``` Objective-C
+	// in SomeComponent.m
 
-// in SomeComponent.m
+	...
+	flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
+	...
+	```
 
-...
-flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
-...
-```
+	![space-between](./Resource/flex/space-between.png)
+  
+* space-between
 
-![space-between](../Resource/space-between.png)
+    ``` Objective-C
+    // in SomeComponent.m
+
+    ...
+    flexLayout.arrange = EaseLayoutArrangeHorizontal;
+    ...
+    ```
+
+    ![orthogonal-scroll](./Resource/flex/orthogonal-scroll.png)
 
 #### waterfall
 
@@ -116,11 +123,19 @@ flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
 
 * shortest first
 
+    ![shortest first](./Resource/waterfall/shortest-first.png)
+
 * left to right
 
+    ![left to right](./Resource/waterfall/left-to-right.png)
+    
 * right to left
 
+    ![right to left](./Resource/waterfall/right-to-left.png)
+    
 * orthogonal scroll
+
+    ![orthogonal scroll](./Resource/waterfall/orthogonal-scroll.png)
 
 ### placehold
 
@@ -138,7 +153,6 @@ flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
 * 渐变
 
 * 阴影
-
 
 
 ## Installation
