@@ -56,7 +56,7 @@ flexLayout.delegate = self;
 _layout = flexLayout;
 
 ```
-[flex-start](../Resource/flex-start.png)
+![flex-start](../Resource/flex-start.png)
 
 * center
 
@@ -69,7 +69,7 @@ flexLayout.justifyContent = EaseFlexLayoutCenter;
 ...
 ```
 
-[center](/Resource/center.png)
+![center](/Resource/center.png)
 
 * flex-end
 
@@ -82,7 +82,7 @@ flexLayout.justifyContent = EaseFlexLayoutFlexEnd;
 ...
 ```
 
-[flex-end](Resource/flex-end.png)
+![flex-end](Resource/flex-end.png)
 
 * space-around
 
@@ -95,7 +95,7 @@ flexLayout.justifyContent = EaseFlexLayoutSpaceAround;
 ...
 ```
 
-[space-around](../Resource/space-around.png)
+![space-around](../Resource/space-around.png)
 
 * space-between
 
@@ -108,7 +108,7 @@ flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
 ...
 ```
 
-[space-between](../Resource/space-between.png)
+![space-between](../Resource/space-between.png)
 
 #### waterfall
 
