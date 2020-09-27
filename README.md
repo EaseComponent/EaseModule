@@ -61,7 +61,8 @@ pod 'EaseModule'
     listLayout.distribution = [EaseLayoutDimension distributionDimension:1];
     listLayout.itemRatio = [EaseLayoutDimension absoluteDimension:44.0f];
     ```
-
+	![table-view-like](./Resource/list/table-view-like.png)
+	
 * collection-view like
 
     ``` Objective-C
@@ -71,7 +72,8 @@ pod 'EaseModule'
     listLayout.itemRatio = [EaseLayoutDimension fractionalDimension:0.8];
     ...
     ```
-
+	![collection-view-like](./Resource/list/collection-view-like.png)
+	
 *  orthogonal scroll
 
     ``` Objective-C
@@ -283,7 +285,7 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
     }];
     ...
     ```
-
+	![color](./Resource/decorate/color.png)
 
 * 图片
 
@@ -302,7 +304,8 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
     }];
     ...
     ```
-
+	![image](./Resource/decorate/image.png)
+	
 * 渐变
 
     ``` Objective-C
@@ -326,7 +329,8 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
         });
     }];
     ```
-
+	![gradient](./Resource/decorate/gradient.png)
+	
 * 阴影
 
     ``` Objective-C
@@ -346,7 +350,8 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
         })];
     }];
     ```
-
+	![shadow](./Resource/decorate/shadow.png)
+	
 ### maxDisplay
 
 > DemoSearchModule

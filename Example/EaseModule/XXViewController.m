@@ -295,7 +295,7 @@ EaseWaterfallLayoutDelegate>
             waterfallLayout.row = 2;
             waterfallLayout.horizontalArrangeContentHeight = 300;
             waterfallLayout.arrange = EaseLayoutArrangeHorizontal;
-            waterfallLayout.renderDirection = EaseWaterfallItemRenderBottomToTop;
+            waterfallLayout.renderDirection = EaseWaterfallItemRenderShortestFirst;
             waterfallLayout;
         })];
         [comp addDatas:data[@"waterFlow"]];
@@ -707,6 +707,7 @@ EaseWaterfallLayoutDelegate>
 - (void) setupWaterfallLayout:(EaseWaterfallLayout *)waterfallLayout{
     waterfallLayout.inset = UIEdgeInsetsMake(10, 10, 10, 10);
     waterfallLayout.delegate = self;
+    waterfallLayout.maxDisplayCount = 5;
     _layout = waterfallLayout;
 }
 

@@ -145,6 +145,77 @@
                                            line:line
                                      lineNumber:lineNumber
                                          result:result];
+        if (_didSetupMaxDisplayCount && needDrop) {
+            
+        }
+    } else if(needDrop){
+        lineNumber -= 1;
+    }
+    _contentHeight = lineNumber * self.itemHeight +
+    (lineNumber - 1) * self.lineSpacing;
+}
+
+- (void) _calculatorVerticalLayoutWithDatas:(NSArray *)datas{
+    
+    CGFloat maxWidth = 0.0f;
+    NSMutableArray<NSValue *> * result = [NSMutableArray new];
+
+    NSMutableArray<NSMutableArray<NSValue *> *> * lines = [NSMutableArray new];
+    NSMutableArray<NSValue *> * line = [NSMutableArray new];
+    [lines addObject:line];
+    NSInteger lineNumber = 1;
+
+    BOOL needDrop = NO;
+    
+    for (NSInteger index = 0; index < datas.count; index ++) {
+        CGFloat itemWidth = 0.0f;
+        if ([self.delegate respondsToSelector:@selector(layoutCustomItemSize:atIndex:)]) {
+            itemWidth = [self.delegate layoutCustomItemSize:self atIndex:index].width;
+        }
+        CGSize itemSize = (CGSize){
+            MIN(self.insetContainerWidth, itemWidth),
+            self.itemHeight
+        };
+
+        maxWidth += (itemSize.width + self.itemSpacing);
+
+        if (_didSetupMaxDisplayLines) {
+            needDrop = lineNumber > self.innerMaxDisplayLines;
+        } else if (_didSetupMaxDisplayCount){
+            needDrop = index > self.maxDisplayCount;
+        }
+        if (needDrop) {
+            break;
+        }
+        
+        // 需要换行了
+        if ((maxWidth - self.itemSpacing) > self.insetContainerWidth) {
+            CGFloat currentLineMaxWidth = maxWidth - self.itemSpacing * 2 - itemSize.width;
+            [self _calculatorFlexLayoutLineMaxWidth:currentLineMaxWidth
+                                               line:line
+                                         lineNumber:lineNumber
+                                             result:result];
+            maxWidth = itemSize.width + self.itemSpacing;
+            [lines removeObject:line];
+            line = [NSMutableArray new];
+            [lines addObject:line];
+            lineNumber ++;
+        }
+        [line addObject:[NSValue valueWithCGSize:itemSize]];
+    }
+    
+    if (_didSetupMaxDisplayLines) {
+        needDrop = lineNumber > self.innerMaxDisplayLines;
+    } else if (_didSetupMaxDisplayCount) {
+        needDrop = result.count > self.maxDisplayCount;
+    }
+    
+    if (line.count && !needDrop) {
+        // 最后一行
+        [self _calculatorFlexLayoutLineMaxWidth:maxWidth - self.itemSpacing
+                                           line:line
+                                     lineNumber:lineNumber
+                                         result:result];
     } else if(needDrop){
         lineNumber -= 1;
     }
