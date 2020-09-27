@@ -29,8 +29,11 @@
         self.orthogonalScrollView.clipsToBounds = YES;
         [self.contentView addSubview:self.orthogonalScrollView];
 
+        if (@available(iOS 13.0, *)) {
+            self.orthogonalScrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+        }
         if (@available(iOS 11.0, *)) {
-            self.orthogonalScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentScrollableAxes;
+            self.orthogonalScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
         }
     }
     return self;

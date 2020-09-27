@@ -8,7 +8,10 @@
 
 #import "EaseFlexLayout.h"
 
-@implementation EaseFlexLayout
+@implementation EaseFlexLayout{
+    BOOL _didSetupMaxDisplayLines;
+    BOOL _didSetupMaxDisplayCount;
+}
 
 - (instancetype)init
 {
@@ -31,11 +34,21 @@
     return _justifyContent;
 }
 
-- (NSInteger)maxDisplayLines{
+- (void)setMaxDisplayLines:(NSInteger)maxDisplayLines{
+    _maxDisplayLines = maxDisplayLines;
+    _didSetupMaxDisplayLines = YES;
+}
+
+- (void)setMaxDisplayCount:(NSInteger)maxDisplayCount{
+    _maxDisplayCount = maxDisplayCount;
+    _didSetupMaxDisplayCount = YES;
+}
+
+- (NSInteger) innerMaxDisplayLines{
     if (self.arrange == EaseLayoutArrangeHorizontal) {
         return 1;
     }
-    return MAX(1, _maxDisplayLines);
+    return MAX(1, MIN(_maxDisplayLines, EaseLayoutMaxedDisplayValue));
 }
 
 #pragma mark - calculator Horizontal
@@ -59,6 +72,10 @@
             _contentWidth,0,
             itemSize
         };
+        if (_didSetupMaxDisplayCount &&
+            index > self.maxDisplayCount - 1) {
+            break;
+        }
         [self cacheItemFrame:frame at:index];
         _contentWidth += (itemWidth + self.itemSpacing);
     }
@@ -91,8 +108,11 @@
 
         maxWidth += (itemSize.width + self.itemSpacing);
 
-        needDrop = lineNumber > self.maxDisplayLines;
-        
+        if (_didSetupMaxDisplayLines) {
+            needDrop = lineNumber > self.innerMaxDisplayLines;
+        } else if (_didSetupMaxDisplayCount){
+            needDrop = index > self.maxDisplayCount;
+        }
         if (needDrop) {
             break;
         }
@@ -112,7 +132,12 @@
         }
         [line addObject:[NSValue valueWithCGSize:itemSize]];
     }
-    needDrop = lineNumber > self.maxDisplayLines;
+    
+    if (_didSetupMaxDisplayLines) {
+        needDrop = lineNumber > self.innerMaxDisplayLines;
+    } else if (_didSetupMaxDisplayCount) {
+        needDrop = result.count > self.maxDisplayCount;
+    }
     
     if (line.count && !needDrop) {
         // 最后一行
@@ -147,29 +172,41 @@
     }
     preItemX += self.inset.left;
     // 为line中的元素进行布局
+    __block BOOL needContinue = NO;
     [line enumerateObjectsUsingBlock:^(NSValue * item, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGSize innerItemSize = item.CGSizeValue;
-        CGFloat x = 0;
-        CGFloat y = 0;
-        if (self.justifyContent == EaseFlexLayoutFlexStart ||
-            self.justifyContent == EaseFlexLayoutFlexEnd ||
-            self.justifyContent == EaseFlexLayoutCenter) {
-            x = preItemX;
-            preItemX += (innerItemSize.width + self.itemSpacing);
-        } else if (self.justifyContent == EaseFlexLayoutSpaceBetween){
-            x = preItemX;
-            preItemX += (innerItemSize.width + totalSpacing / (line.count - 1));
-        } else {
-            x = preItemX;
-            preItemX += (innerItemSize.width + totalSpacing / (line.count + 1));
+        needContinue = [self needContinueWithResultCount:result.count];
+        if (needContinue) {
+            
+            CGSize innerItemSize = item.CGSizeValue;
+            CGFloat x = 0;
+            CGFloat y = 0;
+            if (self.justifyContent == EaseFlexLayoutFlexStart ||
+                self.justifyContent == EaseFlexLayoutFlexEnd ||
+                self.justifyContent == EaseFlexLayoutCenter) {
+                x = preItemX;
+                preItemX += (innerItemSize.width + self.itemSpacing);
+            } else if (self.justifyContent == EaseFlexLayoutSpaceBetween){
+                x = preItemX;
+                preItemX += (innerItemSize.width + totalSpacing / (line.count - 1));
+            } else {
+                x = preItemX;
+                preItemX += (innerItemSize.width + totalSpacing / (line.count + 1));
+            }
+            y = (lineNumber - 1) * (innerItemSize.height + self.lineSpacing);
+            CGRect frame = (CGRect){
+                CGPointMake(x, y), innerItemSize
+            };
+            // cache
+            [self cacheItemFrame:frame at:result.count];
+            [result addObject:[NSValue valueWithCGRect:frame]];
         }
-        y = (lineNumber - 1) * (innerItemSize.height + self.lineSpacing);
-        CGRect frame = (CGRect){
-            CGPointMake(x, y), innerItemSize
-        };
-        // cache
-        [self cacheItemFrame:frame at:result.count];
-        [result addObject:[NSValue valueWithCGRect:frame]];
     }];
+}
+
+- (BOOL) needContinueWithResultCount:(NSInteger)resultCount{
+    if (_didSetupMaxDisplayCount) {
+        return resultCount < self.maxDisplayCount;
+    }
+    return YES;
 }
 @end

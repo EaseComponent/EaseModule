@@ -15,9 +15,13 @@
 }
 
 - (instancetype)initWithTitle:(NSString *)title{
+    return [self initWithTitle:title maxDisplayCountCondition:NO];
+}
+- (instancetype)initWithTitle:(NSString *)title maxDisplayCountCondition:(BOOL)maxDisplayCountCondition{
     self = [super init];
     if (self) {
         _title = title;
+        _maxDisplayCountCondition = maxDisplayCountCondition;
     }
     return self;
 }
@@ -42,15 +46,20 @@
     BOOL _fold;
 }
 
-- (instancetype)initWithTitle:(NSString *)title
+- (instancetype)initWithTitle:(NSString *)title maxDisplayCountCondition:(BOOL)maxDisplayCountCondition
 {
-    self = [super initWithTitle:title];
+    self = [super initWithTitle:title maxDisplayCountCondition:maxDisplayCountCondition];
     if (self) {
         EaseFlexLayout * layout = [EaseFlexLayout new];
         layout.inset = UIEdgeInsetsMake(5, 10, 10, 10);
         layout.delegate = self;
         layout.itemHeight = 30;
-        layout.maxDisplayLines = 2;
+        if (maxDisplayCountCondition) {
+//            layout.arrange = EaseLayoutArrangeHorizontal;
+            layout.maxDisplayCount = 4;
+        } else {
+            layout.maxDisplayLines = 2;
+        }
         _layout = layout;
         
         _fold = YES;
@@ -61,6 +70,7 @@
     [super clear];
     _fold = YES;
 }
+
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     DemoContentCCell * ccell = [self.dataSource dequeueReusableCellOfClass:DemoContentCCell.class forComponent:self atIndex:index];
     ccell.contentView.layer.cornerRadius = 15.0f;
@@ -98,7 +108,11 @@
 - (void) toggle{
     _fold = !_fold;
     EaseFlexLayout * layout = (EaseFlexLayout *)self.layout;
-    layout.maxDisplayLines = _fold ? 2 : EaseLayoutMaxedDisplayValue;
+    if (_maxDisplayCountCondition) {
+        layout.maxDisplayCount = _fold ? 5 : EaseLayoutMaxedDisplayValue;
+    } else {
+        layout.maxDisplayLines = _fold ? 2 : EaseLayoutMaxedDisplayValue;
+    }
     [self reloadData];
 }
 
@@ -108,16 +122,23 @@
     BOOL _showAllRank;
 }
 
-- (instancetype)initWithTitle:(NSString *)title
+- (instancetype)initWithTitle:(NSString *)title maxDisplayCountCondition:(BOOL)maxDisplayCountCondition
 {
-    self = [super initWithTitle:title];
+    self = [super initWithTitle:title maxDisplayCountCondition:maxDisplayCountCondition];
     if (self) {
         EaseListLayout * layout = [EaseListLayout new];
         layout.inset = UIEdgeInsetsMake(5, 10, 10, 10);
         layout.lineSpacing = 1.0f;
         layout.distribution = [EaseLayoutDimension distributionDimension:1];
         layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
-        layout.maxDisplayLines = 4;
+        if (maxDisplayCountCondition) {
+            layout.maxDisplayCount = 2;
+            /// 测试水平效果的maxDisplay
+            layout.arrange = EaseLayoutArrangeHorizontal;
+            layout.row = 3;
+        } else {
+            layout.maxDisplayLines = 4;
+        }
         _layout = layout;
     }
     return self;
@@ -182,7 +203,11 @@
 - (void) onShowAllRank{
     _showAllRank = YES;
     EaseListLayout * layout = (EaseListLayout *)self.layout;
-    layout.maxDisplayLines = EaseLayoutMaxedDisplayValue;
+    if (_maxDisplayCountCondition) {
+        layout.maxDisplayCount = EaseLayoutMaxedDisplayValue;
+    } else {    
+        layout.maxDisplayLines = EaseLayoutMaxedDisplayValue;
+    }
     [self reloadData];
 }
 @end
@@ -191,9 +216,9 @@
     BOOL _showAll;
 }
 
-- (instancetype)initWithTitle:(NSString *)title
+- (instancetype)initWithTitle:(NSString *)title maxDisplayCountCondition:(BOOL)maxDisplayCountCondition
 {
-    self = [super initWithTitle:title];
+    self = [super initWithTitle:title maxDisplayCountCondition:maxDisplayCountCondition];
     if (self) {
         EaseWaterfallLayout * layout = [EaseWaterfallLayout new];
         layout.inset = UIEdgeInsetsMake(5, 10, 10, 10);

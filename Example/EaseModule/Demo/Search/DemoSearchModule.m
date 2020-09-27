@@ -101,17 +101,29 @@ static NSDictionary * searchData;
     [[SearchHistoryComponent alloc] initWithTitle:@"搜索历史"];
     [historyComp addDatas:searchData[@"history"]];
     
+    SearchHistoryComponent * historyComp1 =
+    [[SearchHistoryComponent alloc] initWithTitle:@"热门搜索"
+                         maxDisplayCountCondition:YES];
+    [historyComp1 addDatas:searchData[@"history"]];
+    
     SearchHotRankComponent * rankComp =
     [[SearchHotRankComponent alloc] initWithTitle:@"热搜文章"];
     [rankComp addDatas:searchData[@"rank"]];
+    
+    SearchHotRankComponent * rankComp1 =
+    [[SearchHotRankComponent alloc] initWithTitle:@"热搜作者"
+                         maxDisplayCountCondition:YES];
+    [rankComp1 addDatas:searchData[@"rank"]];
     
     SearchRecommendComponent * recommendComp =
     [[SearchRecommendComponent alloc] initWithTitle:@"优质推荐"];
     [recommendComp addDatas:searchData[@"recommend"]];
     
     return @[
-        historyComp,
+//        historyComp,
+        historyComp1,
         rankComp,
+        rankComp1,
         recommendComp
     ];
 }

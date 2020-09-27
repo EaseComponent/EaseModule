@@ -10,11 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SearchComponent : EaseComponent
-
+@interface SearchComponent : EaseComponent{
+    BOOL _maxDisplayCountCondition;
+}
 @property (nonatomic ,copy ,readonly) NSString * title;
 
 - (instancetype) initWithTitle:(NSString *)title;
+- (instancetype)initWithTitle:(NSString *)title maxDisplayCountCondition:(BOOL)maxDisplayCountCondition;
 @end
 
 @interface SearchHistoryComponent : SearchComponent<

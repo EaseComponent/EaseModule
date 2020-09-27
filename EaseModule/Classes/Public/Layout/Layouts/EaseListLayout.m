@@ -31,6 +31,8 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
 @implementation EaseListLayout{
     CGFloat _itemWidth;
     CGFloat _itemHeight;
+    BOOL _didSetupMaxDisplayLines;
+    BOOL _didSetupMaxDisplayCount;
 }
 
 - (instancetype)init
@@ -43,11 +45,21 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
     return self;
 }
 
-- (NSInteger)maxDisplayLines{
+- (void)setMaxDisplayLines:(NSInteger)maxDisplayLines{
+    _maxDisplayLines = maxDisplayLines;
+    _didSetupMaxDisplayLines = YES;
+}
+
+- (void)setMaxDisplayCount:(NSInteger)maxDisplayCount{
+    _maxDisplayCount = maxDisplayCount;
+    _didSetupMaxDisplayCount = YES;
+}
+
+- (NSInteger)innerMaxDisplayLines{
     if (self.arrange == EaseLayoutArrangeHorizontal) {
         return 1;
     }
-    return MAX(1, _maxDisplayLines);
+    return MAX(1, MIN(_maxDisplayLines, EaseLayoutMaxedDisplayValue));
 }
 
 - (void) _calculatorItemSize{
@@ -117,10 +129,17 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
             frame.origin.x = maxX;
             frame.origin.y = maxY;
         }
-        
+        if (_didSetupMaxDisplayCount && index >= self.maxDisplayCount) {
+            break;
+        }
         [self cacheItemFrame:frame at:index];
         // 更新y
         maxY += (_itemHeight + self.lineSpacing);
+    }
+    if (_didSetupMaxDisplayCount &&
+        self.maxDisplayCount < self.row) {
+        self.horizontalArrangeContentHeight =
+        self.maxDisplayCount * _itemHeight + (self.maxDisplayCount - 1) * self.lineSpacing;
     }
     _contentWidth = CGRectGetMaxX([self itemFrameAtIndex:datas.count - 1]);
 }
@@ -144,7 +163,12 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
             x,y,
             _itemWidth,_itemHeight
         };
-        needDrop = lineNumber > self.maxDisplayLines;
+        if (_didSetupMaxDisplayLines) {
+            needDrop = lineNumber > self.innerMaxDisplayLines;
+        } else if (_didSetupMaxDisplayCount) {
+            needDrop = index >= self.maxDisplayCount;
+        }
+        
         if (needDrop) {
             break;
         }

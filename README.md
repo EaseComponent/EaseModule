@@ -24,7 +24,7 @@ pod 'EaseModule'
 
 ## Framework
 
-在使用之前可以参考[这篇文章](http://yrocky.github.io/2020/07/15/use-Self-Manager-make-Module/)，该文章讲述了EaseModule的最初的实现架构。随着参考了更多的app，观察了更多的界面展示 ，逐渐添加了一些比较实用的功能，具体的特性下面会一一介绍。
+在使用之前可以参考[这篇文章](http://yrocky.github.io/2020/07/15/use-Self-Manager-make-Module/)，该文章讲述了EaseModule最初的实现架构。随着参考了更多的app，观察了更多的界面展示 ，逐渐添加了一些比较实用的功能，具体的特性下面会一一介绍。
 
 在前面提到的文章中的架构中，要实现更多样的布局样式比较麻烦，更多的时候需要借助额外的UICollectionViewLayout，并且在多样式混用的时候性能还不是很理想。另外，随着iOS13、14这样的新版本release之后，苹果的主流UI样式也发生了很大的变化，更多的使用圆角，单元素圆角、区域圆角等等，像是为某个section设置背景颜色这种需求，在`UICollectionViewCompositionalLayout`布局出来之后实现起来就更简单了。
 
@@ -42,7 +42,6 @@ pod 'EaseModule'
 ### layout
 
 目前支持三种主流的布局样式：`list`、`flex`、`waterfall`，`grid布局`目前还在构思中，不日就会添加到项目中，目前的三种layout都支持**垂直**和**水平**两种布局样式。
-
 
 #### list
 
@@ -103,10 +102,10 @@ pod 'EaseModule'
     EaseFlexLayout * flexLayout = [EaseFlexLayout new];
     flexLayout.justifyContent = EaseFlexLayoutFlexStart;
     flexLayout.inset = UIEdgeInsetsMake(0, 0, 0, 0);
+    // itemHeight在水平和垂直显示效果中都需要设置
     flexLayout.itemHeight = 30;
+    // 通过代理方法来返回每一个元素的显示尺寸
     flexLayout.delegate = self;
-    _layout = flexLayout;
-    
     ```
     ![flex-start](./Resource/flex/flex-start.png)
 
@@ -158,7 +157,6 @@ pod 'EaseModule'
 
     ``` Objective-C
     // in SomeComponent.m
-
     ...
     flexLayout.arrange = EaseLayoutArrangeHorizontal;
     ...
@@ -243,7 +241,7 @@ pod 'EaseModule'
 
 以上3中布局效果都支持placehold功能，在没有数据的时候为Component设置`needPlacehold`以及`placeholdHeight`，然后返回对应的cell即可。
 
-由于3中布局都支持水平方向的展示，因此`placeholdHeight`可能会和`horizontalArrangeContentHeight`有计算上的冲突，这个时候以`placeholdHeight`为计算高度。
+由于3中布局都支持水平方向的展示，因此`placeholdHeight`可能会和`horizontalArrangeContentHeight`有计算上的冲突，基于无数据的占位显示这样的使用场景，这个时候以`placeholdHeight`为最终的展示高度。
 
 ### decorate
 
@@ -361,11 +359,11 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
 
 对于`EaseListLayout`来说，在垂直展示的时候，同时支持`maxDisplayLines`和`maxDisplayCount`，但是在水平布局的时候由于行数可以根据`row`来决定，所以仅支持`maxDisplayCount`。
 
-> 对于既支持`maxDisplayCount`又支持`maxDisplayLines`的layout来说，如果同时设置了这两个属性，最后的计算结果将以`maxDisplayLines`为准，考虑到实际业务情况中并不会这么做，并且这么做也没有意义，但是这里还是提前做了准则。
+> 对于既支持`maxDisplayCount`又支持`maxDisplayLines`的layout来说，如果同时设置了这两个属性，最后的计算结果将以`maxDisplayLines`为准，考虑到实际业务情况中并不会这么做，并且这么做也没有意义，但这里还是提前做了准则约束。
 
 ### scrolling behavior
 
-
+仅仅在水平展示效果的时候有用，
 
 ## Author
 
@@ -376,7 +374,6 @@ Yrocky, 983272765@qq.com
 * [IGListKit](https://github.com/Instagram/IGListKit)
 * [IBPCollectionViewCompositionalLayout](https://github.com/kishikawakatsumi/IBPCollectionViewCompositionalLayout)
 * [CHTCollectionViewWaterfallLayout](https://github.com/chiahsien/CHTCollectionViewWaterfallLayout)
-* [IGListKit](https://github.com/Instagram/IGListKit)
 
 ## License
 
