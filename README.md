@@ -275,7 +275,7 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
     DemoBackgroundDecorateComponent * comp = [DemoBackgroundDecorateComponent new];
     comp.layout.inset = UIEdgeInsetsMake(100, 20, 10, 20);
     [comp addDecorateWithBuilder:^(id<EaseComponentDecorateAble>  _Nonnull builder) {
-        builder.decorate = EaseComponentDecorateOnlyItem;
+        builder.decorate = EaseComponentDecorateAll;
         builder.radius = 4.0f;
         builder.contents = ({
             EaseComponentDecorateContents * contents =
@@ -368,7 +368,19 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
 
 ### scrolling behavior
 
-仅仅在水平展示效果的时候有用，
+仅仅在水平展示效果的时候有用，Component通过设置属性来决定分页效果，为`EaseLayoutHorizontalScrollingBehavior`枚举类型，定义如下：
+
+```objective-c
+typedef NS_ENUM(NSInteger, EaseLayoutHorizontalScrollingBehavior) {
+    EaseLayoutHorizontalScrollingBehaviorNone,
+    EaseLayoutHorizontalScrollingBehaviorContinuous,
+    EaseLayoutHorizontalScrollingBehaviorPaging,
+    EaseLayoutHorizontalScrollingBehaviorItemPaging,
+    EaseLayoutHorizontalScrollingBehaviorCentered,
+};
+```
+
+
 
 ## Author
 

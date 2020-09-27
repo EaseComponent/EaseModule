@@ -56,7 +56,7 @@
         layout.itemHeight = 30;
         if (maxDisplayCountCondition) {
 //            layout.arrange = EaseLayoutArrangeHorizontal;
-            layout.maxDisplayCount = 4;
+            layout.maxDisplayCount = 3;
         } else {
             layout.maxDisplayLines = 2;
         }

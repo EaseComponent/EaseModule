@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, EaseLayoutArrange) {
     EaseLayoutArrangeVertical,
     /// 水平 方向上的布局
     EaseLayoutArrangeHorizontal,
-};
+}NS_SWIFT_NAME(EaseBaseLayout.Arrange);
 
 typedef NS_ENUM(NSInteger, EaseLayoutHorizontalScrollingBehavior) {
     EaseLayoutHorizontalScrollingBehaviorNone,
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, EaseLayoutHorizontalScrollingBehavior) {
     EaseLayoutHorizontalScrollingBehaviorPaging,
     EaseLayoutHorizontalScrollingBehaviorItemPaging,
     EaseLayoutHorizontalScrollingBehaviorCentered,
-};
+}NS_SWIFT_NAME(EaseBaseLayout.HorizontalScrollingBehavior);
 
 @protocol EaseModuleEnvironment;
 @interface EaseBaseLayout : NSObject{

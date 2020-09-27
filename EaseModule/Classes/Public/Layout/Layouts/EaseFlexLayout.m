@@ -140,13 +140,17 @@
     }
     
     if (line.count && !needDrop) {
+        BOOL lastLineNeedAppendItemToResult = NO;
+        if (_didSetupMaxDisplayCount) {
+            lastLineNeedAppendItemToResult = result.count < self.maxDisplayCount;
+        }
         // 最后一行
         [self _calculatorFlexLayoutLineMaxWidth:maxWidth - self.itemSpacing
                                            line:line
                                      lineNumber:lineNumber
                                          result:result];
-        if (_didSetupMaxDisplayCount && needDrop) {
-            
+        if (!lastLineNeedAppendItemToResult && _didSetupMaxDisplayCount) {
+            lineNumber -= 1;
         }
     } else if(needDrop){
         lineNumber -= 1;
