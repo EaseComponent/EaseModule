@@ -46,8 +46,7 @@ typedef NS_ENUM (NSUInteger, EaseWaterfallItemRenderDirection) {
 @property (nonatomic ,assign ,readonly) CGFloat itemHeight;
 /*
  最多可以展示多少个，[1,+∞]
- 当为 `EaseLayoutMaxedDisplayValue`的时候表示根据具体数据展示多少行
- 仅在 arrange 为 ...Vertical 的时候有效，为 ...Horizontal的时候默认为 1
+ 当为 `EaseLayoutMaxedDisplayValue`的时候表示根据具体数据展示多少个元素
  */
 @property (nonatomic ,assign) NSInteger maxDisplayCount;
 

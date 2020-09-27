@@ -29,18 +29,55 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 ### layout
 
-目前支持三种主流的布局样式：`list`、`flex`、`waterfall`，`grid布局`目前还在构思中，不日就会添加到项目中。目前的三种layout都支持**垂直**和**水平**两种布局样式。
+目前支持三种主流的布局样式：`list`、`flex`、`waterfall`，`grid布局`目前还在构思中，不日就会添加到项目中，目前的三种layout都支持**垂直**和**水平**两种布局样式。
 
 
 #### list
 
-常规布局效果，像是UITableView、UICollectionView的展示样式，水平效果的时候，支持设定`row`来决定行数。
+> DemoListLayoutModule
 
-* 
+常规布局效果，可以实现像是UITableView、UICollectionView这样的展示样式。
+
+在水平布局中，如果通过 `distribution` 和 `itemRatio`计算出来的 cell高度大于 `horizontalArrangeContentHeight`，则会限制为`horizontalArrangeContentHeight`。如果小于则会按照`从上之下、从左至右`的顺序进行排列。另外，还可以设置`row`来决定 `horizontalArrangeContentHeight`，此时设置 `horizontalArrangeContentHeight`将无效。
+
+* table-view like
+
+    ``` Objective-C
+    EaseListLayout * listLayout = [EaseListLayout new];
+    listLayout.lineSpacing = 0.5f;
+    listLayout.distribution = [EaseLayoutDimension distributionDimension:1];
+    listLayout.itemRatio = [EaseLayoutDimension absoluteDimension:44.0f];
+    ```
+
+* collection-view like
+
+    ``` Objective-C
+    ...
+    listLayout.distribution = [EaseLayoutDimension distributionDimension:3];
+    listLayout.itemRatio = [EaseLayoutDimension fractionalDimension:0.8];
+    ...
+    ```
+
+*  orthogonal scroll
+
+    ``` Objective-C
+    ...
+    listLayout.arrange = EaseLayoutArrangeHorizontal;
+    listLayout.inset = UIEdgeInsetsMake(10, 10, 10, 10);
+    listLayout.distribution = [EaseLayoutDimension fractionalDimension:0.55];
+    listLayout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
+    // 可以设置行数
+    listLayout.row = 3;
+    // 或者设置一个垂直方向的高度限制
+    //listLayout.horizontalArrangeContentHeight = 150;
+    ...
+    ```
 
 #### flex
 
-参考前端的Flex-layout功能，提供`flex-start`、`center`、`flex-end`、`space-around`、`space-between`4中效果来布局cell。改布局的水平效果不支持多行效果，只能显示`1行`。
+> DemoFlexLayoutModule
+
+参考前端的Flex-layout功能，提供`flex-start`、`center`、`flex-end`、`space-around`、`space-between`4中效果来布局cell。该布局的水平效果不支持多行效果，只能显示`1行`。
 
 * flex-start
 
@@ -119,41 +156,200 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 #### waterfall
 
-瀑布流的布局效果支持3种追加策略：`shortest first`、`left to right`、`right to left`，并且这三种策略在水平和垂直中都支持。另外，水平效果的时候还支持设置行数。
+> DemoWaterfallLayoutModule
+
+在瀑布流的垂直布局中，需要指明`column`来决定有多少列，可选的追加类型`renderDirection`有：`EaseWaterfallItemRenderShortestFirst`、`EaseWaterfallItemRenderLeftToRight`、`EaseWaterfallItemRenderRightToLeft`。
+
+与其他布局一样，水平效果的时候需要设置`horizontalArrangeContentHeight`，另外需要设置`row`来决定可以展示多少行，水平的瀑布流效果支持的数据追加类型有：`EaseWaterfallItemRenderShortestFirst`、`EaseWaterfallItemRenderBottomToTop`、`EaseWaterfallItemRenderTopToBottom`三种。
 
 * shortest first
+
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    ...
+    EaseWaterfallLayout * waterfallLayout = [EaseWaterfallLayout new];
+    waterfallLayout.column = 3;
+    waterfallLayout.renderDirection = EaseWaterfallItemRenderShortestFirst;
+    waterfallLayout;
+    ...
+    ```
 
     ![shortest first](./Resource/waterfall/shortest-first.png)
 
 * left to right
 
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    ...
+    waterfallLayout.column = 3;
+    waterfallLayout.renderDirection = EaseWaterfallItemRenderLeftToRight;
+    ...
+    ```
+
     ![left to right](./Resource/waterfall/left-to-right.png)
     
 * right to left
 
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    ...
+    waterfallLayout.column = 3;
+    waterfallLayout.renderDirection = EaseWaterfallItemRenderRightToLeft;
+    ...
+    ```
+    
     ![right to left](./Resource/waterfall/right-to-left.png)
     
 * orthogonal scroll
 
+    ``` Objective-C
+    // in SomeComponent.m
+    
+    ...
+    waterfallLayout.row = 3;
+    waterfallLayout.horizontalArrangeContentHeight = 300;
+    waterfallLayout.arrange = EaseLayoutArrangeHorizontal;
+    waterfallLayout.renderDirection = EaseWaterfallItemRenderBottomToTop;
+    ...
+    ```
+    
     ![orthogonal scroll](./Resource/waterfall/orthogonal-scroll.png)
+
+
+### headerPin
+
+
 
 ### placehold
 
+> DemoLivingModule
+
 以上3中布局效果都支持placehold功能，在没有数据的时候为Component设置`needPlacehold`以及`placeholdHeight`，然后返回对应的cell即可。
 
+由于3中布局都支持水平方向的展示，因此`placeholdHeight`可能会和`horizontalArrangeContentHeight`有计算上的冲突，这个时候以`placeholdHeight`为计算高度。
 
 ### decorate
 
-除了提供为section添加背景颜色这样的功能外，还增加了`图片`、`渐变`、`阴影`效果，同时这些功能都支持decorate的区域。
+> DemoBackgroundDecorateModule
+
+针对装饰功能，使用**builder模式**来实现。
+
+除了提供为section添加背景颜色这样的基础功能外，还增加了`图片`、`渐变`、`阴影`效果，这个主要同时设置builder的`contents`属性来完成，它是一个具体的类的实例：`EaseComponentDecorateContents`。同时还支持设置圆角`radius`，边距`inset`。
+
+除了提供以上功能，还支持背景区域的包含范围，通过设置builder的`decorate`属性来决定，这是一个`EaseComponentDecorate`枚举，他的定义如下：
+
+``` c
+typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
+    /// 没有背景装饰效果
+    EaseComponentDecorateNone,
+    /// 只有item
+    EaseComponentDecorateOnlyItem,
+    /// header+item
+    EaseComponentDecorateContainHeader,
+    /// item+footer
+    EaseComponentDecorateContainFooter,
+    /// header+item+footer
+    EaseComponentDecorateAll,
+};
+```
 
 * 背景颜色
 
+    ``` Objective-C
+    // in someModule.m
+    DemoBackgroundDecorateComponent * comp = [DemoBackgroundDecorateComponent new];
+    comp.layout.inset = UIEdgeInsetsMake(100, 20, 10, 20);
+    [comp addDecorateWithBuilder:^(id<EaseComponentDecorateAble>  _Nonnull builder) {
+        builder.decorate = EaseComponentDecorateOnlyItem;
+        builder.radius = 4.0f;
+        builder.contents = ({
+            EaseComponentDecorateContents * contents =
+            [EaseComponentDecorateContents colorContents:[UIColor colorWithHexString:@"#8091a5"]];
+            contents;
+        });
+    }];
+    ...
+    ```
+
+
 * 图片
+
+    ``` Objective-C
+    // in someModule.m
+    ...
+    [comp addDecorateWithBuilder:^(id<EaseComponentDecorateAble>  _Nonnull builder) {
+        builder.decorate = EaseComponentDecorateOnlyItem;
+        builder.radius = 10.0f;
+        builder.inset = UIEdgeInsetsMake(0, -10, 0, -10);
+        builder.contents = ({
+            EaseComponentDecorateContents * contents =
+            [EaseComponentDecorateContents imageContents:[UIImage imageNamed:@"forbid"]];
+            contents;
+        });
+    }];
+    ...
+    ```
 
 * 渐变
 
+    ``` Objective-C
+    ...
+    [comp addDecorateWithBuilder:^(id<EaseComponentDecorateAble>  _Nonnull builder) {
+        builder.decorate = EaseComponentDecorateOnlyItem;
+        builder.radius = 4.0f;
+        builder.inset = UIEdgeInsetsMake(0, -10, 0, -10);
+        builder.contents = ({
+            EaseComponentDecorateContents * contents =
+            [EaseComponentDecorateContents gradientContents:^(id<EaseComponentDecorateGradientContentsAble>  _Nonnull contents) {
+                contents.startPoint = CGPointMake(0.5, 0);
+                contents.endPoint = CGPointMake(0.5, 1);
+                contents.colors = @[
+                    [UIColor colorWithHexString:@"#FF9E5C"],
+                    [UIColor colorWithHexString:@"#FF659F"]
+                ];
+                contents.locations = @[@(0), @(1.0f)];
+            }];
+            contents;
+        });
+    }];
+    ```
+
 * 阴影
 
+    ``` Objective-C
+    ...
+    [comp addDecorateWithBuilder:^(id<EaseComponentDecorateAble>  _Nonnull builder) {
+        builder.decorate = EaseComponentDecorateOnlyItem;
+        builder.radius = 4.0f;
+        builder.inset = UIEdgeInsetsMake(0, -10, 0, -10);
+        [builder setContents:({
+            EaseComponentDecorateContents * contents =
+            [EaseComponentDecorateContents colorContents:[UIColor whiteColor]];
+            contents.shadowColor = [UIColor redColor];
+            contents.shadowOffset = CGSizeMake(0, 0);
+            contents.shadowOpacity = 0.5;
+            contents.shadowRadius = 3;
+            contents;
+        })];
+    }];
+    ```
+
+### maxDisplay
+
+> DemoSearchModule
+
+最大展示功能在不同的布局中有不同的体现。
+
+比如由于计算的原因，`EaseWaterfallLayout`中只能限制最大展示个数：`maxDisplayCount`。
+
+而在`EaseFlexLayout`中，垂直布局可以分别设置最大显示行数：`maxDisplayLines`以及最大显示个数：`maxDisplayCount`，但是在水平布局中只能设置`maxDisplayCount`。
+
+对于`EaseListLayout`来说，在垂直展示的时候，同时支持`maxDisplayLines`和`maxDisplayCount`，但是在水平布局的时候由于行数可以根据`row`来决定，所以仅支持`maxDisplayCount`。
+
+> 对于既支持`maxDisplayCount`又支持`maxDisplayLines`的layout来说，如果同时设置了这两个属性，最后的计算结果将以`maxDisplayLines`为准，考虑到实际业务情况中并不会这么做，并且这么做也没有意义，但是这里还是提前做了准则。
 
 ## Installation
 

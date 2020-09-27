@@ -52,6 +52,11 @@ typedef NS_ENUM(NSInteger, EaseFlexLayoutGravity) {
  仅在 arrange 为 ...Vertical 的时候有效，为 ...Horizontal的时候默认为 1
  */
 @property (nonatomic ,assign) NSInteger maxDisplayLines;
+/*
+ 最多可以展示多少个，[1,+∞]
+ 当为 `EaseLayoutMaxedDisplayValue`的时候表示根据具体数据展示多少个
+ */
+@property (nonatomic ,assign) NSInteger maxDisplayCount;
 
 @property (nonatomic ,weak) id<EaseFlexLayoutDelegate> delegate;
 @end
