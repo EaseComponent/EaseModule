@@ -33,6 +33,13 @@ static NSDictionary * demoData;
                     @"#java#",
                     @"#js#"
             ],
+            @"languages-orthogonal":@[
+                    @"#swift#",
+                    @"#java#",
+                    @"#js#",
+                    @"#flutter#",
+                    @"#oc#",
+            ],
             @"weather":@[@"晴天",@"阴天",@"雨天",@"大风",@"雷电",@"冰雹",@"大雪",@"小雪"],
             @"city":@[
                     @"上海",
@@ -132,6 +139,7 @@ EaseWaterfallLayoutDelegate>
 @end
 
 @interface DemoBackgroundDecorateComponent : DemoBaseComponent
+- (instancetype)initWithTitle:(NSString *)title orthogonalScroll:(BOOL)orthogonalScroll;
 @end
 
 
@@ -284,7 +292,7 @@ EaseWaterfallLayoutDelegate>
         DemoWaterfallComponent * comp = [[DemoWaterfallComponent alloc] initWithTitle:@"EaseWaterfallLayout：orthogonal scroll"];
         [comp setupWaterfallLayout:({
             EaseWaterfallLayout * waterfallLayout = [EaseWaterfallLayout new];
-            waterfallLayout.row = 3;
+            waterfallLayout.row = 2;
             waterfallLayout.horizontalArrangeContentHeight = 300;
             waterfallLayout.arrange = EaseLayoutArrangeHorizontal;
             waterfallLayout.renderDirection = EaseWaterfallItemRenderBottomToTop;
@@ -359,7 +367,7 @@ EaseWaterfallLayoutDelegate>
         comp;
     })];
     [self.dataSource addComponent:({
-        DemoBackgroundDecorateComponent * comp = [[DemoBackgroundDecorateComponent alloc] initWithTitle:@"BackgroundDecorate：image"];
+        DemoBackgroundDecorateComponent * comp = [[DemoBackgroundDecorateComponent alloc] initWithTitle:@"BackgroundDecorate：image & orthogonal scroll" orthogonalScroll:YES];
         comp.layout.inset = UIEdgeInsetsMake(10, 20, 130, 20);
         [comp addDecorateWithBuilder:^(id<EaseComponentDecorateAble>  _Nonnull builder) {
             builder.decorate = EaseComponentDecorateOnlyItem;
@@ -371,7 +379,7 @@ EaseWaterfallLayoutDelegate>
                 contents;
             });
         }];
-        [comp addDatas:data[@"languages"]];
+        [comp addDatas:data[@"languages-orthogonal"]];
         comp;
     })];
     [self.dataSource addComponent:({
@@ -566,7 +574,7 @@ EaseWaterfallLayoutDelegate>
     self = [super initWithTitle:title];
     if (self) {
         self.needPlacehold = YES;
-        self.placeholdHeight = 50;
+        self.placeholdHeight = 60;
         // 这里设置layout仅仅是为了测试不同layout下的placehold效果
         if (layoutType == 0) {
             EaseListLayout * layout = [EaseListLayout new];
@@ -728,12 +736,20 @@ EaseWaterfallLayoutDelegate>
 @implementation DemoBackgroundDecorateComponent
 
 - (instancetype)initWithTitle:(NSString *)title{
+    return [self initWithTitle:title orthogonalScroll:NO];
+}
+
+- (instancetype)initWithTitle:(NSString *)title orthogonalScroll:(BOOL)orthogonalScroll{
     self = [super initWithTitle:title];
     if (self) {
         EaseListLayout * listLayout = [EaseListLayout new];
         listLayout.inset = UIEdgeInsetsMake(0, 10, 0, 10);
         listLayout.distribution = [EaseLayoutDimension distributionDimension:3];
         listLayout.itemRatio = [EaseLayoutDimension fractionalDimension:183.0/267.0];
+        if (orthogonalScroll) {
+            listLayout.arrange = EaseLayoutArrangeHorizontal;
+            listLayout.row = 1;
+        }
         _layout = listLayout;
     }
     return self;;

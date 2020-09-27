@@ -11,9 +11,20 @@
 
 Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富，后者仅仅用来实现了一个Resume效果。
 
+## Installation
+
+EaseModule is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'EaseModule'
+```
+
+由于内部是使用`YTKNetwork`来担当网络请求角色的，所以会依赖`YTKNetwork`，如果有独立的网络层，可以考虑修改源码。
+
 ## Framework
 
-在使用之前可以参考这篇文章，该文章讲述了EaseModule的最初的实现架构。随着参考了更多的app，观察了更多的界面展示 ，逐渐添加了一些比较实用的功能，具体的特性下面会一一介绍。
+在使用之前可以参考[这篇文章](http://yrocky.github.io/2020/07/15/use-Self-Manager-make-Module/)，该文章讲述了EaseModule的最初的实现架构。随着参考了更多的app，观察了更多的界面展示 ，逐渐添加了一些比较实用的功能，具体的特性下面会一一介绍。
 
 在前面提到的文章中的架构中，要实现更多样的布局样式比较麻烦，更多的时候需要借助额外的UICollectionViewLayout，并且在多样式混用的时候性能还不是很理想。另外，随着iOS13、14这样的新版本release之后，苹果的主流UI样式也发生了很大的变化，更多的使用圆角，单元素圆角、区域圆角等等，像是为某个section设置背景颜色这种需求，在`UICollectionViewCompositionalLayout`布局出来之后实现起来就更简单了。
 
@@ -26,6 +37,7 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 * 无数据时候的占位效果
 * 为section添加背景、阴影效果
 * 设置当前section最多展示数量
+* 水平布局多种分页选择
 
 ### layout
 
@@ -43,6 +55,8 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 * table-view like
 
     ``` Objective-C
+    // in SomeComponent.m
+    
     EaseListLayout * listLayout = [EaseListLayout new];
     listLayout.lineSpacing = 0.5f;
     listLayout.distribution = [EaseLayoutDimension distributionDimension:1];
@@ -52,6 +66,7 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 * collection-view like
 
     ``` Objective-C
+    // in SomeComponent.m
     ...
     listLayout.distribution = [EaseLayoutDimension distributionDimension:3];
     listLayout.itemRatio = [EaseLayoutDimension fractionalDimension:0.8];
@@ -61,6 +76,7 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 *  orthogonal scroll
 
     ``` Objective-C
+    // in SomeComponent.m
     ...
     listLayout.arrange = EaseLayoutArrangeHorizontal;
     listLayout.inset = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -77,7 +93,7 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 > DemoFlexLayoutModule
 
-参考前端的Flex-layout功能，提供`flex-start`、`center`、`flex-end`、`space-around`、`space-between`4中效果来布局cell。该布局的水平效果不支持多行效果，只能显示`1行`。
+参考前端的`Flex-layout`，提供`flex-start`、`center`、`flex-end`、`space-around`、`space-between`4种效果来布局元素，该布局的水平效果不支持多行效果，只能显示`1行`。
 
 * flex-start
 
@@ -98,7 +114,6 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
     ``` Objective-C
     // in SomeComponent.m
-    
     ...
     flexLayout.justifyContent = EaseFlexLayoutCenter;
     ...
@@ -109,8 +124,7 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 * flex-end
 
     ``` Objective-C
-    // in SomeComponent.m
-    
+    // in SomeComponent.m 
     ...
     flexLayout.justifyContent = EaseFlexLayoutFlexEnd;
     ...
@@ -120,29 +134,27 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 * space-around
 
-	``` Objective-C
-	// in SomeComponent.m
-
-	...
-	flexLayout.justifyContent = EaseFlexLayoutSpaceAround;
-	...
-	```
+    ``` Objective-C
+    // in SomeComponent.m
+    ...
+    flexLayout.justifyContent = EaseFlexLayoutSpaceAround;
+    ...
+    ```
 
 	![space-around](./Resource/flex/space-around.png)
 
 * space-between
 
-	``` Objective-C
-	// in SomeComponent.m
-
-	...
-	flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
-	...
-	```
+    ``` Objective-C
+    // in SomeComponent.m
+    ...
+    flexLayout.justifyContent = EaseFlexLayoutSpaceBetween;
+    ...
+    ```
 
 	![space-between](./Resource/flex/space-between.png)
   
-* space-between
+* orthogonal scroll
 
     ``` Objective-C
     // in SomeComponent.m
@@ -219,9 +231,11 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
     ![orthogonal scroll](./Resource/waterfall/orthogonal-scroll.png)
 
 
-### headerPin
+### sticky header
 
+>  DemoMusicModule
 
+只需要为Component的`headerPin`属性设置为YES，就可以拥有一个黏性的header-view。
 
 ### placehold
 
@@ -235,11 +249,9 @@ Demo共分为Objective-C和Swift两种类型的，前者使用样式比较丰富
 
 > DemoBackgroundDecorateModule
 
-针对装饰功能，使用**builder模式**来实现。
+使用**builder模式**来实现装饰功能，除了提供为section添加背景颜色这样的基础功能外，还增加了`图片`、`渐变`、`阴影`效果，这个主要同时设置builder的`contents`属性来完成，它是一个具体的类的实例：`EaseComponentDecorateContents`。同时还支持设置圆角`radius`，边距`inset`。
 
-除了提供为section添加背景颜色这样的基础功能外，还增加了`图片`、`渐变`、`阴影`效果，这个主要同时设置builder的`contents`属性来完成，它是一个具体的类的实例：`EaseComponentDecorateContents`。同时还支持设置圆角`radius`，边距`inset`。
-
-除了提供以上功能，还支持背景区域的包含范围，通过设置builder的`decorate`属性来决定，这是一个`EaseComponentDecorate`枚举，他的定义如下：
+除了提供以上功能，还支持背景区域的包含范围，通过设置builder的`decorate`属性来决定，这是一个`EaseComponentDecorate`枚举，它的定义如下：
 
 ``` c
 typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
@@ -351,20 +363,20 @@ typedef NS_ENUM(NSInteger, EaseComponentDecorate) {
 
 > 对于既支持`maxDisplayCount`又支持`maxDisplayLines`的layout来说，如果同时设置了这两个属性，最后的计算结果将以`maxDisplayLines`为准，考虑到实际业务情况中并不会这么做，并且这么做也没有意义，但是这里还是提前做了准则。
 
-## Installation
+### scrolling behavior
 
-EaseModule is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
-```ruby
-pod 'EaseModule'
-```
-
-由于内部是使用`YTKNetwork`来担当网络请求角色的，所以会依赖`YTKNetwork`，如果有独立的网络层，可以考虑修改源码。
 
 ## Author
 
 Yrocky, 983272765@qq.com
+
+## Thanks
+
+* [IGListKit](https://github.com/Instagram/IGListKit)
+* [IBPCollectionViewCompositionalLayout](https://github.com/kishikawakatsumi/IBPCollectionViewCompositionalLayout)
+* [CHTCollectionViewWaterfallLayout](https://github.com/chiahsien/CHTCollectionViewWaterfallLayout)
+* [IGListKit](https://github.com/Instagram/IGListKit)
 
 ## License
 

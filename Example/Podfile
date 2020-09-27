@@ -16,6 +16,8 @@ target 'EaseModule_Example' do
   pod 'JXPagingView/Pager','1.1.8'
   pod 'JXCategoryView','1.5.5'
   
+  pod 'LookinServer', :configurations => ['Debug']
+  
   target 'EaseModule_Tests' do
     inherit! :search_paths
 

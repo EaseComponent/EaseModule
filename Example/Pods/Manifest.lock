@@ -21,6 +21,7 @@ PODS:
     - MJRefresh (~> 3.1.15.3)
   - JXCategoryView (1.5.5)
   - JXPagingView/Pager (1.1.8)
+  - LookinServer (1.0.0)
   - Masonry (1.1.0)
   - MJRefresh (3.1.15.7)
   - SDWebImage (4.4.8):
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - EaseRefreshProxy
   - JXCategoryView (= 1.5.5)
   - JXPagingView/Pager (= 1.1.8)
+  - LookinServer
   - Masonry (~> 1.1.0)
   - SDWebImage (~> 4.4.7)
 
@@ -44,6 +46,7 @@ SPEC REPOS:
     - AFNetworking
     - JXCategoryView
     - JXPagingView
+    - LookinServer
     - Masonry
     - MJRefresh
     - SDWebImage
@@ -63,11 +66,12 @@ SPEC CHECKSUMS:
   EaseRefreshProxy: fcc1fd22ddb979333f490434544962409cf3b4bb
   JXCategoryView: 0293fcb356f10a5c2e679dac0a1a5f1899ee0c87
   JXPagingView: 03504b0d5cec6be5aae4a5e73f34ee9668bbc2d7
+  LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   YTKNetwork: 19be749c30f0512ada07180f4637b4b67bc8ddc2
 
-PODFILE CHECKSUM: 4d88df2545502bf17d2463cef68445a137313758
+PODFILE CHECKSUM: 90b283ac0cc7bb2a7dbc5830d6cc5e066e880973
 
 COCOAPODS: 1.9.3

@@ -145,20 +145,27 @@ static const NSInteger unionSize = 50;
         // items
         NSInteger itemCount = [collectionView numberOfItemsInSection:section];
         NSMutableArray * itemAttributes = [NSMutableArray new];
+        
+        BOOL currentCompWasEmptyAndNeedPlacehold =
+        component.dataCount == 0 &&
+        component.needPlacehold &&
+        (component.placeholdHeight > 0);
+        
         if (component.isOrthogonallyScrolls &&
             self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            CGRect frame = CGRectZero;
-            frame.origin.y = top;
-            frame.origin.x = layout.inset.left;
-            frame.size.width = layout.insetContainerWidth;
-            frame.size.height = layout.horizontalArrangeContentHeight;
-            attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:({
-                [NSIndexPath indexPathForItem:0 inSection:section];
-            })];
-            attributes.frame = frame;
-            [itemAttributes addObject:attributes];
-            [self.allItemAttributes addObject:attributes];
-            
+            if (!currentCompWasEmptyAndNeedPlacehold) {
+                CGRect frame = CGRectZero;
+                frame.origin.y = top;
+                frame.origin.x = layout.inset.left;
+                frame.size.width = layout.insetContainerWidth;
+                frame.size.height = layout.horizontalArrangeContentHeight;
+                attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:({
+                    [NSIndexPath indexPathForItem:0 inSection:section];
+                })];
+                attributes.frame = frame;
+                [itemAttributes addObject:attributes];
+                [self.allItemAttributes addObject:attributes];
+            }
         } else {
             for (NSInteger item = 0; item < itemCount; item++) {
                 CGRect frame = [layout itemFrameAtIndex:item];
@@ -173,25 +180,24 @@ static const NSInteger unionSize = 50;
                 [itemAttributes addObject:attributes];
                 [self.allItemAttributes addObject:attributes];
             }
-            if (component.dataCount == 0 &&
-                component.needPlacehold &&
-                (component.placeholdHeight > 0)) {
-                
-                attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:({
-                    [NSIndexPath indexPathForItem:0 inSection:section];
-                })];
-                attributes.frame = (CGRect){
-                    layout.inset.left, top,
-                    layout.insetContainerWidth,component.placeholdHeight
-                };
-                [itemAttributes addObject:attributes];
-                [self.allItemAttributes addObject:attributes];
-                top += component.placeholdHeight;
-            }
+        }
+        if (currentCompWasEmptyAndNeedPlacehold) {
+            
+            attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:({
+                [NSIndexPath indexPathForItem:0 inSection:section];
+            })];
+            attributes.frame = (CGRect){
+                layout.inset.left, top,
+                layout.insetContainerWidth,
+                component.placeholdHeight
+            };
+            [itemAttributes addObject:attributes];
+            [self.allItemAttributes addObject:attributes];
+            top += component.placeholdHeight;
         }
         [self.sectionItemAttributes addObject:itemAttributes];
-        //
-        if (!component.empty) {
+        
+        if (!component.empty && !currentCompWasEmptyAndNeedPlacehold) {
             top += layout.contentHeight;
             top += layout.inset.bottom;
         }
