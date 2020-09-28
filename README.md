@@ -32,23 +32,20 @@ pod 'EaseModule'
 
 ## How to use
 
-`EaseModule`主要的目的是将具体业务场景下的展示进行组件化，所以主要业务逻辑都是在`Module`和`Component`中进行。
+`EaseModule`主要的目的是将具体业务场景下的展示进行组件化，所以主要业务逻辑都是在`Module`和`Component`中进行：Module中处理数据和一些业务逻辑，Component中提供布局和具体的样式。
 
 1.创建一个业务Module
 
 ``` objective-c
-
 // in DemoModule.h
 
 @interface DemoModule : EaseModule
-
 @end
 ```
 
 2.重写`-fetchModuleRequest`返回对应的请求，在`-parseModuleDataWithRequest:`方法中对请求数据进行处理，主要是根据业务进行Component的转换。
 
 ``` objective-c
-
 // in DemoModule.m
 
 - (__kindof YTKRequest *)fetchModuleRequest{
@@ -69,7 +66,6 @@ pod 'EaseModule'
 `SomeComponent`是`EaseComponent`的子类，内部需要创建对应的`layout`来决定布局，指明要展示数据的cell，以及可选创建placehold cell、header view、footer view等。
 
 ``` objective-c
-
 // in SomeComponent.m
 
 - (instancetype) init{
@@ -94,13 +90,10 @@ pod 'EaseModule'
 3.在视图控制器中使用Module
 
 ``` objective-c
-
 // in ViewController.m
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    @weakify(self);
     
     // collectionvView
     self.collectionView = [UICollectionView new];
@@ -111,35 +104,20 @@ pod 'EaseModule'
     self.module.delegate = self;
     [self.module setupViewController:self 
                       collectionView:self.collectionView];
-    
-    // refresh proxy
-    self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.collectionView];
-    [self.refreshProxy addRefresh:^(NSInteger index) {
-        @strongify(self);
-        [self.module refresh];
-    }];
-    if (self.module.shouldLoadMore) {
-        [self.refreshProxy addLoadMore:@"人家也是有底线的" callback:^(NSInteger index) {
-            @strongify(self);
-            [self.module loadMore];
-        }];
-    }
+		[self.module refresh];
 }
 ```
 
 4.Module还提供了`EaseModuleDelegate`协议的代理，以供对网络请求回调进行处理。
 
 ``` objective-c
-
 // in ViewController.m
 
 - (void)liveModuleDidSuccessUpdateComponent:(EaseModule *)module{
-    [self.refreshProxy endRefreshOrLoadMore];
     [self.collectionView reloadData];
 }
 
 - (void)liveModule:(EaseModule *)module didFailUpdateComponent:(NSError *)error{
-    [self.refreshProxy endRefreshOrLoadMore];
     [module.dataSource clear];
     [self.collectionView reloadData];
 }
