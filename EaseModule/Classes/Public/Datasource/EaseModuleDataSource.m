@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredPlaceholdCellIdentifiers;
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredSupplementaryViewIdentifiers;
 
-@property (nonatomic ,strong) NSMutableDictionary<NSNumber *, QLOrthogonalScrollerSectionController *> *orthogonalScrollerSectionControllers;
+@property (nonatomic ,strong) NSMutableDictionary<NSNumber *, EaseOrthogonalScrollerSectionController *> *orthogonalScrollerSectionControllers;
 @end
 
 @implementation EaseModuleDataSource
@@ -124,7 +124,7 @@
     // 水平内嵌的
     if (component.isOrthogonallyScrolls) {
         
-        QLOrthogonalScrollerSectionController * sectionController =
+        EaseOrthogonalScrollerSectionController * sectionController =
         _orthogonalScrollerSectionControllers[@(sectionIndex)];
         
         return [sectionController dequeueReusableCell:cellClass
@@ -413,21 +413,21 @@
                 cell = [comp cellForItemAtIndex:indexPath.item];
             } else {
                 
-                QLOrthogonalScrollerEmbeddedCCell * ccell = [self collectionView:self.collectionView dequeueReusableCell:({
+                EaseOrthogonalScrollerEmbeddedCCell * ccell = [self collectionView:self.collectionView dequeueReusableCell:({
                     self.registeredCellIdentifiers;
                 }) withReuseIdentifier:({
-                    QLOrthogonalScrollerEmbeddedCCell.reuseIdentifier;
+                    EaseOrthogonalScrollerEmbeddedCCell.reuseIdentifier;
                 }) cellClass:({
-                    QLOrthogonalScrollerEmbeddedCCell.class;
+                    EaseOrthogonalScrollerEmbeddedCCell.class;
                 }) atIndexPath:indexPath];
 
-                QLOrthogonalScrollerSectionController * sectionController;
+                EaseOrthogonalScrollerSectionController * sectionController;
                 sectionController = _orthogonalScrollerSectionControllers[@(indexPath.section)];
                 
                 EaseOrthogonalScrollerEmbeddedScrollView * scrollView;
                 scrollView = ccell.orthogonalScrollView;
     
-                sectionController = [[QLOrthogonalScrollerSectionController alloc] initWithSectionIndex:indexPath.section collectionView:self.collectionView scrollView:scrollView];
+                sectionController = [[EaseOrthogonalScrollerSectionController alloc] initWithSectionIndex:indexPath.section collectionView:self.collectionView scrollView:scrollView];
                 switch (comp.layout.horizontalScrollingBehavior) {
                     case EaseLayoutHorizontalScrollingBehaviorNone:
                     case EaseLayoutHorizontalScrollingBehaviorContinuous:

@@ -30,6 +30,115 @@ pod 'EaseModule'
 
 在这样的背景下，重新优化了项目的架构，使用一个私有的`EaseModuleFlowLayout : UICollectionViewFlowLayout`布局类来强化布局，为提供更多布局效果的核心，提供`EaseBaseLayout`及子类来完成具体的布局效果，主要是将以前`Layout`部分中的功能分离成常用的布局效果。
 
+## How to use
+
+`EaseModule`主要的目的是将具体业务场景下的展示进行组件化，所以主要业务逻辑都是在`Module`和`Component`中进行。
+
+1.创建一个业务Module
+
+``` objective-c
+
+// in DemoModule.h
+@interface DemoModule : EaseModule
+
+@end
+```
+
+2.重写`-fetchModuleRequest`返回对应的请求，在`-parseModuleDataWithRequest:`方法中对请求数据进行处理，主要是根据业务进行Component的转换。
+
+``` objective-c
+
+- (__kindof YTKRequest *)fetchModuleRequest{
+    return SomeRequest.new;
+}
+
+- (void)parseModuleDataWithRequest:(__kindof YTKRequest *)request{
+
+    [self.dataSource addComponent:({
+        SomeComponent * comp = 
+        [[SomeComponent alloc] init];
+        [comp addDatas:request.datas];
+        comp;
+    })];
+}
+```
+
+`SomeComponent`是`EaseComponent`的子类，内部需要创建对应的`layout`来决定布局，指明要展示数据的cell，以及可选创建placehold cell、header view、footer view等。
+
+``` objective-c
+
+// in SomeComponent.m
+- (instancetype) init{
+    self = [super init];
+    if (self) {
+        EaseListLayout * layout = [EaseListLayout new];
+        layout.distribution = [EaseLayoutDimension distributionDimension:1];
+        layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
+        _layout = layout;
+    }
+    return self;;
+}
+
+- (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
+    
+    UICollectionViewCell * ccell = [self.dataSource dequeueReusableCellOfClass:UICollectionViewCell.class forComponent:self atIndex:index];
+    ...
+    return ccell;
+}
+```
+
+3.在视图控制器中使用Module
+
+``` objective-c
+
+// in ViewController.m
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    @weakify(self);
+    
+    // collectionvView
+    self.collectionView = [UICollectionView new];
+    ...
+    
+    // module
+    self.module = [[DemoModule alloc] initWithName:@"Home"];
+    self.module.delegate = self;
+    [self.module setupViewController:self 
+                      collectionView:self.collectionView];
+    
+    // refresh proxy
+    self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.collectionView];
+    [self.refreshProxy addRefresh:^(NSInteger index) {
+        @strongify(self);
+        [self.module refresh];
+    }];
+    if (self.module.shouldLoadMore) {
+        [self.refreshProxy addLoadMore:@"人家也是有底线的" callback:^(NSInteger index) {
+            @strongify(self);
+            [self.module loadMore];
+        }];
+    }
+}
+```
+
+4.Module还提供了`EaseModuleDelegate`协议的代理，以供对网络请求回调进行处理。
+
+``` objective-c
+
+- (void)liveModuleDidSuccessUpdateComponent:(EaseModule *)module{
+    [self.refreshProxy endRefreshOrLoadMore];
+    [self.collectionView reloadData];
+}
+
+- (void)liveModule:(EaseModule *)module didFailUpdateComponent:(NSError *)error{
+    [self.refreshProxy endRefreshOrLoadMore];
+    [module.dataSource clear];
+    [self.collectionView reloadData];
+}
+```
+
 ## Feature
 
 * 多样、实用的布局
@@ -243,13 +352,62 @@ pod 'EaseModule'
 
 以上3中布局效果都支持placehold功能，在没有数据的时候为Component设置`needPlacehold`以及`placeholdHeight`，然后返回对应的cell即可。
 
-由于3中布局都支持水平方向的展示，因此`placeholdHeight`可能会和`horizontalArrangeContentHeight`有计算上的冲突，基于无数据的占位显示这样的使用场景，这个时候以`placeholdHeight`为最终的展示高度。
+由于3种布局都支持水平方向的展示，因此`placeholdHeight`可能会和`horizontalArrangeContentHeight`有计算上的冲突，基于无数据占位显示这样的使用场景，这个时候以`placeholdHeight`为最终的展示高度。
+
+``` objective-c
+
+// in SomeComponent.m
+
+- (instancetype) init{
+    self = [super init];
+    if (self) {
+        self.needPlacehold = YES;
+        self.placeholdHeight = 60;
+        ...
+    }
+    return self;
+}
+
+- (__kindof UICollectionViewCell *)placeholdCellForItemAtIndex:(NSInteger)index{
+    
+    DemoPlaceholdCCell * ccell = [self.dataSource dequeueReusablePlaceholdCellOfClass:DemoPlaceholdCCell.class forComponent:self];
+    return ccell;
+}
+
+- (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
+    ...
+}
+
+...
+
+```
+
+在Module中将该component进行添加，如果通过`-addDatas:`为component添加的数组有数据，则展示其通过`-cellForItemAtIndex:`指定的cell，如果数组中没有数据就会展示通过`-placeholdCellForItemAtIndex:`指定的占位cell。
+
+``` objective-c
+
+// in SomeModule.m
+
+...
+
+- (void)parseModuleDataWithRequest:(__kindof YTKRequest *)request{
+
+    ...
+    [self.dataSource addComponent:({
+        SomeComponent * comp = 
+        [[SomeComponent alloc] init];
+        [comp addDatas:@[]];
+        comp;
+    })];
+    ...
+}
+```
 
 ### decorate
 
 > DemoBackgroundDecorateModule
 
-使用**builder模式**来实现装饰功能，除了提供为section添加背景颜色这样的基础功能外，还增加了`图片`、`渐变`、`阴影`效果，这个主要同时设置builder的`contents`属性来完成，它是一个具体的类的实例：`EaseComponentDecorateContents`。同时还支持设置圆角`radius`，边距`inset`。
+使用**builder模式**来实现装饰功能，除了提供为section添加背景颜色这样的基础功能外，还增加了`图片`、`渐变`、`阴影`效果，这个主要通过设置builder的`contents`属性来完成，它是`EaseComponentDecorateContents`类的实例。同时还支持设置圆角`radius`，边距`inset`。
 
 除了提供以上功能，还支持背景区域的包含范围，通过设置builder的`decorate`属性来决定，这是一个`EaseComponentDecorate`枚举，它的定义如下：
 

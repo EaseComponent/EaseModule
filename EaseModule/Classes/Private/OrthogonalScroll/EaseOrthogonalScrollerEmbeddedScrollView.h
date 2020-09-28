@@ -14,14 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface QLOrthogonalScrollerEmbeddedCCell : UICollectionViewCell
+@interface EaseOrthogonalScrollerEmbeddedCCell : UICollectionViewCell
 
 @property (nonatomic ,strong ,readonly) EaseOrthogonalScrollerEmbeddedScrollView * orthogonalScrollView;
 
 + (NSString *) reuseIdentifier;
 @end
 
-@interface QLOrthogonalScrollerSectionController: NSObject
+@interface EaseOrthogonalScrollerSectionController: NSObject
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic) EaseOrthogonalScrollerEmbeddedScrollView *scrollView;

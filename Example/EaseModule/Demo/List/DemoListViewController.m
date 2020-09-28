@@ -108,7 +108,7 @@ UICollectionViewDelegate>
     NSLog(@"[home] %@ disappear", self.module.name);
 }
 
-#pragma mark - QLHomeModuleDelegate
+#pragma mark - EaseModuleDelegate
 
 - (void)liveModuleDidSuccessUpdateComponent:(EaseModule *)module{
     [self.refreshProxy endRefreshOrLoadMore];
@@ -117,15 +117,7 @@ UICollectionViewDelegate>
 
 - (void)liveModule:(EaseModule *)module didFailUpdateComponent:(NSError *)error{
     [self.refreshProxy endRefreshOrLoadMore];
-//    [BBanProgressHUD dismissForView:self.view];
-//    self.bban_NetworkIsDisconnected = YES;
-//    if ([erroe isKindOfClass:BBanResponseError.class]) {
-//        [QLMBManager showBriefAlert:erroe.message time:1];
-//    } else if ([erroe isKindOfClass:NSString.class]) {
-//        [QLMBManager showBriefAlert:(NSString *)erroe time:1];
-//    } else {
-//        [QLMBManager showBriefAlert:@"请求出错" time:1];
-//    }
+
     [module.dataSource clear];
     [self.collectionView reloadData];
 }
