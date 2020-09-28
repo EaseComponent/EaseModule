@@ -39,6 +39,7 @@ pod 'EaseModule'
 ``` objective-c
 
 // in DemoModule.h
+
 @interface DemoModule : EaseModule
 
 @end
@@ -47,6 +48,8 @@ pod 'EaseModule'
 2.重写`-fetchModuleRequest`返回对应的请求，在`-parseModuleDataWithRequest:`方法中对请求数据进行处理，主要是根据业务进行Component的转换。
 
 ``` objective-c
+
+// in DemoModule.m
 
 - (__kindof YTKRequest *)fetchModuleRequest{
     return SomeRequest.new;
@@ -68,6 +71,7 @@ pod 'EaseModule'
 ``` objective-c
 
 // in SomeComponent.m
+
 - (instancetype) init{
     self = [super init];
     if (self) {
@@ -126,6 +130,8 @@ pod 'EaseModule'
 4.Module还提供了`EaseModuleDelegate`协议的代理，以供对网络请求回调进行处理。
 
 ``` objective-c
+
+// in ViewController.m
 
 - (void)liveModuleDidSuccessUpdateComponent:(EaseModule *)module{
     [self.refreshProxy endRefreshOrLoadMore];
