@@ -28,11 +28,11 @@ pod 'EaseModule'
 
 在前面提到的文章中的架构中，要实现更多样的布局样式比较麻烦，更多的时候需要借助额外的UICollectionViewLayout，并且在多样式混用的时候性能还不是很理想。另外，随着iOS13、14这样的新版本release之后，苹果的主流UI样式也发生了很大的变化，更多的使用圆角，单元素圆角、区域圆角等等，像是为某个section设置背景颜色这种需求，在`UICollectionViewCompositionalLayout`布局出来之后实现起来就更简单了。
 
-在这样的背景下，重新优化了项目的架构，使用一个私有的`EaseModuleFlowLayout : UICollectionViewFlowLayout`布局类来强化布局，为提供更多布局效果的核心，提供`EaseBaseLayout`及子类来完成具体的布局效果，主要是将以前`Layout`部分中的功能分离成常用的布局效果。
+在这样的背景下，重新优化了项目的架构，使用一个私有的`EaseModuleFlowLayout : UICollectionViewFlowLayout`布局类来强化布局，为提供更多布局效果的核心，提供`EaseBaseLayout`及子类来完成具体的布局效果，主要是将以前`Layout`部分中的功能分离成常用的布局效果。同时提供更多业务场景下的Module类，以应对更多的业务逻辑。
 
 ## How to use
 
-`EaseModule`主要的目的是将具体业务场景下的展示进行组件化，所以主要业务逻辑都是在`Module`和`Component`中进行：Module中处理数据和一些业务逻辑，Component中提供布局和具体的样式。
+`EaseModule`主要的目的是将具体业务场景下的展示进行组件化，所以主要业务逻辑都是在`Module`和`Component`中进行处理的：Module中处理数据和一些业务逻辑、Component中提供布局和具体的样式。
 
 1.创建一个业务Module
 
@@ -76,12 +76,12 @@ pod 'EaseModule'
         layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
         _layout = layout;
     }
-    return self;;
+    return self;
 }
 
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     
-    UICollectionViewCell * ccell = [self.dataSource dequeueReusableCellOfClass:UICollectionViewCell.class forComponent:self atIndex:index];
+    YourCustomCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YourCustomCCell.class forComponent:self atIndex:index];
     ...
     return ccell;
 }
@@ -118,8 +118,7 @@ pod 'EaseModule'
 }
 
 - (void)liveModule:(EaseModule *)module didFailUpdateComponent:(NSError *)error{
-    [module.dataSource clear];
-    [self.collectionView reloadData];
+    // show Toast with error
 }
 ```
 
@@ -135,7 +134,12 @@ pod 'EaseModule'
 
 ### module
 
-`EaseModule`作为一个抽象类，仅仅提供在模块中的一些公有逻辑处理，针对不同的业务场景，具象化了几个子类：`EaseCompositeModule`、`EaseSingleModule`、`EasePureListModule`、`EaseBatchModule`、`EaseChainModule`。
+`EaseModule`作为一个抽象类，仅仅提供在模块中的一些公有逻辑处理，针对不同的业务场景，具象化了几个子类：
+* `EaseCompositeModule`，具有**嵌套功能**的容器Module
+* `EaseSingleModule`，提供**单个网络请求**的Module
+* `EasePureListModule`，提供单个请求下**单一展示样式**的Module
+* `EaseBatchModule`，提供多网络请求**并行**业务下的Module
+* `EaseChainModule`，提供多网络请求**串行**业务下的Module
 
 下拉刷新、上拉加载等基础功能都在`EaseModule`中，另外上拉加载可能会与下拉刷新的网络请求不同，可以通过设置`loadMoreDifferentWithRefresh`属性，然后重写具体子类的`-loadMoreRequest`方法返回对应的请求。
 
