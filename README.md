@@ -39,7 +39,7 @@ pod 'EaseModule'
 ``` objective-c
 // in DemoModule.h
 
-@interface DemoModule : EaseModule
+@interface DemoModule : EaseSingleModule
 @end
 ```
 
@@ -104,7 +104,7 @@ pod 'EaseModule'
     self.module.delegate = self;
     [self.module setupViewController:self 
                       collectionView:self.collectionView];
-		[self.module refresh];
+    [self.module refresh];
 }
 ```
 
@@ -191,7 +191,7 @@ EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"
 }
 ```
 
-默认`refresh`和`loadMore`操作都会使用同一个request，当`loadMore`操作是一个不同于`refresh`操作的请求的时候，可以设置`loadMoreDifferentWithRefresh`为YES，并且重写`-loadMoreRequest`方法来完成这个业务逻辑。
+默认`refresh`和`loadMore`操作都会使用同一个request，当`loadMore`操作为不同于`refresh`操作请求的时候，可以通过设置`loadMoreDifferentWithRefresh`为YES，并且重写`-loadMoreRequest`方法来完成这个业务逻辑。
 
 ``` Objective-C
 // in SomeModule.m
@@ -248,9 +248,9 @@ EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"
 
 > DemoNewsModule
 
-复杂的模块中，可能会有不止一个网络请求，如果是并行的多个请求，可以使用`EaseBatchModule`，如果是串行的的可以使用`EaseChainModule`。
+复杂的模块中，可能会有不止一个网络请求，如果是并行的多个请求，可以使用`EaseBatchModule`；如果是串行的的可以使用`EaseChainModule`。
 
-这两个Module都可以选择在所有请求结束之后做数据映射，也可以在每一个请求结束之后做映射，通过重写`-queueType`返回`EaseQueueRequestModuleType`类型来决定。子类需要重写`-fetchModuleRequests`来设定所有请求，可以通过`-parseModuleDataWithRequest:`来对请求数据进行解析。
+这两个Module都可以选择在所有请求结束之后做数据映射，也可以选择在每一个请求结束之后做映射，通过重写`-queueType`返回`EaseQueueRequestModuleType`类型来决定。子类需要重写`-fetchModuleRequests`来设定所有请求，通过`-parseModuleDataWithRequest:`来对请求数据进行解析，需要说明的是，如果是`EaseChainModule`，数组的顺序就是请求的执行先后顺序
 
 ``` Objective-C
 // in SomeModule.m
