@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DemoMineModule : EaseModule
+@interface DemoMineModule : EaseSingleModule
 
 @end
 

@@ -98,7 +98,7 @@ UICollectionViewDelegate>
     
     self.module.didAppeared = YES;
     // 出现的时候刷新数据
-    [self.module refresh];
+//    [self.module refresh];
     
     NSLog(@"[home] %@ appear",self.module.name);
 }
@@ -110,16 +110,17 @@ UICollectionViewDelegate>
 
 #pragma mark - EaseModuleDelegate
 
-- (void)liveModuleDidSuccessUpdateComponent:(EaseModule *)module{
+- (void)moduleDidSuccessUpdateComponent:(EaseModule *)module{
     [self.refreshProxy endRefreshOrLoadMore];
     [self.collectionView reloadData];
 }
 
-- (void)liveModule:(EaseModule *)module didFailUpdateComponent:(NSError *)error{
+- (void)module:(EaseModule *)module didFailUpdateComponent:(NSError *)error{
     [self.refreshProxy endRefreshOrLoadMore];
 
     [module.dataSource clear];
     [self.collectionView reloadData];
+    NSLog(@"[vc] error:%@",error);
 }
 
 @end

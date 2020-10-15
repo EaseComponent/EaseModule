@@ -13,7 +13,7 @@
 
 @end
 
-@interface DemoModule : EaseModule
+@interface DemoModule : EaseSingleModule
 - (void) setupComponents:(NSDictionary *)data;
 @end
 

@@ -125,12 +125,158 @@ pod 'EaseModule'
 
 ## Feature
 
+* 更贴近实际业务的module
 * 多样、实用的布局
 * 黏性header
 * 无数据时候的占位效果
 * 为section添加背景、阴影效果
 * 设置当前section最多展示数量
 * 水平布局多种分页选择
+
+### module
+
+`EaseModule`作为一个抽象类，仅仅提供在模块中的一些公有逻辑处理，针对不同的业务场景，具象化了几个子类：`EaseCompositeModule`、`EaseSingleModule`、`EasePureListModule`、`EaseBatchModule`、`EaseChainModule`。
+
+下拉刷新、上拉加载等基础功能都在`EaseModule`中，另外上拉加载可能会与下拉刷新的网络请求不同，可以通过设置`loadMoreDifferentWithRefresh`属性，然后重写具体子类的`-loadMoreRequest`方法返回对应的请求。
+
+#### composite
+
+> DemoCompositeListViewController
+
+主要用于Module中会嵌套多Module的场景，`EaseCompositeModule`仅用来作为一个容器子类，没有具体的业务逻辑，只有对子模块的承载，使用`-addModule:`添加子模块，通过`-modules`来获取子模块，需要说明的是，嵌套是支持多层的。
+
+``` Objective-C
+// in SomeViewController
+
+EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"];
+[module addModule:someSubEaseModuleObj];
+...
+[module addModule:({
+    EaseCompositeModule * demoModule = [[EaseCompositeModule alloc] initWithName:@"DEMO"];
+    [demoModule addModule:someSubEaseModuleObj];
+    ...
+    demoModule;
+})];
+```
+
+#### single
+
+> DemoNewsModule
+
+一般来说，Module都是通过网络请求驱动的，并且更多的时候是只需要一个网络请求即可，所以这里提供了单个网络请求驱动的`EaseSingleModule`。子类只需要重写下面两个方法，分别提供网络抽象类（这里使用的是YTKRequest）、针对网络请求数据进行解析。
+
+``` Objective-C
+/// 当前module的网络请求
+- (__kindof YTKRequest *) fetchModuleRequest;
+
+/// 根据网络数据进行解析，解析出来对应的Component
+- (void) parseModuleDataWithRequest:(__kindof YTKRequest *)request;
+```
+    
+重写`-parseModuleDataWithRequest:`方法，在内部根据网络数据映射成对应的`Component`，然后将component添加到`DataSource`中：
+
+``` Objective-C
+// in SomeModule.m
+
+- (__kindof YTKRequest *)fetchModuleRequest{
+    return SomeRequest.new;
+}
+
+- (void) parseModuleDataWithRequest:(SomeRequest *)request{
+    
+    ...
+    [self.dataSource addComponent:oneComponentObj];
+    // or
+    [self.dataSource addComponents:someComponentObjs];
+}
+```
+
+默认`refresh`和`loadMore`操作都会使用同一个request，当`loadMore`操作是一个不同于`refresh`操作的请求的时候，可以设置`loadMoreDifferentWithRefresh`为YES，并且重写`-loadMoreRequest`方法来完成这个业务逻辑。
+
+``` Objective-C
+// in SomeModule.m
+
+- (instancetype)initWithName:(NSString *)name{
+    self = [super initWithName:name];
+    if (self) {
+        ...
+        self.loadMoreDifferentWithRefresh= YES;
+    }
+    return self;
+}
+
+...
+- (__kindof YTKRequest *)loadMoreRequest{
+    return [SomeLoadMoreRequest new];
+}
+
+```
+
+同样还是使用`-parseModuleDataWithRequest:`来完成数据的解析，只需要对不同的request做对应的数据映射即可。
+
+#### pure List
+
+单个请求驱动的Module中如果数据只有一种展示样式，或者说，网络数据只会映射成`一种Component`，可以使用`EasePureListModule`。该Module提供了两种数据处理方式：整体替换、追加，使用`EasePureListModuleType`来表示。
+
+``` Objective-C
+// in SomeModule.m
+
+- (EasePureListModuleType) pureListModuleType{
+    return EasePureListModuleAppend;
+}
+
+/// 指明comp的类型
+- (Class) pureListComponentClass{
+    return SomeComponent.class;
+}
+
+- (__kindof YTKRequest *)fetchModuleRequest{
+    return SomeRequest.new;
+}
+
+- (void)parseModuleDataWithRequest:(SomeRequest *)request{
+    // 如果没有其他逻辑，可以直接写这行代码完成数据的映射
+    [self setupPureComponentWithDatas:request.datas];
+    
+    // 如果还有其他逻辑，可以获取到 SomeComponent 的实例对象
+    SomeComponent * comp = [self setupPureComponentWithDatas:request.datas];
+    // 然后对comp进行一些具体的逻辑处理
+}
+```
+
+#### queue
+
+> DemoNewsModule
+
+复杂的模块中，可能会有不止一个网络请求，如果是并行的多个请求，可以使用`EaseBatchModule`，如果是串行的的可以使用`EaseChainModule`。
+
+这两个Module都可以选择在所有请求结束之后做数据映射，也可以在每一个请求结束之后做映射，通过重写`-queueType`返回`EaseQueueRequestModuleType`类型来决定。子类需要重写`-fetchModuleRequests`来设定所有请求，可以通过`-parseModuleDataWithRequest:`来对请求数据进行解析。
+
+``` Objective-C
+// in SomeModule.m
+
+...
+- (NSArray<__kindof YTKRequest *> *)fetchModuleRequests{
+    return @[
+        OneRequest.new,
+        OtherRequest.new
+    ];
+}
+
+- (EaseQueueRequestModuleType)queueType{
+    return EaseQueueRequestModuleAllDone;
+}
+
+- (void)parseModuleDataWithRequest:(__kindof YTKRequest *)request{
+    if ([request isKindOfClass:[OneRequest class]]) {
+        ... 
+    } else if ([request isKindOfClass:[OtherRequest class]]) {
+        ...
+    }  
+}
+```
+
+这两个Module同样也支持为`loadMore`操作提供单独的请求，同上。
 
 ### layout
 

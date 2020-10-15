@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2A066588D5959BA2F5ECFA09 /* Pods_EaseModule_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71D8CDDA4919C113986A927 /* Pods_EaseModule_Example.framework */; };
+		3218D64A2522DAF700069DC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3218D6492522DAF700069DC0 /* assets */; };
+		321AD9F82521E61C006F5C79 /* DemoNewsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9F72521E61C006F5C79 /* DemoNewsModule.m */; };
+		321AD9FB2521E665006F5C79 /* DemoNewsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9FA2521E665006F5C79 /* DemoNewsComponent.m */; };
+		321AD9FE2521E674006F5C79 /* DemoNewsCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */; };
+		321ADA012521F888006F5C79 /* DemoNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 321ADA002521F888006F5C79 /* DemoNewsRequest.m */; };
 		329EA5E5251A28E60042BDC8 /* DemoMusicModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5AE251A28E50042BDC8 /* DemoMusicModule.m */; };
 		329EA5E6251A28E60042BDC8 /* DemoMusicComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5AF251A28E50042BDC8 /* DemoMusicComponent.m */; };
 		329EA5E7251A28E60042BDC8 /* DemoMusicCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5B0251A28E50042BDC8 /* DemoMusicCCell.m */; };
@@ -76,6 +81,15 @@
 		1B0F7C23F1A387E31E05481A /* Pods-EaseModule_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EaseModule_Tests.debug.xcconfig"; path = "Target Support Files/Pods-EaseModule_Tests/Pods-EaseModule_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		25F480156B13CCA4D03E851C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2F4F95982490873E2EB81142 /* Pods-EaseModule_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EaseModule_Example.debug.xcconfig"; path = "Target Support Files/Pods-EaseModule_Example/Pods-EaseModule_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3218D6492522DAF700069DC0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		321AD9F62521E61C006F5C79 /* DemoNewsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsModule.h; sourceTree = "<group>"; };
+		321AD9F72521E61C006F5C79 /* DemoNewsModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsModule.m; sourceTree = "<group>"; };
+		321AD9F92521E665006F5C79 /* DemoNewsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsComponent.h; sourceTree = "<group>"; };
+		321AD9FA2521E665006F5C79 /* DemoNewsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsComponent.m; sourceTree = "<group>"; };
+		321AD9FC2521E674006F5C79 /* DemoNewsCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsCCell.h; sourceTree = "<group>"; };
+		321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsCCell.m; sourceTree = "<group>"; };
+		321AD9FF2521F888006F5C79 /* DemoNewsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsRequest.h; sourceTree = "<group>"; };
+		321ADA002521F888006F5C79 /* DemoNewsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsRequest.m; sourceTree = "<group>"; };
 		329EA5AD251A28E50042BDC8 /* DemoMusicCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoMusicCCell.h; sourceTree = "<group>"; };
 		329EA5AE251A28E50042BDC8 /* DemoMusicModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMusicModule.m; sourceTree = "<group>"; };
 		329EA5AF251A28E50042BDC8 /* DemoMusicComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMusicComponent.m; sourceTree = "<group>"; };
@@ -198,6 +212,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		321AD9F52521E5FA006F5C79 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				321AD9F62521E61C006F5C79 /* DemoNewsModule.h */,
+				321AD9F72521E61C006F5C79 /* DemoNewsModule.m */,
+				321AD9FF2521F888006F5C79 /* DemoNewsRequest.h */,
+				321ADA002521F888006F5C79 /* DemoNewsRequest.m */,
+				321AD9F92521E665006F5C79 /* DemoNewsComponent.h */,
+				321AD9FA2521E665006F5C79 /* DemoNewsComponent.m */,
+				321AD9FC2521E674006F5C79 /* DemoNewsCCell.h */,
+				321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		329EA5AB251A28E50042BDC8 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +236,7 @@
 				329EA5BA251A28E50042BDC8 /* Shopping */,
 				329EA5BF251A28E50042BDC8 /* Huaban */,
 				329EA5C2251A28E50042BDC8 /* Living */,
+				321AD9F52521E5FA006F5C79 /* News */,
 				329EA5C5251A28E50042BDC8 /* Search */,
 				329EA5D3251A28E60042BDC8 /* Mine */,
 			);
@@ -394,6 +424,7 @@
 		6003F593195388D20070C39A /* Example for EaseModule */ = {
 			isa = PBXGroup;
 			children = (
+				3218D6492522DAF700069DC0 /* assets */,
 				6003F59C195388D20070C39A /* XXAppDelegate.h */,
 				6003F59D195388D20070C39A /* XXAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -549,6 +580,7 @@
 			files = (
 				329EA616251ADFD40042BDC8 /* huaban.json in Resources */,
 				329EA617251ADFD40042BDC8 /* music.json in Resources */,
+				3218D64A2522DAF700069DC0 /* assets in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
@@ -663,11 +695,14 @@
 				329EA5F5251A28E60042BDC8 /* DemoMineCCell.m in Sources */,
 				329EA5E8251A28E60042BDC8 /* DemoVideoCCell.m in Sources */,
 				329EA5F9251A28E60042BDC8 /* NSObject+EaseRuntime.m in Sources */,
+				321ADA012521F888006F5C79 /* DemoNewsRequest.m in Sources */,
+				321AD9FE2521E674006F5C79 /* DemoNewsCCell.m in Sources */,
 				329EA610251A2A440042BDC8 /* TADotView.m in Sources */,
 				329EA5EF251A28E60042BDC8 /* DemoSearchModule.m in Sources */,
 				6003F59E195388D20070C39A /* XXAppDelegate.m in Sources */,
 				329EA5FA251A28E60042BDC8 /* NSString+Common.m in Sources */,
 				6003F5A7195388D20070C39A /* XXViewController.m in Sources */,
+				321AD9F82521E61C006F5C79 /* DemoNewsModule.m in Sources */,
 				329EA5F4251A28E60042BDC8 /* DemoCompositeListViewController.m in Sources */,
 				329EA5F7251A28E60042BDC8 /* DemoMineModule.m in Sources */,
 				329EA5EB251A28E60042BDC8 /* DemoShoppingModule.m in Sources */,
@@ -688,6 +723,7 @@
 				329EA5F6251A28E60042BDC8 /* DemoMineComponent.m in Sources */,
 				329EA5EC251A28E60042BDC8 /* DemoShoppingComponent.m in Sources */,
 				329EA611251A2A440042BDC8 /* TAPageControl.m in Sources */,
+				321AD9FB2521E665006F5C79 /* DemoNewsComponent.m in Sources */,
 				329EA5FC251A28E60042BDC8 /* NSArray+Sugar.m in Sources */,
 				32FCCC56251D93240091B898 /* DemoLivingCCell.m in Sources */,
 				329EA5E6251A28E60042BDC8 /* DemoMusicComponent.m in Sources */,

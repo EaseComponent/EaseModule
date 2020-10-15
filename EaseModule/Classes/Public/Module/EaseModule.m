@@ -7,20 +7,19 @@
 //
 
 #import "EaseModuler.h"
-#import <YTKNetwork/YTKNetwork.h>
+//#import <YTKNetwork/YTKNetwork.h>
 #import "EaseModuleEnvironment.h"
 #import "EaseModuleDataSource_Private.h"
+#import "EaseModule_Private.h"
 
 @interface EaseModule (){
     NSArray<__kindof EaseComponent *> * _defaultComponents;
 }
-@property (nonatomic ,assign) BOOL haveDefaultComponents;
 @end
 
 @implementation EaseModule
 
-- (void)dealloc
-{
+- (void)dealloc{
     NSLog(@"%@ dealloc",self);
 }
 
@@ -37,14 +36,13 @@
     self = [super init];
     if (self) {
         _name = name;
-        
-        _index = 1;
-        _pageSize = 20;
-        _isRefresh = YES;
-        
-        _shouldLoadMore = YES;
-        
+
         _dataSource = [EaseModuleDataSource new];
+        
+        self.originIndex = 1;
+        _index = self.originIndex;
+        _isRefresh = YES;
+        _shouldLoadMore = YES;
     }
     return self;
 }
@@ -53,31 +51,12 @@
     return nil;
 }
 
-- (void) refresh{
-    // 如果有默认的comp，就先展示出来
-    if (!_defaultComponents) {
-        _defaultComponents = [self defaultComponents];
-        self.haveDefaultComponents = _defaultComponents.count != 0;
-        if (self.haveDefaultComponents) {
-            [self.collectionView layoutIfNeeded];
-            [self.dataSource addComponents:_defaultComponents];
-            [self.collectionView reloadData];
-        }
-    }
-    
-    _isRefresh = YES;
-    [self resetIndex];
-    [self fetchModuleDataFromService];
+- (BOOL)needUseSpecialLoadMore{
+    return self.loadMoreDifferentWithRefresh && !_isRefresh;
 }
 
-- (void) loadMore{
-    if (self.shouldLoadMore) {
-        _isRefresh = NO;
-        [self fetchModuleDataFromService];
-    }
-}
-
-- (void)setupViewController:(UIViewController *)viewController collectionView:(UICollectionView *)collectionView{
+- (void)setupViewController:(UIViewController *)viewController
+             collectionView:(UICollectionView *)collectionView{
     EaseModuleEnvironment * environment = [EaseModuleEnvironment new];
     environment.viewController = viewController;
     environment.collectionView = collectionView;
@@ -96,32 +75,26 @@
     return [self.dataSource empty];
 }
 
-#pragma mark - private
+- (UIView *) blankPageView{
+    return nil;
+}
 
-- (void)fetchModuleDataFromService{
-    
-    [[self fetchModuleRequest]
-     startWithCompletionBlockWithSuccess:^(YTKRequest * _Nonnull request) {
-        if (self->_isRefresh) {
-            // clear
-            if (self.haveDefaultComponents) {
-                [self.dataSource clearExceptComponents:self->_defaultComponents];
-            } else {
-                [self.dataSource clear];
-            }
-        }
-        [self parseModuleDataWithRequest:request];
-        [self increaseIndex];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self wrapperSuccessUpdateForDelegate];
-        });
-    } failure:^(YTKRequest * _Nonnull request) {
-        [self wrapperFailUpdateForDelegate:request.error];
-    }];
+- (void) refresh{
+    [self _addDefaultComponentsIfNeeds];
+    _isRefresh = YES;
+    [self resetIndex];
+    [self _fetchModuleDataFromService];
+}
+
+- (void) loadMore{
+    if (self.shouldLoadMore) {
+        _isRefresh = NO;
+        [self _fetchModuleDataFromService];
+    }
 }
 
 - (void) resetIndex{
-    _index = 1;
+    _index = self.originIndex;
 }
 
 - (void) increaseIndex{
@@ -130,32 +103,41 @@
 
 #pragma mark - private M
 
-- (void) wrapperSuccessUpdateForDelegate{
-    if ([self.delegate respondsToSelector:@selector(liveModuleDidSuccessUpdateComponent:)]) {
-        [self.delegate liveModuleDidSuccessUpdateComponent:self];
+- (void) _clear{
+    if (self.haveDefaultComponents) {
+        [self.dataSource clearExceptComponents:self->_defaultComponents];
+    } else {
+        [self.dataSource clear];
     }
 }
 
-- (void) wrapperFailUpdateForDelegate:(NSError *)error{
-    if ([self.delegate respondsToSelector:@selector(liveModule:didFailUpdateComponent:)]) {
-        [self.delegate liveModule:self didFailUpdateComponent:error];
+- (void) _addDefaultComponentsIfNeeds{
+    
+    // 如果有默认的comp，就先展示出来
+    if (!_defaultComponents) {
+        _defaultComponents = [self defaultComponents];
+        self.haveDefaultComponents = _defaultComponents.count != 0;
+        if (self.haveDefaultComponents) {
+            [self.collectionView layoutIfNeeded];
+            [self.dataSource addComponents:_defaultComponents];
+            [self.collectionView reloadData];
+        }
+    }
+}
+- (void) _fetchModuleDataFromService{
+    
+}
+
+- (void) _wrapperSuccessUpdateForDelegate{
+    if ([self.delegate respondsToSelector:@selector(moduleDidSuccessUpdateComponent:)]) {
+        [self.delegate moduleDidSuccessUpdateComponent:self];
     }
 }
 
-@end
-
-@implementation EaseModule (SubclassingOverride)
-
-- (__kindof YTKRequest *)fetchModuleRequest{
-    return nil;
-}
-
-- (void) parseModuleDataWithRequest:(__kindof YTKRequest *)request{
-
-}
-
-- (UIView *) blankPageView{
-    return nil;
+- (void) _wrapperFailUpdateForDelegate:(NSError *)error{
+    if ([self.delegate respondsToSelector:@selector(module:didFailUpdateComponent:)]) {
+        [self.delegate module:self didFailUpdateComponent:error];
+    }
 }
 
 @end
@@ -186,43 +168,188 @@
 
 @end
 
-@implementation EasePureListModule
+//@implementation EaseSingleRequestModule
+//
+//- (instancetype)initWithName:(NSString *)name{
+//    self = [super initWithName:name];
+//    if (self) {
+//        _index = self.originIndex;
+//        _pageSize = self.purePageSize;
+//        
+//        _isRefresh = YES;
+//        _shouldLoadMore = YES;
+//    }
+//    return self;
+//}
+//
+//- (void) refresh{
+//    [self _addDefaultComponentsIfNeeds];
+//    
+//    _isRefresh = YES;
+//    [self resetIndex];
+//    [self _fetchModuleDataFromService];
+//}
+//
+//- (void) loadMore{
+//    if (self.shouldLoadMore) {
+//        _isRefresh = NO;
+//        [self _fetchModuleDataFromService];
+//    }
+//}
+//
+//- (void) resetIndex{
+//    _index = 1;
+//}
+//
+//- (void) increaseIndex{
+//    _index ++;
+//}
+//
+//- (NSInteger) originIndex{
+//    return 1;
+//}
+//
+//- (NSInteger) purePageSize{
+//    return 20;
+//}
+//
+//- (void) _fetchModuleDataFromService{
+//    
+//    [[self fetchModuleRequest]
+//     startWithCompletionBlockWithSuccess:^(YTKRequest * _Nonnull request) {
+//        if (_isRefresh) {
+//            // clear
+//            [self _clear];
+//        }
+//        [self parseModuleDataWithRequest:request];
+//        [self increaseIndex];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self _wrapperSuccessUpdateForDelegate];
+//        });
+//    } failure:^(YTKRequest * _Nonnull request) {
+//        [self _wrapperFailUpdateForDelegate:request.error];
+//    }];
+//}
+//@end
+//
+//@implementation EasePureListModule
+//
+//- (EasePureListModuleType) pureListModuleType{
+//    return EasePureListModuleReplace;
+//}
+//
+//- (Class) pureListComponentClass{
+//    return EaseComponent.class;
+//}
+//
+//- (__kindof EaseComponent *) setupPureComponentWithDatas:(NSArray *)datas{
+//    
+//    Class componentClass = [self pureListComponentClass];
+//    
+//    if (self.pureListModuleType == EasePureListModuleReplace) {
+//        [self.dataSource clear];
+//        if (datas.count) {
+//            EaseComponent * component = [componentClass new];
+//            if (![component isKindOfClass:EaseComponent.class]) {
+//                return nil;
+//            }
+//            [component addDatas:datas];
+//            [self.dataSource addComponent:component];
+//            return component;
+//        }
+//    } else if (self.pureListModuleType == EasePureListModuleAppend) {
+//        EaseComponent * component = [self.dataSource componentAtIndex:0];
+//        if (!component && datas.count) {
+//            component = [componentClass new];
+//            if (![component isKindOfClass:EaseComponent.class]) {
+//                return nil;
+//            }
+//            [self.dataSource addComponent:component];
+//        }
+//        [component addDatas:datas];
+//        return component;
+//    }
+//    return nil;
+//}
+//@end
+//
+//@interface EaseBatchRequestModule ()<
+//YTKBatchRequestDelegate>
+//@end
+//
+//@implementation EaseBatchRequestModule
+//
+//- (YTKBatchRequest *) fetchModuleBatchRequest{
+//    return nil;
+//}
+//
+//- (void) parseModuleDataWithBatchRequest:(YTKBatchRequest *)request{
+//}
+//
+//@end
+//
+//@interface EaseChainRequestModule ()<
+//YTKChainRequestDelegate>
+//@end
+//
+//@implementation EaseChainRequestModule
+//
+//- (NSArray<__kindof YTKRequest *> *) fetchModuleChainRequests{
+//    return nil;
+//}
+//
+//- (EaseChainRequestModuleType) chainType{
+//    return EaseChainRequestModuleAllDone;
+//}
+//
+//- (void)_fetchModuleDataFromService{
+//
+//    NSArray * requests = [self fetchModuleChainRequests];
+//
+//    YTKChainRequest * chainRequest = [YTKChainRequest new];
+//    chainRequest.delegate = self;
+//    for (__kindof YTKRequest * request in requests) {
+//        __weak typeof(self) weakSelf = self;
+//        [chainRequest addRequest:request callback:^(YTKChainRequest * _Nonnull chainRequest, YTKBaseRequest * _Nonnull baseRequest) {
+//            __strong typeof(weakSelf) strongSelf = weakSelf;
+//            [strongSelf parseModuleDataWithRequest:baseRequest];
+//        }];
+//    }
+//    if (self.chainType == EaseChainRequestModuleAllDone) {
+//    } else {
+//
+//    }
+//    [chainRequest start];
+//}
+//
+//- (void) parseModuleDataWithChainRequest:(YTKChainRequest *)request{
+//
+//}
+//
+//#pragma mark - YTKChainRequestDelegate
+//
+//- (void)chainRequestFinished:(YTKChainRequest *)chainRequest{
+//
+//}
+//
+//- (void)chainRequestFailed:(YTKChainRequest *)chainRequest failedBaseRequest:(YTKBaseRequest*)request{
+//    [self _wrapperFailUpdateForDelegate:request.error];
+//}
+//
+//@end
 
-- (EasePureListModuleType) pureListModuleType{
-    return EasePureListModuleReplace;
-}
-
-- (Class) pureListComponentClass{
-    return EaseComponent.class;
-}
-
-- (__kindof EaseComponent *) setupPureComponentWithDatas:(NSArray *)datas{
-    
-    Class componentClass = [self pureListComponentClass];
-    
-    if (self.pureListModuleType == EasePureListModuleReplace) {
-        [self.dataSource clear];
-        if (datas.count) {
-            EaseComponent * component = [componentClass new];
-            if (![component isKindOfClass:EaseComponent.class]) {
-                return nil;
-            }
-            [component addDatas:datas];
-            [self.dataSource addComponent:component];
-            return component;
-        }
-    } else if (self.pureListModuleType == EasePureListModuleAppend) {
-        EaseComponent * component = [self.dataSource componentAtIndex:0];
-        if (!component && datas.count) {
-            component = [componentClass new];
-            if (![component isKindOfClass:EaseComponent.class]) {
-                return nil;
-            }
-            [self.dataSource addComponent:component];
-        }
-        [component addDatas:datas];
-        return component;
-    }
-    return nil;
-}
-@end
+//@implementation EaseModule (SubclassingOverride)
+//
+//- (__kindof YTKRequest *)fetchModuleRequest{
+//    return nil;
+//}
+//
+//- (void) parseModuleDataWithRequest:(__kindof YTKRequest *)request{
+//
+//}
+//
+//- (UIView *) blankPageView{
+//    return nil;
+//}
+//
+//@end
