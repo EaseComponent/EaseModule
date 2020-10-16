@@ -305,7 +305,7 @@
         return nil;
     }
 //    // for temp
-    return self;
+//    return self;
     
     NSInteger loc = arc4random_uniform((UInt32)self.count);
     NSInteger len = (loc == self.count - 1) ? 0 : (arc4random_uniform((UInt32)(self.count - loc)));

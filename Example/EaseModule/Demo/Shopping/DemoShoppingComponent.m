@@ -91,8 +91,9 @@
         layout.inset = UIEdgeInsetsMake(0, 10, 0, 10);
         layout.distribution = [EaseLayoutDimension distributionDimension:2];
         layout.itemRatio = [EaseLayoutDimension absoluteDimension:40];
-//        layout.arrange = EaseLayoutArrangeHorizontal;
-//        layout.row = 3;
+        layout.maxDisplayCount = 21;
+        layout.arrange = EaseLayoutArrangeHorizontal;
+        layout.row = 3;
         _layout = layout;
     }
     return self;

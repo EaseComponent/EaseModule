@@ -21,19 +21,14 @@
 - (void)requestCompleteFilter{
     [super requestCompleteFilter];
     NSMutableArray * result = [NSMutableArray new];
-    NSInteger index = 0;
     for (NSDictionary * data in self.responseObject[@"data"]) {
-        if (index >= 90) {
-            break;
-        }
         [result addObject:@{
             @"name":data[@"name"],
             @"pic":data[@"listPicUrl"],
             @"desc":data[@"simpleDesc"],
         }];
-        index ++;
     }
-    _list = result.copy;
+    _list = [result ease_randomObjects];
 }
 @end
 
@@ -52,21 +47,16 @@
     NSMutableArray * cateList = self.responseObject[@"data"][@"cateList"];
     NSMutableArray * result = [NSMutableArray new];
     
-    NSInteger index = 0;
     for (NSDictionary * cate in cateList) {
         NSArray * subCateList = cate[@"subCateList"];
         for (NSDictionary *subCate in subCateList) {
-            if (index >= 20) {
-                break;
-            }
             [result addObject:@{
                 @"name":subCate[@"name"],
                 @"pic":subCate[@"bannerUrl"],
             }];
-            index ++;
         }
     }
-    _list = result.copy;
+    _list = [result ease_randomObjects];
 }
  
 @end
