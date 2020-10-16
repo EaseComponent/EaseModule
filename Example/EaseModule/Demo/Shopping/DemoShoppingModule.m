@@ -8,23 +8,43 @@
 
 #import "DemoShoppingModule.h"
 #import "DemoShoppingComponent.h"
+#import "DemoShoppingRequest.h"
 
 @implementation DemoShoppingModule
 
-- (instancetype)initWithName:(NSString *)name{
-    self = [super initWithName:name];
-    if (self) {
-        
-    }
-    return self;
+- (BOOL)shouldLoadMore{
+    return NO;
 }
 
-- (NSArray<__kindof EaseComponent *> *)defaultComponents{
+//- (NSArray<__kindof EaseComponent *> *)defaultComponents{
+//    return @[
+//        ShoppingKeywordComponent.new,
+//        ShoppingAllCategoryComponent.new,
+//        ShoppingItemsComponent.new,
+//    ];
+//}
+
+- (NSArray<__kindof YTKRequest *> *)fetchModuleRequests{
     return @[
-        ShoppingKeywordComponent.new,
-        ShoppingAllCategoryComponent.new,
-        ShoppingItemsComponent.new,
+        ShoppingKeywordRequest.new,
+        ShoppingAllCategoryRequest.new,
+        ShoppingItemsRequest.new,
     ];
 }
 
+- (void)parseModuleDataWithRequest:(__kindof YTKRequest *)request{
+    if ([request isKindOfClass:[ShoppingKeywordRequest class]]) {
+        ShoppingKeywordComponent * component = [ShoppingKeywordComponent new];
+        [component addDatas:((ShoppingKeywordRequest *)request).list];
+        [self.dataSource addComponent:component];
+    } else if ([request isKindOfClass:[ShoppingAllCategoryRequest class]]) {
+        ShoppingAllCategoryComponent * component = [ShoppingAllCategoryComponent new];
+        [component addDatas:((ShoppingAllCategoryRequest *)request).list];
+        [self.dataSource addComponent:component];
+    } else if ([request isKindOfClass:[ShoppingItemsRequest class]]) {
+        ShoppingItemsComponent * component = [ShoppingItemsComponent new];
+        [component addDatas:((ShoppingItemsRequest *)request).list];
+        [self.dataSource addComponent:component];
+    }
+}
 @end

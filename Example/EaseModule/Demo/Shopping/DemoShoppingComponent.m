@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        self.independentDatas = YES;
+//        self.independentDatas = YES;
     }
     return self;
 }
@@ -44,6 +44,19 @@
 
 @implementation ShoppingKeywordComponent
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        EaseFlexLayout * layout = [EaseFlexLayout new];
+        layout.delegate = self;
+        layout.inset = UIEdgeInsetsMake(0, 10, 0, 10);
+        layout.itemHeight = 30;
+        _layout = layout;
+    }
+    return self;
+}
+
 - (NSString *) title{
     return @"热搜关键字";
 }
@@ -55,6 +68,17 @@
     return ccell;
 }
 
+#pragma mark - EaseFlexLayoutDelegate
+
+- (CGSize)layoutCustomItemSize:(EaseFlexLayout *)layout atIndex:(NSInteger)index{
+    
+    CGSize size = [[self dataAtIndex:index] YYY_sizeWithFont:({
+        [UIFont systemFontOfSize:14 weight:UIFontWeightLight];
+    }) maxSize:CGSizeMake(CGFLOAT_MAX,layout.itemHeight)];
+    size.width += 30;
+    
+    return size;
+}
 @end
 
 @implementation ShoppingAllCategoryComponent
@@ -63,7 +87,13 @@
 {
     self = [super init];
     if (self) {
-        
+        EaseListLayout * layout = [EaseListLayout new];
+        layout.inset = UIEdgeInsetsMake(0, 10, 0, 10);
+        layout.distribution = [EaseLayoutDimension distributionDimension:2];
+        layout.itemRatio = [EaseLayoutDimension absoluteDimension:40];
+//        layout.arrange = EaseLayoutArrangeHorizontal;
+//        layout.row = 3;
+        _layout = layout;
     }
     return self;
 }
@@ -86,7 +116,12 @@
 {
     self = [super init];
     if (self) {
-        
+        EaseWaterfallLayout * layout = [EaseWaterfallLayout new];
+        layout.inset = UIEdgeInsetsMake(0, 10, 0, 10);
+        layout.lineSpacing = 10;
+        layout.delegate = self;
+        layout.column = 2;
+        _layout = layout;
     }
     return self;
 }
@@ -100,6 +135,31 @@
     ShoppingItemCCell * ccell = [self.dataSource dequeueReusableCellOfClass:ShoppingItemCCell.class forComponent:self atIndex:index];
     [ccell setupWithData:[self dataAtIndex:index]];
     return ccell;
+}
+
+#pragma mark - EaseWaterfallLayoutDelegate
+
+- (CGSize)layoutCustomItemSize:(EaseWaterfallLayout *)layout atIndex:(NSInteger)index{
+    
+    NSDictionary * data = [self dataAtIndex:index];
+    
+    CGFloat height = layout.itemWidth;
+    height += 4;
+    // name height
+    height += ({
+        [data[@"name"] YYY_sizeWithFont:({
+            [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+        }) maxSize:CGSizeMake(layout.itemWidth - 12,CGFLOAT_MAX)].height;
+    });
+    height += 4;
+    // desc height
+    height += ({
+        [data[@"desc"] YYY_sizeWithFont:({
+            [UIFont systemFontOfSize:14 weight:UIFontWeightThin];
+        }) maxSize:CGSizeMake(layout.itemWidth - 12,CGFLOAT_MAX)].height;
+    });
+    height += 4;
+    return CGSizeMake(layout.itemWidth, height);
 }
 
 @end

@@ -23,12 +23,13 @@
     NSMutableArray * result = [NSMutableArray new];
     NSInteger index = 0;
     for (NSDictionary * data in self.responseObject[@"data"]) {
-        if (index > 30) {
+        if (index >= 90) {
             break;
         }
         [result addObject:@{
             @"name":data[@"name"],
-            @"pic":data[@"listPicUrl"]
+            @"pic":data[@"listPicUrl"],
+            @"desc":data[@"simpleDesc"],
         }];
         index ++;
     }
@@ -39,7 +40,7 @@
 @implementation ShoppingAllCategoryRequest
 
 - (NSString *)requestUrl{
-    return [NSString stringWithFormat:@"http://you.163.com/xhr/globalinfo//queryTop.json?__timestamp=%f",NSDate.new.timeIntervalSince1970];
+    return [NSString stringWithFormat:@"http://you.163.com/xhr/globalinfo//queryTop.json?__timestamp=1602836155148"];
 }
 
 - (YTKRequestMethod)requestMethod{
@@ -55,7 +56,7 @@
     for (NSDictionary * cate in cateList) {
         NSArray * subCateList = cate[@"subCateList"];
         for (NSDictionary *subCate in subCateList) {
-            if (index > 100) {
+            if (index >= 20) {
                 break;
             }
             [result addObject:@{
@@ -73,7 +74,7 @@
 @implementation ShoppingKeywordRequest
 
 - (NSString *)requestUrl{
-    return [NSString stringWithFormat:@"http://you.163.com/xhr/search/queryHotKeyWord.json?__timestamp=%f",NSDate.new.timeIntervalSince1970];
+    return [NSString stringWithFormat:@"http://you.163.com/xhr/search/queryHotKeyWord.json?__timestamp=1602836155148"];
 }
 
 - (YTKRequestMethod)requestMethod{

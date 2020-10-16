@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ShoppingKeywordComponent : ShoppingComponent
+@interface ShoppingKeywordComponent : ShoppingComponent<
+EaseFlexLayoutDelegate>
 
 @end
 
@@ -22,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ShoppingItemsComponent : ShoppingComponent
+@interface ShoppingItemsComponent : ShoppingComponent<
+EaseWaterfallLayoutDelegate>
 
 @end
 

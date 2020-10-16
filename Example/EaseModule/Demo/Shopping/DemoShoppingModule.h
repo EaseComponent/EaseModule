@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DemoShoppingModule : EaseSingleModule
+@interface DemoShoppingModule : EaseBatchModule
+//@interface DemoShoppingModule : EaseSingleModule
 
 @end
 
