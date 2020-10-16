@@ -171,3 +171,38 @@
 }
 
 @end
+
+@implementation ShoppingFooterView{
+    UIButton *_refreshButton;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        _refreshButton = [UIButton new];
+        [_refreshButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"F3F3F3"]] forState:UIControlStateNormal];
+        [_refreshButton addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventTouchUpInside];
+        _refreshButton.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightLight];
+        [_refreshButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_refreshButton setTitle:@"刷新" forState:UIControlStateNormal];
+        _refreshButton.layer.masksToBounds = YES;
+        _refreshButton.layer.cornerRadius = 4.0f;
+        [self addSubview:_refreshButton];
+        
+        [_refreshButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self);
+            make.height.equalTo(self);
+            make.width.mas_equalTo(200);
+        }];
+    }
+    return self;
+}
+
+- (void) onRefresh{
+    if (self.bRefresh) {
+        self.bRefresh();
+    }
+}
+@end

@@ -8,6 +8,7 @@
 
 #import "DemoShoppingComponent.h"
 #import "DemoShoppingCCell.h"
+#import "DemoShoppingRequest.h"
 
 @implementation ShoppingComponent
 
@@ -16,18 +17,21 @@
     self = [super init];
     if (self) {
 //        self.independentDatas = YES;
-        self.hiddenWhenEmpty = YES;
+//        self.hiddenWhenEmpty = YES;
     }
     return self;
 }
-
+- (void) refresh{
+    
+}
 - (NSString *) title{
     return @"";
 }
 
 - (NSArray<NSString *> *)supportedElementKinds{
     return @[
-        UICollectionElementKindSectionHeader
+        UICollectionElementKindSectionHeader,
+//        UICollectionElementKindSectionFooter,
     ];
 }
 
@@ -36,9 +40,18 @@
 }
 
 - (__kindof UICollectionReusableView *)viewForSupplementaryElementOfKind:(NSString *)elementKind{
-    ShoppingHeaderView * headerView = [self.dataSource dequeueReusableSupplementaryViewOfKind:elementKind forComponent:self clazz:ShoppingHeaderView.class];
-    [headerView setupTitle:self.title];
-    return headerView;
+    if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+        ShoppingHeaderView * headerView = [self.dataSource dequeueReusableSupplementaryViewOfKind:elementKind forComponent:self clazz:ShoppingHeaderView.class];
+        [headerView setupTitle:self.title];
+        return headerView;
+    }
+    ShoppingFooterView * footerView = [self.dataSource dequeueReusableSupplementaryViewOfKind:elementKind forComponent:self clazz:ShoppingFooterView.class];
+    @weakify(self);
+    [footerView setBRefresh:^{
+        @strongify(self);
+        [self refresh];
+    }];
+    return footerView;
 }
 
 @end
@@ -56,6 +69,16 @@
         _layout = layout;
     }
     return self;
+}
+
+- (void)refresh{
+    [ShoppingKeywordRequest.new
+     startWithCompletionBlockWithSuccess:^(ShoppingKeywordRequest * _Nonnull request) {
+        [self addDatas:request.list];
+        [self reloadData];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
 }
 
 - (NSString *) title{
@@ -100,6 +123,15 @@
     return self;
 }
 
+- (void)refresh{
+    [ShoppingAllCategoryRequest.new
+     startWithCompletionBlockWithSuccess:^(ShoppingAllCategoryRequest * _Nonnull request) {
+        [self addDatas:request.list];
+        [self reloadData];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
 - (NSString *) title{
     return @"分类";
 }
@@ -128,6 +160,15 @@
     return self;
 }
 
+- (void)refresh{
+    [ShoppingItemsRequest.new
+     startWithCompletionBlockWithSuccess:^(ShoppingItemsRequest * _Nonnull request) {
+        [self addDatas:request.list];
+        [self reloadData];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
+}
 - (NSString *) title{
     return @"所有商品";
 }

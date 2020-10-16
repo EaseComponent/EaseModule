@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ShoppingComponent : EaseComponent
-
+- (void) refresh;
 @end
 
 @interface ShoppingKeywordComponent : ShoppingComponent<

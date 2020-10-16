@@ -10,19 +10,36 @@
 #import "DemoShoppingComponent.h"
 #import "DemoShoppingRequest.h"
 
+@interface DemoShoppingModule ()
+@property (nonatomic ,copy) NSArray * independentComponents;
+@end
 @implementation DemoShoppingModule
 
+- (instancetype)initWithName:(NSString *)name{
+    self = [super initWithName:name];
+    if (self) {
+        self.independentComponents = @[
+            ShoppingKeywordComponent.new,
+            ShoppingAllCategoryComponent.new,
+            ShoppingItemsComponent.new,
+        ];
+    }
+    return self;
+}
 - (BOOL)shouldLoadMore{
     return NO;
 }
 
-//- (NSArray<__kindof EaseComponent *> *)defaultComponents{
-//    return @[
-//        ShoppingKeywordComponent.new,
-//        ShoppingAllCategoryComponent.new,
-//        ShoppingItemsComponent.new,
-//    ];
-//}
+- (NSArray<__kindof EaseComponent *> *)defaultComponents{
+    return self.independentComponents;
+}
+
+- (void)refresh{
+    [super refresh];
+    for (ShoppingComponent * comp in self.independentComponents) {
+        [comp refresh];
+    }
+}
 
 - (NSArray<__kindof YTKRequest *> *)fetchModuleRequests{
     return @[

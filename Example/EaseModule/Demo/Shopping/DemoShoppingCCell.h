@@ -26,4 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setupTitle:(NSString *)title;
 @end
 
+@interface ShoppingFooterView : UICollectionReusableView
+@property (nonatomic ,copy) void(^bRefresh)(void);
+@end
+
 NS_ASSUME_NONNULL_END
