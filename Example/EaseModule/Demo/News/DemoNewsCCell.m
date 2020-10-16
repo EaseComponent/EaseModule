@@ -107,14 +107,14 @@ WKNavigationDelegate>
     NSMutableString * html = [NSMutableString new];
     [html appendString:@"<html>"];
     [html appendString:@"<head>"];
-    [html appendFormat:@"<link rel=\"stylesheet\" href=\"%@\">",[[NSBundle mainBundle] URLForResource:@"style" withExtension:@"css"]];
+    [html appendFormat:@"<style>\n h1 {\n font-size:50px;},\n p {\n font-size:34px;},\n strong {\n color:red; \n font-size:34px;},\n img {\n width: 300px;\n height:200px}\n</style>"];
     [html appendString:@"</head>"];
     [html appendString:@"<body>"];
     [html appendString:data];
     [html appendString:@"<body>"];
     [html appendString:@"</html>"];
     [_webView loadHTMLString:EaseSafeString(html) baseURL:({
-        [NSURL URLWithString:@"file:///assets/"];
+        nil;
     })];
 }
 

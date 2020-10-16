@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2A066588D5959BA2F5ECFA09 /* Pods_EaseModule_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71D8CDDA4919C113986A927 /* Pods_EaseModule_Example.framework */; };
-		3218D64A2522DAF700069DC0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 3218D6492522DAF700069DC0 /* assets */; };
 		321AD9F82521E61C006F5C79 /* DemoNewsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9F72521E61C006F5C79 /* DemoNewsModule.m */; };
 		321AD9FB2521E665006F5C79 /* DemoNewsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9FA2521E665006F5C79 /* DemoNewsComponent.m */; };
 		321AD9FE2521E674006F5C79 /* DemoNewsCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */; };
 		321ADA012521F888006F5C79 /* DemoNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 321ADA002521F888006F5C79 /* DemoNewsRequest.m */; };
 		32794A642539742B00DE196D /* DemoShoppingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32794A632539742B00DE196D /* DemoShoppingRequest.m */; };
 		32794A6725397D2900DE196D /* DemoShoppingCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32794A6625397D2900DE196D /* DemoShoppingCCell.m */; };
+		32794A6A2539A17900DE196D /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 32794A692539A17900DE196D /* style.css */; };
 		329EA5E5251A28E60042BDC8 /* DemoMusicModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5AE251A28E50042BDC8 /* DemoMusicModule.m */; };
 		329EA5E6251A28E60042BDC8 /* DemoMusicComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5AF251A28E50042BDC8 /* DemoMusicComponent.m */; };
 		329EA5E7251A28E60042BDC8 /* DemoMusicCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5B0251A28E50042BDC8 /* DemoMusicCCell.m */; };
@@ -83,7 +83,6 @@
 		1B0F7C23F1A387E31E05481A /* Pods-EaseModule_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EaseModule_Tests.debug.xcconfig"; path = "Target Support Files/Pods-EaseModule_Tests/Pods-EaseModule_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		25F480156B13CCA4D03E851C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2F4F95982490873E2EB81142 /* Pods-EaseModule_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EaseModule_Example.debug.xcconfig"; path = "Target Support Files/Pods-EaseModule_Example/Pods-EaseModule_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3218D6492522DAF700069DC0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		321AD9F62521E61C006F5C79 /* DemoNewsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsModule.h; sourceTree = "<group>"; };
 		321AD9F72521E61C006F5C79 /* DemoNewsModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsModule.m; sourceTree = "<group>"; };
 		321AD9F92521E665006F5C79 /* DemoNewsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsComponent.h; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		32794A632539742B00DE196D /* DemoShoppingRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoShoppingRequest.m; sourceTree = "<group>"; };
 		32794A6525397D2900DE196D /* DemoShoppingCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoShoppingCCell.h; sourceTree = "<group>"; };
 		32794A6625397D2900DE196D /* DemoShoppingCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoShoppingCCell.m; sourceTree = "<group>"; };
+		32794A692539A17900DE196D /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		329EA5AD251A28E50042BDC8 /* DemoMusicCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoMusicCCell.h; sourceTree = "<group>"; };
 		329EA5AE251A28E50042BDC8 /* DemoMusicModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMusicModule.m; sourceTree = "<group>"; };
 		329EA5AF251A28E50042BDC8 /* DemoMusicComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMusicComponent.m; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 		321AD9F52521E5FA006F5C79 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				3218D6492522DAF700069DC0 /* assets */,
+				32794A682539A17900DE196D /* assets */,
 				321AD9F62521E61C006F5C79 /* DemoNewsModule.h */,
 				321AD9F72521E61C006F5C79 /* DemoNewsModule.m */,
 				321AD9FF2521F888006F5C79 /* DemoNewsRequest.h */,
@@ -232,6 +232,14 @@
 				321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		32794A682539A17900DE196D /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				32794A692539A17900DE196D /* style.css */,
+			);
+			path = assets;
 			sourceTree = "<group>";
 		};
 		329EA5AB251A28E50042BDC8 /* Demo */ = {
@@ -590,7 +598,7 @@
 			files = (
 				329EA616251ADFD40042BDC8 /* huaban.json in Resources */,
 				329EA617251ADFD40042BDC8 /* music.json in Resources */,
-				3218D64A2522DAF700069DC0 /* assets in Resources */,
+				32794A6A2539A17900DE196D /* style.css in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
