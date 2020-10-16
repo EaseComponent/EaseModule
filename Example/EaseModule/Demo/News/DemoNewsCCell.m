@@ -102,7 +102,18 @@ WKNavigationDelegate>
 }
 
 - (void) setupWithData:(id)data{
-    [_webView loadHTMLString:EaseSafeString(data) baseURL:nil];
+    NSMutableString * html = [NSMutableString new];
+    [html appendString:@"<html>"];
+    [html appendString:@"<head>"];
+    [html appendFormat:@"<link rel=\"stylesheet\" href=\"%@\">",[[NSBundle mainBundle] URLForResource:@"style" withExtension:@"css"]];
+    [html appendString:@"</head>"];
+    [html appendString:@"<body>"];
+    [html appendString:data];
+    [html appendString:@"<body>"];
+    [html appendString:@"</html>"];
+    [_webView loadHTMLString:EaseSafeString(html) baseURL:({
+        [NSURL URLWithString:@"file:///assets/"];
+    })];
 }
 
 #pragma mark - WKNavigationDelegate
@@ -150,9 +161,7 @@ WKNavigationDelegate>
         [self.contentView addSubview:_oneLabel];
         
         [_oneLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.contentView);
-            make.left.equalTo(self.contentView).mas_offset(5);
-            make.right.equalTo(self.contentView).mas_offset(-5);
+            make.center.equalTo(self.contentView);
         }];
     }
     return self;
@@ -223,5 +232,7 @@ WKNavigationDelegate>
     }))];
     _titleLabel.text = EaseSafeString(title);
 }
-
+- (void) test:(NSString *)data{
+    _titleLabel.text = EaseSafeString(data);
+}
 @end

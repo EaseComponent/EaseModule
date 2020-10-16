@@ -15,6 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface SearchHotCCell : UICollectionViewCell
+
+@property (nonatomic ,strong) UILabel * oneLabel;
+- (void) setupWithData:(id)data;
+
+@end
+
 @interface SearchHistoryHeaderView : DemoHeaderView
 @property (nonatomic ,copy) void(^bChangeAction)(void);
 

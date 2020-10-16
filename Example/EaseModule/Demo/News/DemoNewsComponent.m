@@ -159,10 +159,12 @@ NewsContentCCellDelegate>
     self = [super init];
     if (self) {
         EaseListLayout * layout = [EaseListLayout new];
-        layout.inset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.inset = UIEdgeInsetsMake(0, 10, 10, 10);
         layout.lineSpacing = 4.0f;
         layout.itemSpacing = 4.0f;
-        layout.distribution = [EaseLayoutDimension distributionDimension:2];
+        layout.arrange = EaseLayoutArrangeHorizontal;
+        layout.row = 1;
+        layout.distribution = [EaseLayoutDimension fractionalDimension:0.4];
         layout.itemRatio = [EaseLayoutDimension fractionalDimension:2.0];
         _layout = layout;
     }

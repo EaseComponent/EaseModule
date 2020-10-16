@@ -215,6 +215,7 @@
 		321AD9F52521E5FA006F5C79 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				3218D6492522DAF700069DC0 /* assets */,
 				321AD9F62521E61C006F5C79 /* DemoNewsModule.h */,
 				321AD9F72521E61C006F5C79 /* DemoNewsModule.m */,
 				321AD9FF2521F888006F5C79 /* DemoNewsRequest.h */,
@@ -305,12 +306,12 @@
 		329EA5C5251A28E50042BDC8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				329EA5C9251A28E50042BDC8 /* DemoSearchModule.h */,
+				329EA5C6251A28E50042BDC8 /* DemoSearchModule.m */,
 				329EA5C7251A28E50042BDC8 /* DemoSearchCCell.h */,
 				329EA5CA251A28E50042BDC8 /* DemoSearchCCell.m */,
 				329EA5CB251A28E60042BDC8 /* DemoSearchComponent.h */,
 				329EA5C8251A28E50042BDC8 /* DemoSearchComponent.m */,
-				329EA5C9251A28E50042BDC8 /* DemoSearchModule.h */,
-				329EA5C6251A28E50042BDC8 /* DemoSearchModule.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -424,7 +425,6 @@
 		6003F593195388D20070C39A /* Example for EaseModule */ = {
 			isa = PBXGroup;
 			children = (
-				3218D6492522DAF700069DC0 /* assets */,
 				6003F59C195388D20070C39A /* XXAppDelegate.h */,
 				6003F59D195388D20070C39A /* XXAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,

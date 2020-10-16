@@ -36,10 +36,10 @@
     XXViewController * vc = [[XXViewController alloc] initWithModule:({
         EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"];
         [module addModule:({
-            [[DemoNewsModule alloc] initWithName:@"新闻详情"];
+            [[DemoSearchModule alloc] initWithName:@"搜索界面"];
         })];
         [module addModule:({
-            [[DemoSearchModule alloc] initWithName:@"搜索界面"];
+            [[DemoNewsModule alloc] initWithName:@"新闻详情"];
         })];
         [module addModule:({
             EaseCompositeModule * demoModule = [[EaseCompositeModule alloc] initWithName:@"DEMO"];

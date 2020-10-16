@@ -12,6 +12,42 @@
 
 @end
 
+@implementation SearchHotCCell
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.contentView.backgroundColor = [UIColor colorWithHexString:@"#F3F3F3"];
+
+        self.contentView.layer.cornerRadius = 4.0f;
+        self.contentView.layer.masksToBounds = YES;
+        
+        self.oneLabel = [UILabel new];
+        self.oneLabel.textAlignment = NSTextAlignmentLeft;
+        self.oneLabel.numberOfLines = 1;
+        self.oneLabel.font = [UIFont systemFontOfSize:15];
+        [self.contentView addSubview:self.oneLabel];
+        [self.oneLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).mas_offset(5);
+            make.right.equalTo(self.contentView).mas_offset(-5);
+        }];
+    }
+    return self;
+}
+
+- (void) setupWithData:(id)data{
+    if ([data isKindOfClass:NSString.class]) {
+        self.oneLabel.attributedText = [[NSAttributedString alloc] initWithString:EaseSafeString(data)];
+    } else if ([data isKindOfClass:NSAttributedString.class]) {
+        self.oneLabel.attributedText = (NSAttributedString *)data;
+    } else {
+        self.oneLabel.attributedText = nil;
+    }
+}
+@end
+
 @implementation SearchHistoryHeaderView{
     UIButton *_foldButton;
 }

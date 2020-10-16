@@ -67,7 +67,9 @@ YTKBatchRequestDelegate>
                 [request setSuccessCompletionBlock:^(__kindof YTKBaseRequest * req) {
                     __strong typeof(weakSelf) strongSelf = weakSelf;
                     [strongSelf parseModuleDataWithRequest:req];
-                    [self _wrapperSuccessUpdateForDelegate];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [strongSelf _wrapperSuccessUpdateForDelegate];
+                    });
                 }];
             }
         }

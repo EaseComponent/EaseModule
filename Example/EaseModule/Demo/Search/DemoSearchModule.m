@@ -120,9 +120,9 @@ static NSDictionary * searchData;
     [recommendComp addDatas:searchData[@"recommend"]];
     
     return @[
-        historyComp,
+//        historyComp,
         historyComp1,
-        rankComp,
+//        rankComp,
         rankComp1,
         recommendComp
     ];

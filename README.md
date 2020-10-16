@@ -157,7 +157,7 @@ EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"
 ...
 [module addModule:({
     EaseCompositeModule * demoModule = [[EaseCompositeModule alloc] initWithName:@"DEMO"];
-    [demoModule addModule:someSubEaseModuleObj];
+    [demoModule addModule:otherSubEaseModuleObj];
     ...
     demoModule;
 })];
@@ -167,7 +167,7 @@ EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"
 
 > DemoNewsModule
 
-一般来说，Module都是通过网络请求驱动的，并且更多的时候是只需要一个网络请求即可，所以这里提供了单个网络请求驱动的`EaseSingleModule`。子类只需要重写下面两个方法，分别提供网络抽象类（这里使用的是YTKRequest）、针对网络请求数据进行解析。
+一般来说，Module都是通过网络请求驱动的，并且更多的时候是只需要一个网络请求即可，所以这里提供了单个网络请求驱动的`EaseSingleModule`。子类只需要重写下面两个方法:分别提供网络抽象类（这里使用的是YTKRequest）、针对网络请求数据进行解析。
 
 ``` Objective-C
 /// 当前module的网络请求

@@ -24,7 +24,7 @@
 }
 
 - (BOOL)shouldLoadMore{
-    return YES;
+    return NO;
 }
 
 - (__kindof YTKRequest *)fetchModuleRequest{
@@ -44,7 +44,7 @@
 - (NSArray<__kindof YTKRequest *> *)fetchModuleRequests{
     return @[
         DemoNewsRequest.new,
-        [[DemoNewsRecommendRequest alloc] initWithKey:5823]
+        [[DemoNewsRecommendRequest alloc] initWithKey:11873]
     ];
 }
 
@@ -52,14 +52,9 @@
     return EaseQueueRequestModuleAllDone;
 }
 
-- (void)parseModuleDataWithRequests:(NSArray<__kindof YTKRequest *> *)requests{
-    for (YTKRequest * request in requests) {
-        [self parseModuleDataWithRequest:request];
-    }
-}
-
 - (void)parseModuleDataWithRequest:(__kindof YTKRequest *)request{
    
+    NSLog(@"[Ease] :%@",request.class);
     if ([request isKindOfClass:[DemoNewsRequest class]]) {
         
         DemoNewsRequest * newsReq = (DemoNewsRequest *)request;
@@ -88,9 +83,10 @@
             recommendComp = [NewsRecommendComponent new];
             [recommendComp addDatas:recommendReq.list];
             [self.dataSource addComponent:recommendComp];
-        } else {        
+        } else {
             [recommendComp addDatas:recommendReq.list];
             [recommendComp reloadData];
+            [self.collectionView reloadData];
         }
     }
 }

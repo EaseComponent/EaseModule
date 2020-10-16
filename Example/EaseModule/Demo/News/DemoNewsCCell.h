@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NewsRecommendCCell : UICollectionViewCell
 - (void) setupWithData:(id)data;
+- (void) test:(NSString *)data;
 @end
 
 @protocol NewsContentCCellDelegate <NSObject>

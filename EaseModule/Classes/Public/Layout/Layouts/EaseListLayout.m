@@ -112,10 +112,15 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
     // for safe
     _itemHeight = MIN(self.horizontalArrangeContentHeight, _itemHeight);
     
+    NSArray * maxDisplayCountDatas = datas;
+    if (self.maxDisplayCount <= datas.count) {
+        maxDisplayCountDatas = [datas subarrayWithRange:NSMakeRange(0, self.maxDisplayCount)];
+    }
+    
     CGFloat maxY = 0;
     CGFloat maxX = 0;
     BOOL lastOneNeedShift = NO;
-    for (NSInteger index = 0; index < datas.count; index ++) {
+    for (NSInteger index = 0; index < maxDisplayCountDatas.count; index ++) {
         
         CGRect frame = (CGRect){
             maxX,maxY,
@@ -129,9 +134,9 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
             frame.origin.x = maxX;
             frame.origin.y = maxY;
         }
-        if (_didSetupMaxDisplayCount && index >= self.maxDisplayCount) {
-            break;
-        }
+//        if (_didSetupMaxDisplayCount && index >= self.maxDisplayCount) {
+//            break;
+//        }
         [self cacheItemFrame:frame at:index];
         // 更新y
         maxY += (_itemHeight + self.lineSpacing);
@@ -141,7 +146,7 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
         self.horizontalArrangeContentHeight =
         self.maxDisplayCount * _itemHeight + (self.maxDisplayCount - 1) * self.lineSpacing;
     }
-    _contentWidth = CGRectGetMaxX([self itemFrameAtIndex:datas.count - 1]);
+    _contentWidth = CGRectGetMaxX([self itemFrameAtIndex:maxDisplayCountDatas.count - 1]);
 }
 
 #pragma mark - calculator Vertical

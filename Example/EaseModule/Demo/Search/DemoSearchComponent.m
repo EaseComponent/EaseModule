@@ -132,9 +132,9 @@
         layout.distribution = [EaseLayoutDimension distributionDimension:1];
         layout.itemRatio = [EaseLayoutDimension absoluteDimension:50];
         if (maxDisplayCountCondition) {
-            layout.maxDisplayCount = 2;
             /// 测试水平效果的maxDisplay
             layout.arrange = EaseLayoutArrangeHorizontal;
+            layout.maxDisplayCount = 5;
             layout.row = 3;
         } else {
             layout.maxDisplayLines = 4;
@@ -149,11 +149,7 @@
 }
 
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
-    DemoContentCCell * ccell = [self.dataSource dequeueReusableCellOfClass:DemoContentCCell.class forComponent:self atIndex:index];
-    ccell.oneLabel.textAlignment = NSTextAlignmentLeft;
-    ccell.oneLabel.numberOfLines = 1;
-    ccell.contentView.layer.cornerRadius = 4.0f;
-    ccell.contentView.layer.masksToBounds = YES;
+    SearchHotCCell * ccell = [self.dataSource dequeueReusableCellOfClass:SearchHotCCell.class forComponent:self atIndex:index];
     [ccell setupWithData:({
         [[[EaseAttributedBuilder builderWithString:({
             [NSString stringWithFormat:@"%ld. ",index + 1];

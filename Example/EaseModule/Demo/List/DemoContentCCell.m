@@ -23,24 +23,16 @@
         self.oneLabel.numberOfLines = 2;
         self.oneLabel.font = [UIFont boldSystemFontOfSize:13];
         [self.contentView addSubview:self.oneLabel];
-        
+
+        [self.oneLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).mas_offset(5);
+            make.right.equalTo(self.contentView).mas_offset(-5);
+            //        make.height.mas_greaterThanOrEqualTo(20);
+            //        make.width.mas_greaterThanOrEqualTo(20);
+        }];
     }
     return self;
-}
-
-- (BOOL)needsUpdateConstraints{
-    return NO;;
-}
-- (void)updateConstraints{
-    
-    [self.oneLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
-        make.left.equalTo(self.contentView).mas_offset(5);
-        make.right.equalTo(self.contentView).mas_offset(-5);
-//        make.height.mas_greaterThanOrEqualTo(20);
-//        make.width.mas_greaterThanOrEqualTo(20);
-    }];
-    [super updateConstraints];
 }
 
 - (void) setupWithData:(id)data{
