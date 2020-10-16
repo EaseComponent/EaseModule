@@ -16,6 +16,7 @@
     self = [super init];
     if (self) {
 //        self.independentDatas = YES;
+        self.hiddenWhenEmpty = YES;
     }
     return self;
 }
