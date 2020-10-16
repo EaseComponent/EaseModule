@@ -113,7 +113,7 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
     _itemHeight = MIN(self.horizontalArrangeContentHeight, _itemHeight);
     
     NSArray * maxDisplayCountDatas = datas;
-    if (self.maxDisplayCount <= datas.count) {
+    if (self.maxDisplayCount <= datas.count && _didSetupMaxDisplayCount) {
         maxDisplayCountDatas = [datas subarrayWithRange:NSMakeRange(0, self.maxDisplayCount)];
     }
     
@@ -134,9 +134,7 @@ typedef NS_ENUM(NSUInteger, EaseLayoutSemantic) {
             frame.origin.x = maxX;
             frame.origin.y = maxY;
         }
-//        if (_didSetupMaxDisplayCount && index >= self.maxDisplayCount) {
-//            break;
-//        }
+        
         [self cacheItemFrame:frame at:index];
         // 更新y
         maxY += (_itemHeight + self.lineSpacing);
