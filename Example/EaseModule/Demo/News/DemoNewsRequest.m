@@ -8,7 +8,7 @@
 
 #import "DemoNewsRequest.h"
 
-@implementation DemoNewsRequest
+@implementation NewsInfoRequest
 
 - (NSString *)requestUrl{
     return @"https://v2.sohu.com/article-service-api/article/421252230_120126853";
@@ -37,7 +37,7 @@
 
 @end
 
-@implementation DemoNewsRecommendRequest{
+@implementation NewsRecommendRequest{
     NSInteger _key;
 }
 
@@ -60,11 +60,7 @@
 - (void)requestCompleteFilter{
     [super requestCompleteFilter];
     NSMutableArray * tmp = [NSMutableArray arrayWithArray:self.responseObject[@"data"]];
-    if (tmp.count >= 2) {
-//        _list = [tmp subarrayWithRange:NSMakeRange(0, 2)];
-    }
     _list = tmp;
-    NSLog(@"DemoNewsRecommendRequest:%@",self);
 }
 
 @end

@@ -13,6 +13,8 @@
 		321AD9FB2521E665006F5C79 /* DemoNewsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9FA2521E665006F5C79 /* DemoNewsComponent.m */; };
 		321AD9FE2521E674006F5C79 /* DemoNewsCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */; };
 		321ADA012521F888006F5C79 /* DemoNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 321ADA002521F888006F5C79 /* DemoNewsRequest.m */; };
+		32794A642539742B00DE196D /* DemoShoppingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32794A632539742B00DE196D /* DemoShoppingRequest.m */; };
+		32794A6725397D2900DE196D /* DemoShoppingCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32794A6625397D2900DE196D /* DemoShoppingCCell.m */; };
 		329EA5E5251A28E60042BDC8 /* DemoMusicModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5AE251A28E50042BDC8 /* DemoMusicModule.m */; };
 		329EA5E6251A28E60042BDC8 /* DemoMusicComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5AF251A28E50042BDC8 /* DemoMusicComponent.m */; };
 		329EA5E7251A28E60042BDC8 /* DemoMusicCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 329EA5B0251A28E50042BDC8 /* DemoMusicCCell.m */; };
@@ -90,6 +92,10 @@
 		321AD9FD2521E674006F5C79 /* DemoNewsCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsCCell.m; sourceTree = "<group>"; };
 		321AD9FF2521F888006F5C79 /* DemoNewsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoNewsRequest.h; sourceTree = "<group>"; };
 		321ADA002521F888006F5C79 /* DemoNewsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoNewsRequest.m; sourceTree = "<group>"; };
+		32794A622539742B00DE196D /* DemoShoppingRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoShoppingRequest.h; sourceTree = "<group>"; };
+		32794A632539742B00DE196D /* DemoShoppingRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoShoppingRequest.m; sourceTree = "<group>"; };
+		32794A6525397D2900DE196D /* DemoShoppingCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoShoppingCCell.h; sourceTree = "<group>"; };
+		32794A6625397D2900DE196D /* DemoShoppingCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoShoppingCCell.m; sourceTree = "<group>"; };
 		329EA5AD251A28E50042BDC8 /* DemoMusicCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoMusicCCell.h; sourceTree = "<group>"; };
 		329EA5AE251A28E50042BDC8 /* DemoMusicModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMusicModule.m; sourceTree = "<group>"; };
 		329EA5AF251A28E50042BDC8 /* DemoMusicComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoMusicComponent.m; sourceTree = "<group>"; };
@@ -273,10 +279,14 @@
 		329EA5BA251A28E50042BDC8 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				329EA5BC251A28E50042BDC8 /* DemoShoppingComponent.h */,
-				329EA5BE251A28E50042BDC8 /* DemoShoppingComponent.m */,
 				329EA5BB251A28E50042BDC8 /* DemoShoppingModule.h */,
 				329EA5BD251A28E50042BDC8 /* DemoShoppingModule.m */,
+				32794A622539742B00DE196D /* DemoShoppingRequest.h */,
+				32794A632539742B00DE196D /* DemoShoppingRequest.m */,
+				329EA5BC251A28E50042BDC8 /* DemoShoppingComponent.h */,
+				329EA5BE251A28E50042BDC8 /* DemoShoppingComponent.m */,
+				32794A6525397D2900DE196D /* DemoShoppingCCell.h */,
+				32794A6625397D2900DE196D /* DemoShoppingCCell.m */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -708,6 +718,7 @@
 				329EA5EB251A28E60042BDC8 /* DemoShoppingModule.m in Sources */,
 				329EA5EE251A28E60042BDC8 /* DemoLivingModule.m in Sources */,
 				329EA60D251A2A440042BDC8 /* SDCycleScrollView.m in Sources */,
+				32794A6725397D2900DE196D /* DemoShoppingCCell.m in Sources */,
 				329EA5ED251A28E60042BDC8 /* DemoHuabanModule.m in Sources */,
 				329EA5F2251A28E60042BDC8 /* DemoContentCCell.m in Sources */,
 				32FCCC53251D92FD0091B898 /* DemoLivingComponent.m in Sources */,
@@ -722,6 +733,7 @@
 				329EA5FB251A28E60042BDC8 /* UIImage+Common.m in Sources */,
 				329EA5F6251A28E60042BDC8 /* DemoMineComponent.m in Sources */,
 				329EA5EC251A28E60042BDC8 /* DemoShoppingComponent.m in Sources */,
+				32794A642539742B00DE196D /* DemoShoppingRequest.m in Sources */,
 				329EA611251A2A440042BDC8 /* TAPageControl.m in Sources */,
 				321AD9FB2521E665006F5C79 /* DemoNewsComponent.m in Sources */,
 				329EA5FC251A28E60042BDC8 /* NSArray+Sugar.m in Sources */,

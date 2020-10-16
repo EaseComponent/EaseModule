@@ -28,7 +28,7 @@
 }
 
 - (__kindof YTKRequest *)fetchModuleRequest{
-    return DemoNewsRequest.new;
+    return NewsInfoRequest.new;
 }
 
 - (__kindof YTKRequest *)loadMoreRequest{
@@ -38,13 +38,13 @@
     } else {
         key = [_tempKeys[_index] integerValue];
     }
-    return [[DemoNewsRecommendRequest alloc] initWithKey:key];
+    return [[NewsRecommendRequest alloc] initWithKey:key];
 }
 
 - (NSArray<__kindof YTKRequest *> *)fetchModuleRequests{
     return @[
-        DemoNewsRequest.new,
-        [[DemoNewsRecommendRequest alloc] initWithKey:11873]
+        NewsInfoRequest.new,
+        [[NewsRecommendRequest alloc] initWithKey:11873]
     ];
 }
 
@@ -55,9 +55,9 @@
 - (void)parseModuleDataWithRequest:(__kindof YTKRequest *)request{
    
     NSLog(@"[Ease] :%@",request.class);
-    if ([request isKindOfClass:[DemoNewsRequest class]]) {
+    if ([request isKindOfClass:[NewsInfoRequest class]]) {
         
-        DemoNewsRequest * newsReq = (DemoNewsRequest *)request;
+        NewsInfoRequest * newsReq = (NewsInfoRequest *)request;
         
         NewsInfoComponent * infoComp = [NewsInfoComponent new];
         [infoComp addData:newsReq.articleInfo];
@@ -67,16 +67,16 @@
         
         NewsKeywordComponent * keywoardComp = [NewsKeywordComponent new];
         [keywoardComp addDatas:newsReq.keyWords];
-        
+                
         [self.dataSource addComponents:@[
             infoComp,
             contentComp,
             keywoardComp,
         ]];
-    } else if ([request isKindOfClass:[DemoNewsRecommendRequest class]]) {
+    } else if ([request isKindOfClass:[NewsRecommendRequest class]]) {
         
-        DemoNewsRecommendRequest * recommendReq = (DemoNewsRecommendRequest *)request;
-        
+        NewsRecommendRequest * recommendReq = (NewsRecommendRequest *)request;
+
         NewsRecommendComponent * recommendComp =
         [self.dataSource componentAtIndex:3];
         if (!recommendComp) {

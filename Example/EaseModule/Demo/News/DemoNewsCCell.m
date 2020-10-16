@@ -8,6 +8,8 @@
 
 #import "DemoNewsCCell.h"
 #import <WebKit/WKWebView.h>
+#import "DemoNewsRequest.h"
+#import "SDCycleScrollView.h"
 
 @implementation NewsInfoCCell{
     UILabel * _titleLabel;

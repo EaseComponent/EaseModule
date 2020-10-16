@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DemoNewsRequest : YTKRequest
+@interface NewsInfoRequest : YTKRequest
 @property (nonatomic ,copy ,readonly) NSDictionary * articleInfo;
 @property (nonatomic ,copy ,readonly) NSString * content;
 @property (nonatomic ,copy ,readonly) NSArray<NSString *> * keyWords;
 @end
 
-@interface DemoNewsRecommendRequest : YTKRequest
+@interface NewsRecommendRequest : YTKRequest
 @property (nonatomic ,copy ,readonly) NSArray<NSDictionary *> * list;
 - (instancetype) initWithKey:(NSInteger)key;
 @end

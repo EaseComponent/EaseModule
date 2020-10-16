@@ -10,11 +10,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ShoppingCategoryComponent : EaseComponent
+@interface ShoppingComponent : EaseComponent
 
 @end
 
-@interface ShoppingItemComponent : EaseComponent
+@interface ShoppingKeywordComponent : ShoppingComponent
+
+@end
+
+@interface ShoppingAllCategoryComponent : ShoppingComponent
+
+@end
+
+@interface ShoppingItemsComponent : ShoppingComponent
 
 @end
 
