@@ -35,12 +35,8 @@
     
     XXViewController * vc = [[XXViewController alloc] initWithModule:({
         EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"];
-        
         [module addModule:({
-            [[DemoNewsModule alloc] initWithName:@"新闻详情"];
-        })];
-        [module addModule:({
-            [[DemoShoppingModule alloc] initWithName:@"购物app"];
+            [[DemoMusicModule alloc] initWithName:@"音乐app"];
         })];
         [module addModule:({
             EaseCompositeModule * demoModule = [[EaseCompositeModule alloc] initWithName:@"DEMO"];
@@ -51,13 +47,16 @@
             demoModule;
         })];
         [module addModule:({
+            [[DemoNewsModule alloc] initWithName:@"新闻详情"];
+        })];
+        [module addModule:({
+            [[DemoShoppingModule alloc] initWithName:@"购物app"];
+        })];
+        [module addModule:({
             [[DemoSearchModule alloc] initWithName:@"搜索界面"];
         })];
         [module addModule:({
             [[DemoLivingModule alloc] initWithName:@"直播app"];
-        })];
-        [module addModule:({
-            [[DemoMusicModule alloc] initWithName:@"音乐app"];
         })];
         [module addModule:({
             [[DemoVideoModule alloc] initWithName:@"视频app"];

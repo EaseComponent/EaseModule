@@ -69,24 +69,24 @@
 //        weekRankComp.headerPin = YES;
         [weekRankComp addDatas:subarrayData(60)];
 
-//        MusicSongListComponent * songListComp = [[MusicSongListComponent alloc] initWithName:@"夏日午后的小歇"];
-//        songListComp.headerPin = YES;
-//        [songListComp addDatas:subarrayData(12)];
-//        
-//        MusicSongCardComponent * songCardComp = [[MusicSongCardComponent alloc] initWithName:@"自习/考研加油站"];
-////        songCardComp.headerPin = YES;
-//        [songCardComp addDatas:subarrayData(3)];
-//        
-//        MusicSongListComponent * songListComp3 = [[MusicSongListComponent alloc] initWithName:@"情人节虐狗专用"];
-////        songListComp3.headerPin = YES;
-//        [songListComp3 addDatas:subarrayData(12)];
-//        
-//        MusicSongListComponent * songListComp4 = [[MusicSongListComponent alloc] initWithName:@"你还记得么"];
-////        songListComp4.headerPin = YES;
-//        [songListComp4 addDatas:subarrayData(12)];
-//        
-//        MusicSongListComponent * songListComp5 = [[MusicSongListComponent alloc] initWithName:@"飞行员的歌单"];
-//        [songListComp5 addDatas:subarrayData(12)];
+        MusicSongListComponent * songListComp = [[MusicSongListComponent alloc] initWithName:@"夏日午后的小歇"];
+        songListComp.headerPin = YES;
+        [songListComp addDatas:subarrayData(12)];
+        
+        MusicSongCardComponent * songCardComp = [[MusicSongCardComponent alloc] initWithName:@"自习/考研加油站"];
+//        songCardComp.headerPin = YES;
+        [songCardComp addDatas:subarrayData(3)];
+        
+        MusicSongListComponent * songListComp3 = [[MusicSongListComponent alloc] initWithName:@"情人节虐狗专用"];
+//        songListComp3.headerPin = YES;
+        [songListComp3 addDatas:subarrayData(8)];
+        
+        MusicSongListComponent * songListComp4 = [[MusicSongListComponent alloc] initWithName:@"你还记得么"];
+//        songListComp4.headerPin = YES;
+        [songListComp4 addDatas:subarrayData(6)];
+        
+        MusicSongListComponent * songListComp5 = [[MusicSongListComponent alloc] initWithName:@"飞行员的歌单"];
+        [songListComp5 addDatas:subarrayData(8)];
         
         [self.dataSource addComponents:@[
 //            bannerComp,
