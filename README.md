@@ -63,7 +63,7 @@ pod 'EaseModule'
 }
 ```
 
-`SomeComponent`是`EaseComponent`的子类，内部需要创建对应的`layout`来决定布局，指明要展示数据的cell，以及可选创建placehold cell、header view、footer view等。
+`SomeComponent`是`EaseComponent`的子类，内部需要创建对应的`layout`来决定布局，指明要展示数据的`cell`，以及可选创建`placehold cell`、`header view`、`footer view`等。
 
 ``` objective-c
 // in SomeComponent.m
