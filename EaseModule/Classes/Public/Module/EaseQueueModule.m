@@ -39,14 +39,14 @@ YTKBatchRequestDelegate>
     
     if (self.needUseSpecialLoadMore) {
         [[self loadMoreRequest]
-         startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+         startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull innerRequest) {
             [self increaseIndex];
-            [self parseModuleDataWithRequest:request];
+            [self parseModuleDataWithRequest:innerRequest];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self _wrapperSuccessUpdateForDelegate];
             });
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [self _wrapperFailUpdateForDelegate:request.error];
+        } failure:^(__kindof YTKBaseRequest * _Nonnull innerRequest) {
+            [self _wrapperFailUpdateForDelegate:innerRequest.error];
         }];
     } else {
         NSArray * requests = [self fetchModuleRequests];

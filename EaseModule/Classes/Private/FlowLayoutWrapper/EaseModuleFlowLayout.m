@@ -434,7 +434,8 @@ static const NSInteger unionSize = 50;
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
     
     CGPoint targetPoint = [super targetContentOffsetForProposedContentOffset:proposedContentOffset withScrollingVelocity:velocity];
-    
+    return targetPoint;
+    // TODO
     if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
         return targetPoint;
     }
