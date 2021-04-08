@@ -289,8 +289,9 @@ static const NSInteger unionSize = 50;
         contentSize.height = self.sectionHeights.lastObject.floatValue;
     } else {
         // 水平布局的时候，就只会有一个section，这里先这么获取数据，不是很优雅
-        EaseBaseLayout * layout = [self.delegate collectionView:self.collectionView
-                                                           layout:self componentAtSection:0].layout;
+        EaseBaseLayout * layout = [self.delegate collectionView:({
+            self.collectionView;
+        }) layout:self componentAtSection:0].layout;
         contentSize.width = layout.contentWidth;
     }
     return contentSize;

@@ -484,7 +484,7 @@ EaseCompositeModule * module = [[EaseCompositeModule alloc] initWithName:@"demo"
 
 > DemoLivingModule
 
-以上3中布局效果都支持placehold功能，在没有数据的时候为Component设置`needPlacehold`以及`placeholdHeight`，然后返回对应的cell即可。
+以上3中布局效果都支持placehold功能，为Component设置`needPlacehold`以及`placeholdHeight`，然后在`-placeholdCellForItemAtIndex:`中返回对应的place-cell即可，这样在没有数据的时候就会展示对应的占位视图。
 
 由于3种布局都支持水平方向的展示，因此`placeholdHeight`可能会和`horizontalArrangeContentHeight`有计算上的冲突，基于无数据占位显示这样的使用场景，这个时候以`placeholdHeight`为最终的展示高度。
 
